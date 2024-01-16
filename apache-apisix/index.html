@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-nest-rc.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-nest-rc.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-nest-rc-32.png">
+  <link rel="mask-icon" href="/favicon-nest-rc.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.ceobe.cn","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"static","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能API网关 Apache APISIX部署">
+<meta property="og:url" content="https://blog.ceobe.cn/apache-apisix/">
+<meta property="og:site_name" content="Ceobe&#39;s Fungimist">
+<meta property="og:description" content="Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115160144787.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115152109914.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115152320421.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115152841419.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115153140700.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115153513965.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115154121792.png">
+<meta property="og:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115154156600.png">
+<meta property="article:published_time" content="2024-01-15T06:45:56.000Z">
+<meta property="article:modified_time" content="2024-01-15T14:05:29.063Z">
+<meta property="article:author" content="_Melt_Tscci">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.ceobe.cn/apache-apisix/image-20240115160144787.png">
+
+
+<link rel="canonical" href="https://blog.ceobe.cn/apache-apisix/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.ceobe.cn/apache-apisix/","path":"apache-apisix/","title":"高性能API网关 Apache APISIX部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>高性能API网关 Apache APISIX部署 | Ceobe's Fungimist</title>
+  
+
+
+
+
+
+
+
+  <script defer data-domain="blog.ceobe.cn" src="https://plausible.ceobe.cn/js/script.js"></script>
+<link rel="dns-prefetch" href="https://waline.ceobe.cn/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Ceobe's Fungimist" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ceobe's Fungimist</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"> Grey Relation Analysis </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="https://ceobe.notion.site/ceobe/764e6257f2064f499fb5993112136a43?v=8b7437d14ec64e3cb3678fa89003b5b6" rel="section" target="_blank"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BDAPI%E7%BD%91%E5%85%B3-Apache-APISIX%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">高性能API网关 Apache APISIX部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="nav-number">1.1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85APISIX"><span class="nav-number">1.2.</span> <span class="nav-text">安装APISIX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%95%8C%E9%9D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">系统界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89APISIX-%E8%81%94%E5%8A%A8%E9%9B%B7%E6%B1%A0-Safeline"><span class="nav-number">1.4.</span> <span class="nav-text">-（可选）APISIX 联动雷池 Safeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%9B%B7%E6%B1%A0"><span class="nav-number">1.5.</span> <span class="nav-text">安装雷池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%9B%B7%E6%B1%A0%E6%A3%80%E6%B5%8B%E5%BC%95%E6%93%8E%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">修改雷池检测引擎的工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%9B%B7%E6%B1%A0%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.7.</span> <span class="nav-text">修改雷池默认端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8APISIX%E4%B8%AD%E7%BB%91%E5%AE%9A%E9%9B%B7%E6%B1%A0"><span class="nav-number">1.8.</span> <span class="nav-text">在APISIX中绑定雷池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%98%B2%E6%8A%A4%E6%95%88%E6%9E%9C"><span class="nav-number">1.9.</span> <span class="nav-text">测试防护效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">1.10.</span> <span class="nav-text">写在最后</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_Melt_Tscci"
+      src="/avatar_iop_512_512-w.png">
+  <p class="site-author-name" itemprop="name">_Melt_Tscci</p>
+  <div class="site-description" itemprop="description"> Bolívar | No.R155 </div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tscci" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tscci" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@ceobe.cn" title="E-Mail → mailto:i@ceobe.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hub.docker.com/u/tscci" title="Docker → https:&#x2F;&#x2F;hub.docker.com&#x2F;u&#x2F;tscci" rel="noopener me" target="_blank"><i class="fa-brands fa-docker fa-fw"></i>Docker</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div class="cc-license animated" title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=blog.ceobe.cn','TrustAsia 安全签章','height=800,width=470,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center">
+  <img src="https://sealres.trustasia.com/seal/img/1x/seal.svg?domain=blog.ceobe.cn" alt="TrustAsia 安全签章" style="width: 130px;height: auto;cursor: pointer">
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+   
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-chain fa-fw"></i>
+          链接
+        </div>
+        
+          <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+            <a target="_blank" rel="noopener" href="https://monitor.ceobe.cn/status/main" style="color:rgb(221,100,44);display:inline-block;width:130px;"><i class="fa-solid fa-list"></i> 站点监控</a></span>
+            <a target="_blank" rel="noopener" href="https://plausible.ceobe.cn/blog.ceobe.cn" style="color:rgb(221,100,44); display: inline-block;width:130px"><i class="fa-solid fa-ranking-star"></i> 访问流量</a>
+            <a target="_blank" rel="noopener" href="https://grafana.ceobe.cn/public-dashboards/ff69dff016024859a54c2b7494768cf6?orgId=1&refresh=5s" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa fa-bar-chart"></i> 性能观测</a>
+            <a target="_blank" rel="noopener" href="https://zfile.ceobe.cn" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa-regular fa-folder-open"></i> 网盘文件</a>
+            </div>
+
+      </div>
+    </div>
+
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title">
+          <i class="fa-solid fa-wrench fa-fw"></i> 技术支持
+        </div>    
+        <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/oss?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-database"></i> 对象存储</a>
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cdn?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-earth-americas"></i> CDN加速</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.ceobe.cn/apache-apisix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar_iop_512_512-w.png">
+      <meta itemprop="name" content="_Melt_Tscci">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ceobe's Fungimist">
+      <meta itemprop="description" content=" Bolívar | No.R155 ">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="高性能API网关 Apache APISIX部署 | Ceobe's Fungimist">
+      <meta itemprop="description" content="Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高性能API网关 Apache APISIX部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-01-15 14:45:56 / 修改时间：22:05:29" itemprop="dateCreated datePublished" datetime="2024-01-15T14:45:56+08:00">2024-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">网关</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/apache-apisix/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/apache-apisix/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="高性能API网关-Apache-APISIX部署"><a href="#高性能API网关-Apache-APISIX部署" class="headerlink" title="高性能API网关 Apache APISIX部署"></a>高性能API网关 Apache APISIX部署</h1><p>Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。<br>APISIX 的主要特点包括：</p>
+<ol>
+<li><strong>全动态能力</strong>：支持热加载，允许在不重启服务的情况下更新配置。</li>
+<li><strong>多平台支持</strong>：可以在多种环境中运行，包括裸机、Kubernetes，以及与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
+<li><strong>精细化路由</strong>：使用 NGINX 内置变量作为路由匹配条件，支持自定义匹配函数。</li>
+<li><strong>运维友好</strong>：可以与多种工具和平台集成，如 HashiCorp Vault、Zipkin、Apache SkyWalking、Consul、Nacos 和 Eureka。APISIX Dashboard 提供了一个直观友好的 UI，用于配置 APISIX。</li>
+<li><strong>多语言插件支持</strong>：支持多种编程语言开发插件，方便开发者根据需求进行自定义。<br>APISIX 的架构设计使其能够高效地处理大量流量，同时保持扩展性和灵活性。其内部使用 Nginx 和 LuaJIT 作为基础架构，这使得 APISIX 能够充分利用 Nginx 的高性能处理能力。<br>在安全性方面，APISIX 支持多种身份认证机制，包括但不限于 OAuth2、JWT、 basic authentication 等，确保 API 的安全性。<br>APISIX 社区活跃，不断有新的特性和插件被开发和贡献。社区周报是了解 APISIX 最新进展的一个好渠道。此外，APISIX 还提供了详细的文档，帮助用户了解如何安装、配置和使用 APISIX。<br>对于开发人员而言，APISIX 提供了一个易于使用的开发框架，可以方便地创建和定制插件来扩展网关的功能。APISIX 的插件机制非常灵活，插件可以处理路由、限流、熔断、响应处理等各种场景。<br>在运维方面，APISIX 提供了便捷的运维工具，例如可以通过简单的命令进行服务的启动、停止和重启。同时，APISIX 也支持通过 Dashboard 对网关进行配置管理，提高了运维的效率和便利性。<br>综上所述，Apache APISIX 是一个功能全面、灵活性高、易于集成和部署的 API 网关解决方案，适用于各种规模的企业和开发者，特别是在微服务架构和云原生环境中。</li>
+</ol>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><ul>
+<li>参考文章 <a href="/dockerinit/" title="Docker初始化环境">Docker初始化环境</a></li>
+</ul>
+<h2 id="安装APISIX"><a href="#安装APISIX" class="headerlink" title="安装APISIX"></a>安装APISIX</h2><ul>
+<li>下载 <a target="_blank" rel="noopener" href='https://zfile.ceobe.cn/1/高性能API网关 Apache APISIX部署'> Git项目文件 apisix-docker.zip </a>至运行环境</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://zfile.ceobe.cn/s/e21haz -O apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<p>** 短链存在有效期，请自行获取并替换 **</p>
+<p><img data-src="/apache-apisix/image-20240115160144787.png" alt="image-20240115160144787"></p>
+<ul>
+<li>解压缩文件：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用Docker Compose自行编排容器：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd apisix-docker/example</span><br><span class="line">docker compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152109914.png" alt="image-20240115152109914"></p>
+<ul>
+<li>验证 APISIX 服务：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &quot;http://127.0.0.1:9080&quot; --head | grep Server</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152320421.png" alt="image-20240115152320421"></p>
+<h2 id="系统界面"><a href="#系统界面" class="headerlink" title="系统界面"></a>系统界面</h2><ul>
+<li>图形界面 APISIX Dashboard：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:9000/</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号：admin</p>
+<p>默认密码： admin</p>
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;dashboard_conf&#x2F;conf.yaml</p>
+<p><img data-src="/apache-apisix/image-20240115152841419.png" alt="image-20240115152841419"></p>
+<ul>
+<li>图形界面 Grafana：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:3000</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号： admin</p>
+<p>默认密码： admin（首次登录时要求修改）</p>
+<p><img data-src="/apache-apisix/image-20240115153140700.png" alt="image-20240115153140700"></p>
+<ul>
+<li>监控告警系统 Prometheus：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:9090</span><br></pre></td></tr></table></figure>
+
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;prometheus_conf&#x2F;prometheus.yml</p>
+<p><img data-src="/apache-apisix/image-20240115153513965.png" alt="image-20240115153513965"></p>
+<ul>
+<li>APISIX 管理后台 &amp; 前端：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:9180</span><br><span class="line">http://127.0.0.1:9080</span><br></pre></td></tr></table></figure>
+
+<p>创建测试路由：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">curl -i &quot;http://127.0.0.1:9180/apisix/admin/routes&quot; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: &quot;getting-started-ip&quot;,</span><br><span class="line">  &quot;uri&quot;: &quot;/ip&quot;,</span><br><span class="line">  &quot;upstream&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">    &quot;nodes&quot;: &#123;</span><br><span class="line">      &quot;httpbin.org:80&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:9080/ip</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115154121792.png" alt="image-20240115154121792"></p>
+<p>调用 &#x2F;ip 接口测试源地址：</p>
+<p><img data-src="/apache-apisix/image-20240115154156600.png" alt="image-20240115154156600"></p>
+<h2 id="（可选）APISIX-联动雷池-Safeline"><a href="#（可选）APISIX-联动雷池-Safeline" class="headerlink" title="-（可选）APISIX 联动雷池 Safeline"></a>-（可选）APISIX 联动雷池 Safeline</h2><p>雷池是由长亭科技开发的 WAF 系统，提供对 HTTP 请求的安全请求，提供完整的 API 管理和防护能力。</p>
+<p>自 APISIX 3.5.0 之后的版本将内置长亭雷池 WAF 插件，在启用 chaitin-waf 插件后，流量将被转发给长亭 WAF 服务，用以检测和防止各种 Web 应用程序攻击，以保护应用程序和用户数据的安全。</p>
+<h2 id="安装雷池"><a href="#安装雷池" class="headerlink" title="安装雷池"></a>安装雷池</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c &quot;$(curl -fsSLk https://waf-ce.chaitin.cn/release/latest/setup.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池检测引擎的工作模式"><a href="#修改雷池检测引擎的工作模式" class="headerlink" title="修改雷池检测引擎的工作模式"></a>修改雷池检测引擎的工作模式</h2><p>社区版雷池的检测引擎默认以 unix socket 的方式提供服务，我们需要把他修改为 tcp 方式，供 APISIX 调用。</p>
+<p>进入雷池检测引擎的配置目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /data/safeline/resources/detector/</span><br></pre></td></tr></table></figure>
+
+<p>用文本编辑器打开目录里的 detector.yml 文件，我们需要将 bind 方式从 unix socket 改为 tcp，添加如下配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bind_addr: 0.0.0.0</span><br><span class="line">listen_port: 8000</span><br></pre></td></tr></table></figure>
+
+<p>detector配置的属性值将覆盖容器内默认配置文件的同名属性值。这样我们就把雷池引擎的服务监听到了 8000 端口，现在只需要把容器内的 8000 端口映射到宿主机即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /data/safeline/compose.yaml</span><br></pre></td></tr></table></figure>
+
+<p>为 detector 容器增加 ports 字段，暴露其 8000端口，参考如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line"></span><br><span class="line">detect:</span><br><span class="line">    ......</span><br><span class="line">    ports:</span><br><span class="line">    - 8000:8000</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>重启雷池生效：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker compose down</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池默认端口"><a href="#修改雷池默认端口" class="headerlink" title="修改雷池默认端口"></a>修改雷池默认端口</h2><p>雷池和 apisix 默认都监听 9443 端口，如果在同一台机器上安装，需要修改雷池的默认端口。</p>
+<p>在雷池的安装目录下，有一个名为 .env 的隐藏文件，其中的 MGT_PORT 字段，修改这里后使用上面的方法再重启雷池即可生效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /data/safeline</span><br><span class="line">vim .env</span><br></pre></td></tr></table></figure>
+
+<h2 id="在APISIX中绑定雷池"><a href="#在APISIX中绑定雷池" class="headerlink" title="在APISIX中绑定雷池"></a>在APISIX中绑定雷池</h2><p>调用 apisix 的 api，设置雷池检测引擎的地址，供 apisix 调用，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/plugin_metadata/chaitin-waf&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;nodes&quot;:[</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">       &quot;port&quot;: 8000</span><br><span class="line">     &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>调用 apisix 的 api，设置一条路由，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/routes/1&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">   &quot;uri&quot;: &quot;/*&quot;,</span><br><span class="line">   &quot;plugins&quot;: &#123;</span><br><span class="line">       &quot;chaitin-waf&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">   &quot;upstream&quot;: &#123;</span><br><span class="line">       &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">       &quot;nodes&quot;: &#123;</span><br><span class="line">           &quot;127.0.0.1:80&quot;: 1</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试防护效果"><a href="#测试防护效果" class="headerlink" title="测试防护效果"></a>测试防护效果</h2><p>在请求中加入注入攻击参数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &#x27;&lt;http://127.0.0.1:9080/&gt;&#x27; -d &#x27;a=1 and 1=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>得到结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 403,</span><br><span class="line">  &quot;success&quot;: false,</span><br><span class="line">  &quot;message&quot;: &quot;blocked by Chaitin SafeLine Web Application Firewall&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;18e0f220f7a94127acb21ad3c1b4ac47&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开雷池的控制台界面，可以看到雷池记录了完整的攻击信息。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>APISIX管理请求需密钥授权，在生产环境中使用时务必修改默认</p>
+<p>‘X-API-KEY: edd1c9f034335f136f87ad84b625c8f1’</p>
+<p>配置文件路径：</p>
+<p>apisix-docker&#x2F;example&#x2F;apisix_conf&#x2F;conf.yaml</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_Melt_Tscci
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.ceobe.cn/apache-apisix/" title="高性能API网关 Apache APISIX部署">https://blog.ceobe.cn/apache-apisix/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/API/" rel="tag"># API</a>
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Uninstall%20Nessus%20on%20macOS/" rel="prev" title="卸载macOS操作系统中的Nessus服务">
+                  <i class="fa fa-angle-left"></i> 卸载macOS操作系统中的Nessus服务
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Sakana/" rel="next" title="为网页添加『Sakana！』石蒜模拟器">
+                  为网页添加『Sakana！』石蒜模拟器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备20026372号-4 </a>
+      <img src="/gongan.png" alt=""><a href="https://beian.mps.gov.cn/#/query/webSearch?code=33019202002361" rel="noopener" target="_blank">浙公网安备33019202002361号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2022 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">_Melt_Tscci</span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+   
+    <span title="站点总字数">43k</span>
+  </span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:18</span>
+  </span>
+
+  <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+
+</div><div>
+<a style="display:inline-block" title="页面响应时间"><img src="https://monitor.ceobe.cn/api/badge/8/response?style=flat-square" style="cursor: text">
+</a>
+<a style="display:inline-block" title="评论平台状态"><img src="https://monitor.ceobe.cn/api/badge/3/uptime/24?labelPrefix=Waline&labelSuffix=h&style=flat-square" style="cursor: text">
+</a>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://blog.ceobe.cn/apache-apisix/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://waline.ceobe.cn/","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"visitor":false,"dark":false,"login":"enable","wordLimit":0,"pageSize":10,"highlight":true,"meta":["nick","mail"],"requiredMeta":[],"placeholder":"随便说点什么喵～o(=•ェ•=)m \\n没有登录也是完全没问题的哦～","copyright":false,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/bilibili"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/apache-apisix/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<meta name="viewport" content="width=device-width">
+<style>
+
+html .sakana-box{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  
+  transform-origin: 100% 100%; /* 从右下开始变换 */
+}
+</style>
+
+<div class="sakana-box"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sakana@1.0.8"></script>
+<script>
+// 取消静音
+Sakana.setMute(true);
+
+// 启动
+Sakana.init({
+  el:         '.sakana-box',     // 启动元素 node 或 选择器
+  scale:      .5,                // 缩放倍数
+  canSwitchCharacter: true,      // 允许换角色
+  scale:      0.425,             // 缩放倍数
+  character:  'takina',          // 启动角色 'chisato','takina' 
+});
+</script>
+</body>
+</html>

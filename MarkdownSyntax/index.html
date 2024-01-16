@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-nest-rc.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-nest-rc.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-nest-rc-32.png">
+  <link rel="mask-icon" href="/favicon-nest-rc.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.ceobe.cn","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"static","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="SyntaxMarkdown是一个轻量级的标记语言，它允许用户使用易读易写的纯文本格式来编写文档，然后转换成结构化的HTML或其他格式的文档。SyntaxMarkdown最初由John Gruber创建，后来被广泛应用于各种编辑器、博客平台和内容管理系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Syntax的Markdown语法">
+<meta property="og:url" content="https://blog.ceobe.cn/MarkdownSyntax/">
+<meta property="og:site_name" content="Ceobe&#39;s Fungimist">
+<meta property="og:description" content="SyntaxMarkdown是一个轻量级的标记语言，它允许用户使用易读易写的纯文本格式来编写文档，然后转换成结构化的HTML或其他格式的文档。SyntaxMarkdown最初由John Gruber创建，后来被广泛应用于各种编辑器、博客平台和内容管理系统。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-01T07:33:37.000Z">
+<meta property="article:modified_time" content="2023-12-21T09:22:33.000Z">
+<meta property="article:author" content="_Melt_Tscci">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.ceobe.cn/MarkdownSyntax/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.ceobe.cn/MarkdownSyntax/","path":"MarkdownSyntax/","title":"Syntax的Markdown语法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Syntax的Markdown语法 | Ceobe's Fungimist</title>
+  
+
+
+
+
+
+
+
+  <script defer data-domain="blog.ceobe.cn" src="https://plausible.ceobe.cn/js/script.js"></script>
+<link rel="dns-prefetch" href="https://waline.ceobe.cn/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Ceobe's Fungimist" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ceobe's Fungimist</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"> Grey Relation Analysis </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="https://ceobe.notion.site/ceobe/764e6257f2064f499fb5993112136a43?v=8b7437d14ec64e3cb3678fa89003b5b6" rel="section" target="_blank"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OVERVIEW"><span class="nav-number">1.</span> <span class="nav-text">OVERVIEW</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHILOSOPHY"><span class="nav-number">1.1.</span> <span class="nav-text">PHILOSOPHY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INLINE-HTML"><span class="nav-number">1.2.</span> <span class="nav-text">INLINE HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AUTOMATIC-ESCAPING-FOR-SPECIAL-CHARACTERS"><span class="nav-number">1.3.</span> <span class="nav-text">AUTOMATIC ESCAPING FOR SPECIAL CHARACTERS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BLOCK-ELEMENTS"><span class="nav-number">2.</span> <span class="nav-text">BLOCK ELEMENTS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PARAGRAPHS-AND-LINE-BREAKS"><span class="nav-number">2.1.</span> <span class="nav-text">PARAGRAPHS AND LINE BREAKS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEADERS"><span class="nav-number">2.2.</span> <span class="nav-text">HEADERS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BLOCKQUOTES"><span class="nav-number">2.3.</span> <span class="nav-text">BLOCKQUOTES</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LISTS"><span class="nav-number">2.4.</span> <span class="nav-text">LISTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CODE-BLOCKS"><span class="nav-number">2.5.</span> <span class="nav-text">CODE BLOCKS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HORIZONTAL-RULES"><span class="nav-number">2.6.</span> <span class="nav-text">HORIZONTAL RULES</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPAN-ELEMENTS"><span class="nav-number">3.</span> <span class="nav-text">SPAN ELEMENTS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LINKS"><span class="nav-number">3.1.</span> <span class="nav-text">LINKS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EMPHASIS"><span class="nav-number">3.2.</span> <span class="nav-text">EMPHASIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CODE"><span class="nav-number">3.3.</span> <span class="nav-text">CODE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IMAGES"><span class="nav-number">3.4.</span> <span class="nav-text">IMAGES</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MISCELLANEOUS"><span class="nav-number">4.</span> <span class="nav-text">MISCELLANEOUS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AUTOMATIC-LINKS"><span class="nav-number">4.1.</span> <span class="nav-text">AUTOMATIC LINKS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BACKSLASH-ESCAPES"><span class="nav-number">4.2.</span> <span class="nav-text">BACKSLASH ESCAPES</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_Melt_Tscci"
+      src="/avatar_iop_512_512-w.png">
+  <p class="site-author-name" itemprop="name">_Melt_Tscci</p>
+  <div class="site-description" itemprop="description"> Bolívar | No.R155 </div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tscci" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tscci" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@ceobe.cn" title="E-Mail → mailto:i@ceobe.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hub.docker.com/u/tscci" title="Docker → https:&#x2F;&#x2F;hub.docker.com&#x2F;u&#x2F;tscci" rel="noopener me" target="_blank"><i class="fa-brands fa-docker fa-fw"></i>Docker</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div class="cc-license animated" title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=blog.ceobe.cn','TrustAsia 安全签章','height=800,width=470,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center">
+  <img src="https://sealres.trustasia.com/seal/img/1x/seal.svg?domain=blog.ceobe.cn" alt="TrustAsia 安全签章" style="width: 130px;height: auto;cursor: pointer">
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+   
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-chain fa-fw"></i>
+          链接
+        </div>
+        
+          <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+            <a target="_blank" rel="noopener" href="https://monitor.ceobe.cn/status/main" style="color:rgb(221,100,44);display:inline-block;width:130px;"><i class="fa-solid fa-list"></i> 站点监控</a></span>
+            <a target="_blank" rel="noopener" href="https://plausible.ceobe.cn/blog.ceobe.cn" style="color:rgb(221,100,44); display: inline-block;width:130px"><i class="fa-solid fa-ranking-star"></i> 访问流量</a>
+            <a target="_blank" rel="noopener" href="https://grafana.ceobe.cn/public-dashboards/ff69dff016024859a54c2b7494768cf6?orgId=1&refresh=5s" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa fa-bar-chart"></i> 性能观测</a>
+            <a target="_blank" rel="noopener" href="https://zfile.ceobe.cn" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa-regular fa-folder-open"></i> 网盘文件</a>
+            </div>
+
+      </div>
+    </div>
+
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title">
+          <i class="fa-solid fa-wrench fa-fw"></i> 技术支持
+        </div>    
+        <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/oss?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-database"></i> 对象存储</a>
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cdn?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-earth-americas"></i> CDN加速</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.ceobe.cn/MarkdownSyntax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar_iop_512_512-w.png">
+      <meta itemprop="name" content="_Melt_Tscci">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ceobe's Fungimist">
+      <meta itemprop="description" content=" Bolívar | No.R155 ">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Syntax的Markdown语法 | Ceobe's Fungimist">
+      <meta itemprop="description" content="SyntaxMarkdown是一个轻量级的标记语言，它允许用户使用易读易写的纯文本格式来编写文档，然后转换成结构化的HTML或其他格式的文档。SyntaxMarkdown最初由John Gruber创建，后来被广泛应用于各种编辑器、博客平台和内容管理系统。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Syntax的Markdown语法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-01 15:33:37" itemprop="dateCreated datePublished" datetime="2023-12-01T15:33:37+08:00">2023-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-21 17:22:33" itemprop="dateModified" datetime="2023-12-21T17:22:33+08:00">2023-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">语法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/MarkdownSyntax/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/MarkdownSyntax/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>22k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>40 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">SyntaxMarkdown是一个轻量级的标记语言，它允许用户使用易读易写的纯文本格式来编写文档，然后转换成结构化的HTML或其他格式的文档。SyntaxMarkdown最初由John Gruber创建，后来被广泛应用于各种编辑器、博客平台和内容管理系统。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="OVERVIEW"><a href="#OVERVIEW" class="headerlink" title="OVERVIEW"></a>OVERVIEW</h2><h3 id="PHILOSOPHY"><a href="#PHILOSOPHY" class="headerlink" title="PHILOSOPHY"></a>PHILOSOPHY</h3><p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.</p>
+<p>Readability, however, is emphasized above all else. A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters — including <a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a>, <a target="_blank" rel="noopener" href="http://www.aaronsw.com/2002/atx/">atx</a>, <a target="_blank" rel="noopener" href="https://web.archive.org/web/20021226035527/http://textism.com/tools/textile/">Textile</a>, <a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, <a target="_blank" rel="noopener" href="http://www.triptico.com/software/grutatxt.html">Grutatext</a>, and <a target="_blank" rel="noopener" href="http://ettext.taint.org/doc/">EtText</a> — the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.</p>
+<p>To this end, Markdown’s syntax is comprised entirely of punctuation characters, which punctuation characters have been carefully chosen so as to look like what they mean. E.g., asterisks around a word actually look like <em>emphasis</em>. Markdown lists look like, well, lists. Even blockquotes look like quoted passages of text, assuming you’ve ever used email.</p>
+<h3 id="INLINE-HTML"><a href="#INLINE-HTML" class="headerlink" title="INLINE HTML"></a>INLINE HTML</h3><p>Markdown’s syntax is intended for one purpose: to be used as a format for <em>writing</em> for the web.</p>
+<p>Markdown is not a replacement for HTML, or even close to it. Its syntax is very small, corresponding only to a very small subset of HTML tags. The idea is <em>not</em> to create a syntax that makes it easier to insert HTML tags. In my opinion, HTML tags are already easy to insert. The idea for Markdown is to make it easy to read, write, and edit prose. HTML is a <em>publishing</em> format; Markdown is a <em>writing</em>format. Thus, Markdown’s formatting syntax only addresses issues that can be conveyed in plain text.</p>
+<p>For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to preface it or delimit it to indicate that you’re switching from Markdown to HTML; you just use the tags.</p>
+<p>The only restrictions are that block-level HTML elements — e.g. <code>&lt;div&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;pre&gt;</code>, <code>&lt;p&gt;</code>, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) <code>&lt;p&gt;</code> tags around HTML block-level tags.</p>
+<p>For example, to add an HTML table to a Markdown article:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">This <span class="literal">is</span> a regular paragraph.</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="language-xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Foo<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">This <span class="literal">is</span> another regular paragraph.</span><br></pre></td></tr></table></figure>
+
+<p>Note that Markdown formatting syntax is not processed within block-level HTML tags. E.g., you can’t use Markdown-style <code>*emphasis*</code>inside an HTML block.</p>
+<p>Span-level HTML tags — e.g. <code>&lt;span&gt;</code>, <code>&lt;cite&gt;</code>, or <code>&lt;del&gt;</code> — can be used anywhere in a Markdown paragraph, list item, or header. If you want, you can even use HTML tags instead of Markdown formatting; e.g. if you’d prefer to use HTML <code>&lt;a&gt;</code> or <code>&lt;img&gt;</code> tags instead of Markdown’s link or image syntax, go right ahead.</p>
+<p>Unlike block-level HTML tags, Markdown syntax <em>is</em> processed within span-level tags.</p>
+<h3 id="AUTOMATIC-ESCAPING-FOR-SPECIAL-CHARACTERS"><a href="#AUTOMATIC-ESCAPING-FOR-SPECIAL-CHARACTERS" class="headerlink" title="AUTOMATIC ESCAPING FOR SPECIAL CHARACTERS"></a>AUTOMATIC ESCAPING FOR SPECIAL CHARACTERS</h3><p>In HTML, there are two characters that demand special treatment: <code>&lt;</code>and <code>&amp;</code>. Left angle brackets are used to start tags; ampersands are used to denote HTML entities. If you want to use them as literal characters, you must escape them as entities, e.g. <code>&lt;</code>, and<code>&amp;</code>.</p>
+<p>Ampersands in particular are bedeviling for web writers. If you want to write about ‘AT&amp;T’, you need to write ‘<code>AT&amp;T</code>’. You even need to escape ampersands within URLs. Thus, if you want to link to:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span><span class="comment">//images.google.com/images?num=30&amp;q=larry+bird</span></span><br></pre></td></tr></table></figure>
+
+<p>you need to encode the URL as:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span><span class="comment">//images.google.com/images?num=30&amp;amp;q=larry+bird</span></span><br></pre></td></tr></table></figure>
+
+<p>in your anchor tag <code>href</code> attribute. Needless to say, this is easy to forget, and is probably the single most common source of HTML validation errors in otherwise well-marked-up web sites.</p>
+<p>Markdown allows you to use these characters naturally, taking care of all the necessary escaping for you. If you use an ampersand as part of an HTML entity, it remains unchanged; otherwise it will be translated into <code>&amp;</code>.</p>
+<p>So, if you want to include a copyright symbol in your article, you can write:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&amp;copy;</span></span><br></pre></td></tr></table></figure>
+
+<p>and Markdown will leave it alone. But if you write:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AT<span class="meta">&amp;T</span></span><br></pre></td></tr></table></figure>
+
+<p>Markdown will translate it to:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AT</span>&amp;amp<span class="comment">;T</span></span><br></pre></td></tr></table></figure>
+
+<p>Similarly, because Markdown supports <a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/syntax#html">inline HTML</a>, if you use angle brackets as delimiters for HTML tags, Markdown will treat them as such. But if you write:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">4 </span>&lt; <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>Markdown will translate it to:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">4 </span>&amp;lt; <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>However, inside Markdown code spans and blocks, angle brackets and ampersands are <em>always</em> encoded automatically. This makes it easy to use Markdown to write about HTML code. (As opposed to raw HTML, which is a terrible format for writing about HTML syntax, because every single <code>&lt;</code> and <code>&amp;</code> in your example code needs to be escaped.)</p>
+<hr>
+<h2 id="BLOCK-ELEMENTS"><a href="#BLOCK-ELEMENTS" class="headerlink" title="BLOCK ELEMENTS"></a>BLOCK ELEMENTS</h2><h3 id="PARAGRAPHS-AND-LINE-BREAKS"><a href="#PARAGRAPHS-AND-LINE-BREAKS" class="headerlink" title="PARAGRAPHS AND LINE BREAKS"></a>PARAGRAPHS AND LINE BREAKS</h3><p>A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line — a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.</p>
+<p>The implication of the “one or more consecutive lines of text” rule is that Markdown supports “hard-wrapped” text paragraphs. This differs significantly from most other text-to-HTML formatters (including Movable Type’s “Convert Line Breaks” option) which translate every line break character in a paragraph into a <code>&lt;br /&gt;</code> tag.</p>
+<p>When you <em>do</em> want to insert a <code>&lt;br /&gt;</code> break tag using Markdown, you end a line with two or more spaces, then type return.</p>
+<p>Yes, this takes a tad more effort to create a <code>&lt;br /&gt;</code>, but a simplistic “every line break is a <code>&lt;br /&gt;</code>” rule wouldn’t work for Markdown. Markdown’s email-style <a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/syntax#blockquote">blockquoting</a> and multi-paragraph <a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/syntax#list">list items</a>work best — and look better — when you format them with hard breaks.</p>
+<h3 id="HEADERS"><a href="#HEADERS" class="headerlink" title="HEADERS"></a>HEADERS</h3><p>Markdown supports two styles of headers, <a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a> and <a target="_blank" rel="noopener" href="http://www.aaronsw.com/2002/atx/">atx</a>.</p>
+<p>Setext-style headers are “underlined” using equal signs (for first-level headers) and dashes (for second-level headers). For example:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">This is an H1</span></span><br><span class="line"><span class="section">=============</span></span><br><span class="line"></span><br><span class="line"><span class="section">This is an H2</span></span><br><span class="line"><span class="section">-------------</span></span><br></pre></td></tr></table></figure>
+
+<p>Any number of underlining <code>=</code>’s or <code>-</code>’s will work.</p>
+<p>Atx-style headers use 1-6 hash characters at the start of the line, corresponding to header levels 1-6. For example:</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># This is an H1</span><br><span class="line"></span><br><span class="line">## This is an H2</span><br><span class="line"></span><br><span class="line">###### This is an H6</span><br></pre></td></tr></table></figure>
+
+<p>Optionally, you may “close” atx-style headers. This is purely cosmetic — you can use this if you think it looks better. The closing hashes don’t even need to match the number of hashes used to open the header. (The number of opening hashes determines the header level.) :</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># This is an H1 #</span><br><span class="line"></span><br><span class="line">## This is an H2 ##</span><br><span class="line"></span><br><span class="line">### This is an H3 ######</span><br></pre></td></tr></table></figure>
+
+<h3 id="BLOCKQUOTES"><a href="#BLOCKQUOTES" class="headerlink" title="BLOCKQUOTES"></a>BLOCKQUOTES</h3><p>Markdown uses email-style <code>&gt;</code> characters for blockquoting. If you’re familiar with quoting passages of text in an email message, then you know how to create a blockquote in Markdown. It looks best if you hard wrap the text and put a <code>&gt;</code> before every line:</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">This</span> is a blockquote <span class="keyword">with</span> two paragraphs. <span class="title class_">Lorem</span> ipsum dolor sit amet,</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">consectetuer adipiscing elit. <span class="title class_">Aliquam</span> hendrerit mi posuere lectus.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">Vestibulum</span> enim wisi, viverra nec, fringilla <span class="keyword">in</span>, laoreet vitae, risus.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> </span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">Donec</span> sit amet nisl. <span class="title class_">Aliquam</span> semper ipsum sit amet velit. <span class="title class_">Suspendisse</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">id sem consectetuer libero luctus adipiscing.</span></span><br></pre></td></tr></table></figure>
+
+<p>Markdown allows you to be lazy and only put the <code>&gt;</code> before the first line of a hard-wrapped paragraph:</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">This</span> is a blockquote <span class="keyword">with</span> two paragraphs. <span class="title class_">Lorem</span> ipsum dolor sit amet,</span></span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line">Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">Donec</span> sit amet nisl. <span class="title class_">Aliquam</span> semper ipsum sit amet velit. <span class="title class_">Suspendisse</span></span></span><br><span class="line">id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
+
+<p>Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by adding additional levels of <code>&gt;</code>:</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">This</span> is the first level <span class="keyword">of</span> quoting.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">&gt; <span class="title class_">This</span> is nested blockquote.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">Back</span> to the first level.</span></span><br></pre></td></tr></table></figure>
+
+<p>Blockquotes can contain other Markdown elements, including headers, lists, and code blocks:</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">## <span class="title class_">This</span> is a header.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> </span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="number">1.</span>   <span class="title class_">This</span> is the first list item.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="number">2.</span>   <span class="title class_">This</span> is the second list item.</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> </span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="title class_">Here</span><span class="string">&#x27;s some example code:</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span> </span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="string">    return shell_exec(&quot;echo $input | $markdown_script&quot;);</span></span></span><br></pre></td></tr></table></figure>
+
+<p>Any decent text editor should make email-style quoting easy. For example, with BBEdit, you can make a selection and choose Increase Quote Level from the Text menu.</p>
+<h3 id="LISTS"><a href="#LISTS" class="headerlink" title="LISTS"></a>LISTS</h3><p>Markdown supports ordered (numbered) and unordered (bulleted) lists.</p>
+<p>Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*   </span>Red</span><br><span class="line"><span class="bullet">*   </span>Green</span><br><span class="line"><span class="bullet">*   </span>Blue</span><br></pre></td></tr></table></figure>
+
+<p>is equivalent to:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">+</span>   Red</span><br><span class="line"><span class="bullet">+</span>   Green</span><br><span class="line"><span class="bullet">+</span>   Blue</span><br></pre></td></tr></table></figure>
+
+<p>and:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-   </span>Red</span><br><span class="line"><span class="bullet">-   </span>Green</span><br><span class="line"><span class="bullet">-   </span>Blue</span><br></pre></td></tr></table></figure>
+
+<p>Ordered lists use numbers followed by periods:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Bird</span><br><span class="line"><span class="bullet">2.</span>  McHale</span><br><span class="line"><span class="bullet">3.</span>  Parish</span><br></pre></td></tr></table></figure>
+
+<p>It’s important to note that the actual numbers you use to mark the list have no effect on the HTML output Markdown produces. The HTML Markdown produces from the above list is:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>McHale<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Parish<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>If you instead wrote the list in Markdown like this:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Bird</span><br><span class="line"><span class="bullet">1.</span>  McHale</span><br><span class="line"><span class="bullet">1.</span>  Parish</span><br></pre></td></tr></table></figure>
+
+<p>or even:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">3.</span> Bird</span><br><span class="line"><span class="bullet">1.</span> McHale</span><br><span class="line"><span class="bullet">8.</span> Parish</span><br></pre></td></tr></table></figure>
+
+<p>you’d get the exact same HTML output. The point is, if you want to, you can use ordinal numbers in your ordered Markdown lists, so that the numbers in your source match the numbers in your published HTML. But if you want to be lazy, you don’t have to.</p>
+<p>If you do use lazy list numbering, however, you should still start the list with the number 1. At some point in the future, Markdown may support starting ordered lists at an arbitrary number.</p>
+<p>List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.</p>
+<p>To make lists look nice, you can wrap items with hanging indents:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span></span><br><span class="line">    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,</span><br><span class="line">    viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"><span class="comment">*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.</span></span><br><span class="line">    Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
+
+<p>But if you want to be lazy, you don’t have to:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span></span><br><span class="line">Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,</span><br><span class="line">viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"><span class="comment">*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.</span></span><br><span class="line">Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
+
+<p>If list items are separated by blank lines, Markdown will wrap the items in <code>&lt;p&gt;</code> tags in the HTML output. For example, this input:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*   </span>Bird</span><br><span class="line"><span class="bullet">*   </span>Magic</span><br></pre></td></tr></table></figure>
+
+<p>will turn into:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Magic<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>But this:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*   </span>Bird</span><br><span class="line"></span><br><span class="line"><span class="bullet">*   </span>Magic</span><br></pre></td></tr></table></figure>
+
+<p>will turn into:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Magic<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either 4 spaces or one tab:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>  This <span class="keyword">is</span> a <span class="built_in">list</span> <span class="built_in">item</span> <span class="keyword">with</span> two <span class="built_in">paragraphs</span>. Lorem ipsum dolor</span><br><span class="line">    sit amet, consectetuer adipiscing elit. Aliquam hendrerit</span><br><span class="line">    mi posuere lectus.</span><br><span class="line"></span><br><span class="line">    Vestibulum enim wisi, viverra nec, fringilla <span class="keyword">in</span>, laoreet</span><br><span class="line">    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</span><br><span class="line">    sit amet velit.</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>  Suspendisse <span class="built_in">id</span> sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
+
+<p>It looks nice if you indent every line of the subsequent paragraphs, but here again, Markdown will allow you to be lazy:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*   This <span class="keyword">is</span> a <span class="built_in">list</span> <span class="built_in">item</span> <span class="keyword">with</span> two <span class="built_in">paragraphs</span>.</span><br><span class="line"></span><br><span class="line">    This <span class="keyword">is</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="built_in">paragraph</span> <span class="keyword">in</span> <span class="keyword">the</span> <span class="built_in">list</span> <span class="built_in">item</span>. You&#x27;re</span><br><span class="line">only required <span class="keyword">to</span> indent <span class="keyword">the</span> <span class="keyword">first</span> line. Lorem ipsum dolor</span><br><span class="line">sit amet, consectetuer adipiscing elit.</span><br><span class="line"></span><br><span class="line">*   Another <span class="built_in">item</span> <span class="keyword">in</span> <span class="keyword">the</span> same <span class="built_in">list</span>.</span><br></pre></td></tr></table></figure>
+
+<p>To put a blockquote within a list item, the blockquote’s <code>&gt;</code> delimiters need to be indented:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*   <span class="selector-tag">A</span> <span class="selector-tag">list</span> <span class="selector-tag">item</span> <span class="selector-tag">with</span> <span class="selector-tag">a</span> <span class="selector-tag">blockquote</span>:</span><br><span class="line"></span><br><span class="line">    &gt; <span class="selector-tag">This</span> <span class="selector-tag">is</span> <span class="selector-tag">a</span> <span class="selector-tag">blockquote</span></span><br><span class="line">    &gt; <span class="selector-tag">inside</span> <span class="selector-tag">a</span> <span class="selector-tag">list</span> <span class="selector-tag">item</span>.</span><br></pre></td></tr></table></figure>
+
+<p>To put a code block within a list item, the code block needs to be indented <em>twice</em> — 8 spaces or two tabs:</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*   A list item <span class="keyword">with</span> a <span class="keyword">code</span> block:</span><br><span class="line"></span><br><span class="line">        &lt;<span class="keyword">code</span> goes here&gt;</span><br></pre></td></tr></table></figure>
+
+<p>It’s worth noting that it’s possible to trigger an ordered list by accident, by writing something like this:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1986</span>. What <span class="selector-tag">a</span> great season.</span><br></pre></td></tr></table></figure>
+
+<p>In other words, a <em>number-period-space</em> sequence at the beginning of a line. To avoid this, you can backslash-escape the period:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1986</span>\. What <span class="selector-tag">a</span> great season.</span><br></pre></td></tr></table></figure>
+
+<h3 id="CODE-BLOCKS"><a href="#CODE-BLOCKS" class="headerlink" title="CODE BLOCKS"></a>CODE BLOCKS</h3><p>Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the lines of a code block are interpreted literally. Markdown wraps a code block in both <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> tags.</p>
+<p>To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example, given this input:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This is <span class="keyword">a</span> <span class="keyword">normal</span> <span class="keyword">paragraph</span>:</span><br><span class="line"></span><br><span class="line">    This is <span class="keyword">a</span> code block.</span><br></pre></td></tr></table></figure>
+
+<p>Markdown will generate:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&lt;p&gt;</span>This <span class="keyword">is</span> <span class="keyword">a</span> <span class="keyword">normal</span> paragraph:&lt;/<span class="keyword">p</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="symbol">&lt;pre&gt;</span><span class="symbol">&lt;code&gt;</span>This <span class="keyword">is</span> <span class="keyword">a</span> code block.</span><br><span class="line">&lt;/code&gt;&lt;/<span class="keyword">pre</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>One level of indentation — 4 spaces or 1 tab — is removed from each line of the code block. For example, this:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Here <span class="keyword">is</span> an example <span class="keyword">of</span> <span class="literal">AppleScript</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">&quot;Foo&quot;</span></span><br><span class="line">        <span class="built_in">beep</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
+
+<p>will turn into:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Here <span class="keyword">is</span> an example <span class="keyword">of</span> <span class="literal">AppleScript</span>:&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;code&gt;<span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">&quot;Foo&quot;</span></span><br><span class="line">    <span class="built_in">beep</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<p>A code block continues until it reaches a line that is not indented (or the end of the article).</p>
+<p>Within a code block, ampersands (<code>&amp;</code>) and angle brackets (<code>&lt;</code> and <code>&gt;</code>) are automatically converted into HTML entities. This makes it very easy to include example HTML source code using Markdown — just paste it and indent it, and Markdown will handle the hassle of encoding the ampersands and angle brackets. For example, this:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;footer&quot;</span>&gt;</span><br><span class="line">    &amp;<span class="keyword">copy</span>; <span class="number">2004</span> Foo Corporation</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>will turn into:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="symbol">&amp;lt;</span>div class=&quot;footer&quot;<span class="symbol">&amp;gt;</span></span><br><span class="line">    <span class="symbol">&amp;amp;</span>copy; 2004 Foo Corporation</span><br><span class="line"><span class="symbol">&amp;lt;</span>/div<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Regular Markdown syntax is not processed within code blocks. E.g., asterisks are just literal asterisks within a code block. This means it’s also easy to use Markdown to write about Markdown’s own syntax.</p>
+<h3 id="HORIZONTAL-RULES"><a href="#HORIZONTAL-RULES" class="headerlink" title="HORIZONTAL RULES"></a>HORIZONTAL RULES</h3><p>You can produce a horizontal rule tag (<code>&lt;hr /&gt;</code>) by placing three or more hyphens, asterisks, or underscores on a line by themselves. If you wish, you may use spaces between the hyphens or asterisks. Each of the following lines will produce a horizontal rule:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* * *</span></span><br><span class="line"></span><br><span class="line"><span class="comment">***</span></span><br><span class="line"></span><br><span class="line"><span class="comment">*****</span></span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">---------------------------------------</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SPAN-ELEMENTS"><a href="#SPAN-ELEMENTS" class="headerlink" title="SPAN ELEMENTS"></a>SPAN ELEMENTS</h2><h3 id="LINKS"><a href="#LINKS" class="headerlink" title="LINKS"></a>LINKS</h3><p>Markdown supports two style of links: <em>inline</em> and <em>reference</em>.</p>
+<p>In both styles, the link text is delimited by [square brackets].</p>
+<p>To create an inline link, use a set of regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an <em>optional</em>title for the link, surrounded in quotes. For example:</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This <span class="built_in">is</span> [an <span class="built_in">example</span>](http://<span class="built_in">example</span>.com/ <span class="string">&quot;Title&quot;</span>) inline link.</span><br><span class="line"></span><br><span class="line">[This link](http://<span class="built_in">example</span>.net/) has no <span class="built_in">title</span> attribute.</span><br></pre></td></tr></table></figure>
+
+<p>Will produce:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://example.com/&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Title&quot;</span>&gt;</span></span><br><span class="line">an example<span class="tag">&lt;/<span class="name">a</span>&gt;</span> inline link.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://example.net/&quot;</span>&gt;</span>This link<span class="tag">&lt;/<span class="name">a</span>&gt;</span> has no</span><br><span class="line">title attribute.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>If you’re referring to a local resource on the same server, you can use relative paths:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">See <span class="keyword">my</span> [About](/<span class="keyword">about</span>/) page <span class="keyword">for</span> details.   </span><br></pre></td></tr></table></figure>
+
+<p>Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify the link:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This <span class="keyword">is</span> [an example][<span class="built_in">id</span>] <span class="keyword">reference</span>-style link.</span><br></pre></td></tr></table></figure>
+
+<p>You can optionally use a space to separate the sets of brackets:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This <span class="keyword">is</span> [an example] [<span class="built_in">id</span>] <span class="keyword">reference</span>-style link.</span><br></pre></td></tr></table></figure>
+
+<p>Then, anywhere in the document, you define your link label like this, on a line by itself:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">id</span>]: http://example.com/  <span class="string">&quot;Optional Title Here&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>That is:</p>
+<ul>
+<li>Square brackets containing the link identifier (optionally indented from the left margin using up to three spaces);</li>
+<li>followed by a colon;</li>
+<li>followed by one or more spaces (or tabs);</li>
+<li>followed by the URL for the link;</li>
+<li>optionally followed by a title attribute for the link, enclosed in double or single quotes, or enclosed in parentheses.</li>
+</ul>
+<p>The following three link definitions are equivalent:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">foo</span>]: <span class="link">http://example.com/  &quot;Optional Title Here&quot;</span></span><br><span class="line">[<span class="symbol">foo</span>]: <span class="link">http://example.com/  &#x27;Optional Title Here&#x27;</span></span><br><span class="line">[<span class="symbol">foo</span>]: <span class="link">http://example.com/  (Optional Title Here)</span></span><br></pre></td></tr></table></figure>
+
+<p>NOTE: There is a known bug in Markdown.pl 1.0.1 which prevents single quotes from being used to delimit link titles.</p>
+<p>The link URL may, optionally, be surrounded by angle brackets:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">id</span>]: &lt;http://example.com/&gt;  <span class="string">&quot;Optional Title Here&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>You can put the title attribute on the next line and use extra spaces or tabs for padding, which tends to look better with longer URLs:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[id]: http:<span class="regexp">//</span>example.com<span class="regexp">/longish/</span>path<span class="regexp">/to/</span>resource/here</span><br><span class="line">    <span class="string">&quot;Optional Title Here&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Link definitions are only used for creating links during Markdown processing, and are stripped from your document in the HTML output.</p>
+<p>Link definition names may consist of letters, numbers, spaces, and punctuation — but they are <em>not</em> case sensitive. E.g. these two links:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[link text]</span><span class="selector-attr">[a]</span></span><br><span class="line"><span class="selector-attr">[link text]</span><span class="selector-attr">[A]</span></span><br></pre></td></tr></table></figure>
+
+<p>are equivalent.</p>
+<p>The <em>implicit link name</em> shortcut allows you to omit the name of the link, in which case the link text itself is used as the name. Just use an empty set of square brackets — e.g., to link the word “Google” to the google.com web site, you could simply write:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[Google]</span><span class="selector-attr">[]</span></span><br></pre></td></tr></table></figure>
+
+<p>And then define the link:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">Google</span>]: <span class="link">http://google.com/</span></span><br></pre></td></tr></table></figure>
+
+<p>Because link names may contain spaces, this shortcut even works for multiple words in the link text:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Visit</span> [<span class="symbol">Daring</span> <span class="symbol">Fireball</span>][] for more information.</span><br></pre></td></tr></table></figure>
+
+<p>And then define the link:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">Daring Fireball</span>]: <span class="link">http://daringfireball.net/</span></span><br></pre></td></tr></table></figure>
+
+<p>Link definitions can be placed anywhere in your Markdown document. I tend to put them immediately after each paragraph in which they’re used, but if you want, you can put them all at the end of your document, sort of like footnotes.</p>
+<p>Here’s an example of reference links in action:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">I</span> get <span class="number">10</span> times more traffic <span class="selector-tag">from</span> <span class="selector-attr">[Google]</span> <span class="selector-attr">[1]</span> than <span class="selector-tag">from</span></span><br><span class="line"><span class="selector-attr">[Yahoo]</span> <span class="selector-attr">[2]</span> or <span class="selector-attr">[MSN]</span> <span class="selector-attr">[3]</span>.</span><br><span class="line"></span><br><span class="line">  <span class="selector-attr">[1]</span>: http://google.com/        <span class="string">&quot;Google&quot;</span></span><br><span class="line">  [<span class="number">2</span>]: http://search.yahoo.com/  <span class="string">&quot;Yahoo Search&quot;</span></span><br><span class="line">  [<span class="number">3</span>]: http://search.msn.com/    <span class="string">&quot;MSN Search&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Using the implicit link name shortcut, you could instead write:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">I</span> get <span class="number">10</span> times more traffic <span class="selector-tag">from</span> <span class="selector-attr">[Google]</span><span class="selector-attr">[]</span> than <span class="selector-tag">from</span></span><br><span class="line"><span class="selector-attr">[Yahoo]</span><span class="selector-attr">[]</span> or <span class="selector-attr">[MSN]</span><span class="selector-attr">[]</span>.</span><br><span class="line"></span><br><span class="line">  <span class="selector-attr">[google]</span>: http://google.com/        <span class="string">&quot;Google&quot;</span></span><br><span class="line">  [yahoo]:  http://search.yahoo.com/  <span class="string">&quot;Yahoo Search&quot;</span></span><br><span class="line">  [msn]:    http://search.msn.com/    <span class="string">&quot;MSN Search&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Both of the above examples will produce the following HTML output:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;I <span class="built_in">get</span> 10 times more traffic <span class="keyword">from</span> &lt;a <span class="attribute">href</span>=<span class="string">&quot;http://google.com/&quot;</span></span><br><span class="line"><span class="attribute">title</span>=<span class="string">&quot;Google&quot;</span>&gt;Google&lt;/a&gt; than <span class="keyword">from</span></span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;http://search.yahoo.com/&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;Yahoo Search&quot;</span>&gt;Yahoo&lt;/a&gt;</span><br><span class="line"><span class="keyword">or</span> &lt;a <span class="attribute">href</span>=<span class="string">&quot;http://search.msn.com/&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;MSN Search&quot;</span>&gt;MSN&lt;/a&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For comparison, here is the same paragraph written using Markdown’s inline link style:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I <span class="built_in">get</span> <span class="number">10</span> times more traffic from [Google](http://google.<span class="keyword">com</span>/ <span class="string">&quot;Google&quot;</span>)</span><br><span class="line">than from [Yahoo](http://<span class="built_in">search</span>.yahoo.<span class="keyword">com</span>/ <span class="string">&quot;Yahoo Search&quot;</span>) <span class="built_in">or</span></span><br><span class="line">[MSN](http://<span class="built_in">search</span>.msn.<span class="keyword">com</span>/ <span class="string">&quot;MSN Search&quot;</span>).</span><br></pre></td></tr></table></figure>
+
+<p>The point of reference-style links is not that they’re easier to write. The point is that with reference-style links, your document source is vastly more readable. Compare the above examples: using reference-style links, the paragraph itself is only 81 characters long; with inline-style links, it’s 176 characters; and as raw HTML, it’s 234 characters. In the raw HTML, there’s more markup than there is text.</p>
+<p>With Markdown’s reference-style links, a source document much more closely resembles the final output, as rendered in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without interrupting the narrative flow of your prose.</p>
+<h3 id="EMPHASIS"><a href="#EMPHASIS" class="headerlink" title="EMPHASIS"></a>EMPHASIS</h3><p>Markdown treats asterisks (<code>*</code>) and underscores (<code>_</code>) as indicators of emphasis. Text wrapped with one <code>*</code> or <code>_</code> will be wrapped with an HTML <code>&lt;em&gt;</code> tag; double <code>*</code>’s or <code>_</code>’s will be wrapped with an HTML<code>&lt;strong&gt;</code> tag. E.g., this input:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">*single asterisks*</span></span><br><span class="line"></span><br><span class="line"><span class="emphasis">_single underscores_</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**double asterisks**</span></span><br><span class="line"></span><br><span class="line"><span class="emphasis">__double underscores__</span></span><br></pre></td></tr></table></figure>
+
+<p>will produce:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>single asterisks<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>single underscores<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>double asterisks<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>double underscores<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>You can use whichever style you prefer; the lone restriction is that the same character must be used to open and close an emphasis span.</p>
+<p>Emphasis can be used in the middle of a word:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">un<span class="number">*f</span>rigging<span class="number">*be</span>lievable</span><br></pre></td></tr></table></figure>
+
+<p>But if you surround an <code>*</code> or <code>_</code> with spaces, it’ll be treated as a literal asterisk or underscore.</p>
+<p>To produce a literal asterisk or underscore at a position where it would otherwise be used as an emphasis delimiter, you can backslash escape it:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\*<span class="keyword">this</span> text <span class="keyword">is</span> surrounded <span class="keyword">by</span> literal asterisks\*</span><br></pre></td></tr></table></figure>
+
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><p>To indicate a span of code, wrap it with backtick quotes (&#96;&#96;&#96;). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. For example:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Use</span> the `printf()` <span class="keyword">function</span>.</span><br></pre></td></tr></table></figure>
+
+<p>will produce:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Use the <span class="tag">&lt;<span class="name">code</span>&gt;</span>printf()<span class="tag">&lt;/<span class="name">code</span>&gt;</span> function.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>To include a literal backtick character within a code span, you can use multiple backticks as the opening and closing delimiters:</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``There is a literal backtick (`) here.``</span><br></pre></td></tr></table></figure>
+
+<p>which will produce this:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">p</span>&gt;&lt;<span class="selector-tag">code</span>&gt;There is <span class="selector-tag">a</span> literal backtick (`) here.&lt;/<span class="selector-tag">code</span>&gt;&lt;/<span class="selector-tag">p</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The backtick delimiters surrounding a code span may include spaces — one after the opening, one before the closing. This allows you to place literal backtick characters at the beginning or end of a code span:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span> <span class="selector-tag">single</span> <span class="selector-tag">backtick</span> <span class="selector-tag">in</span> <span class="selector-tag">a</span> <span class="selector-tag">code</span> <span class="selector-tag">span</span>: `` ` ``</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">A</span> <span class="selector-tag">backtick-delimited</span> <span class="selector-tag">string</span> <span class="selector-tag">in</span> <span class="selector-tag">a</span> <span class="selector-tag">code</span> <span class="selector-tag">span</span>: `` `<span class="selector-tag">foo</span>` ``</span><br></pre></td></tr></table></figure>
+
+<p>will produce:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>A single backtick in a code span: <span class="tag">&lt;<span class="name">code</span>&gt;</span>`<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>A backtick-delimited string in a code span: <span class="tag">&lt;<span class="name">code</span>&gt;</span>`foo`<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>With a code span, ampersands and angle brackets are encoded as HTML entities automatically, which makes it easy to include example HTML tags. Markdown will turn this:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Please don<span class="symbol">&#x27;t</span> <span class="keyword">use</span> any `&lt;blink&gt;` tags.</span><br></pre></td></tr></table></figure>
+
+<p>into:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Please don&#x27;t use any <span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="symbol">&amp;lt;</span>blink<span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">code</span>&gt;</span> tags.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>You can write this:</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`&amp;#8212;`</span> <span class="keyword">is</span> the decimal-encoded equivalent of <span class="string">`&amp;mdash;`</span>.</span><br></pre></td></tr></table></figure>
+
+<p>to produce:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="symbol">&amp;amp;</span>#8212;<span class="tag">&lt;/<span class="name">code</span>&gt;</span> is the decimal-encoded</span><br><span class="line">equivalent of <span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="symbol">&amp;amp;</span>mdash;<span class="tag">&lt;/<span class="name">code</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="IMAGES"><a href="#IMAGES" class="headerlink" title="IMAGES"></a>IMAGES</h3><p>Admittedly, it’s fairly difficult to devise a “natural” syntax for placing images into a plain text document format.</p>
+<p>Markdown uses an image syntax that is intended to resemble the syntax for links, allowing for two styles: <em>inline</em> and <em>reference</em>.</p>
+<p>Inline image syntax looks like this:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![Alt <span class="type">text</span>](/<span class="type">path</span>/<span class="keyword">to</span>/img.jpg)</span><br><span class="line"></span><br><span class="line">![Alt <span class="type">text</span>](/<span class="type">path</span>/<span class="keyword">to</span>/img.jpg &quot;Optional title&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>That is:</p>
+<ul>
+<li>An exclamation mark: <code>!</code>;</li>
+<li>followed by a set of square brackets, containing the <code>alt</code>attribute text for the image;</li>
+<li>followed by a set of parentheses, containing the URL or path to the image, and an optional <code>title</code> attribute enclosed in double or single quotes.</li>
+</ul>
+<p>Reference-style image syntax looks like this:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt <span class="built_in">text</span>][<span class="built_in">id</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Where “id” is the name of a defined image reference. Image references are defined using syntax identical to link references:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">id</span>]: url/<span class="keyword">to</span>/image  <span class="string">&quot;Optional title attribute&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>As of this writing, Markdown has no syntax for specifying the dimensions of an image; if this is important to you, you can simply use regular HTML <code>&lt;img&gt;</code> tags.</p>
+<hr>
+<h2 id="MISCELLANEOUS"><a href="#MISCELLANEOUS" class="headerlink" title="MISCELLANEOUS"></a>MISCELLANEOUS</h2><h3 id="AUTOMATIC-LINKS"><a href="#AUTOMATIC-LINKS" class="headerlink" title="AUTOMATIC LINKS"></a>AUTOMATIC LINKS</h3><p>Markdown supports a shortcut style for creating “automatic” links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http:<span class="comment">//example.com/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Markdown will turn this into:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">a</span> href=<span class="string">&quot;http://example.com/&quot;</span>&gt;<span class="keyword">http</span>://example.com/&lt;/<span class="keyword">a</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Automatic links for email addresses work similarly, except that Markdown will also perform a bit of randomized decimal and hex entity-encoding to help obscure your address from address-harvesting spambots. For example, Markdown will turn this:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">address</span><span class="keyword">@example</span>.com&gt;</span><br></pre></td></tr></table></figure>
+
+<p>into something like this:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#100;&#100;&#x72;&#101;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#97;&#100;&#100;&#x72;&#101;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;</a>”.</p>
+<p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
+<h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
+
+<p>Markdown provides backslash escapes for the following characters:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   <span class="keyword">backslash</span></span><br><span class="line"><span class="keyword"></span>`   <span class="keyword">backtick</span></span><br><span class="line"><span class="keyword"></span>*   asterisk</span><br><span class="line">_   underscore</span><br><span class="line">&#123;&#125;  curly <span class="keyword">braces</span></span><br><span class="line"><span class="keyword"></span>[]  square <span class="keyword">brackets</span></span><br><span class="line"><span class="keyword"></span>()  parentheses</span><br><span class="line"><span class="comment">#   hash mark</span></span><br><span class="line">+   plus sign</span><br><span class="line">-   minus sign (hyphen)</span><br><span class="line">.   dot</span><br><span class="line">!   exclamation mark</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://daringfireball.net/preferences/">Display Preferences</a></p>
+<p>Copyright © 2002–2023 The Daring Fireball Company LLC.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_Melt_Tscci
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.ceobe.cn/MarkdownSyntax/" title="Syntax的Markdown语法">https://blog.ceobe.cn/MarkdownSyntax/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/typoraMarkdown/" rel="next" title="Typora的Markdown语法">
+                  Typora的Markdown语法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备20026372号-4 </a>
+      <img src="/gongan.png" alt=""><a href="https://beian.mps.gov.cn/#/query/webSearch?code=33019202002361" rel="noopener" target="_blank">浙公网安备33019202002361号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2022 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">_Melt_Tscci</span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+   
+    <span title="站点总字数">43k</span>
+  </span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:18</span>
+  </span>
+
+  <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+
+</div><div>
+<a style="display:inline-block" title="页面响应时间"><img src="https://monitor.ceobe.cn/api/badge/8/response?style=flat-square" style="cursor: text">
+</a>
+<a style="display:inline-block" title="评论平台状态"><img src="https://monitor.ceobe.cn/api/badge/3/uptime/24?labelPrefix=Waline&labelSuffix=h&style=flat-square" style="cursor: text">
+</a>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://blog.ceobe.cn/MarkdownSyntax/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://waline.ceobe.cn/","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"visitor":false,"dark":false,"login":"enable","wordLimit":0,"pageSize":10,"highlight":true,"meta":["nick","mail"],"requiredMeta":[],"placeholder":"随便说点什么喵～o(=•ェ•=)m \\n没有登录也是完全没问题的哦～","copyright":false,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/bilibili"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/MarkdownSyntax/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<meta name="viewport" content="width=device-width">
+<style>
+
+html .sakana-box{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  
+  transform-origin: 100% 100%; /* 从右下开始变换 */
+}
+</style>
+
+<div class="sakana-box"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sakana@1.0.8"></script>
+<script>
+// 取消静音
+Sakana.setMute(true);
+
+// 启动
+Sakana.init({
+  el:         '.sakana-box',     // 启动元素 node 或 选择器
+  scale:      .5,                // 缩放倍数
+  canSwitchCharacter: true,      // 允许换角色
+  scale:      0.425,             // 缩放倍数
+  character:  'takina',          // 启动角色 'chisato','takina' 
+});
+</script>
+</body>
+</html>
