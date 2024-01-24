@@ -301,7 +301,7 @@
 <p>into something like this:</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#100;&#100;&#x72;&#101;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#97;&#100;&#100;&#x72;&#101;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;</a>”.</p>
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#x64;&#x64;&#114;&#x65;&#115;&#115;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;">&#97;&#x64;&#x64;&#114;&#x65;&#115;&#115;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a>”.</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
 <h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
 <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
@@ -317,6 +317,45 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为网页添加『Sakana！』石蒜模拟器</title>
+    <url>/Sakana/</url>
+    <content><![CDATA[<h1 id="石蒜模拟器"><a href="#石蒜模拟器" class="headerlink" title="石蒜模拟器"></a>石蒜模拟器</h1><h2 id="项目地址：https-github-com-itorr-sakana"><a href="#项目地址：https-github-com-itorr-sakana" class="headerlink" title="- 项目地址：https://github.com/itorr/sakana/"></a>- 项目地址：<a href="https://github.com/itorr/sakana/">https://github.com/itorr/sakana/</a></h2><h2 id="Demo：-https-lab-magiconch-com-sakana"><a href="#Demo：-https-lab-magiconch-com-sakana" class="headerlink" title="- Demo： https://lab.magiconch.com/sakana/"></a>- Demo： <a href="https://lab.magiconch.com/sakana/">https://lab.magiconch.com/sakana/</a></h2><h2 id="效果："><a href="#效果：" class="headerlink" title="- 效果："></a>- 效果：</h2><p><img data-src="/Sakana/image-20240115213244643.png" alt="image-20240115213244643"></p>
+<p><img data-src="/Sakana/image-20240115213312229.png" alt="image-20240115213312229"></p>
+<h2 id="安装环境："><a href="#安装环境：" class="headerlink" title="- 安装环境："></a>- 安装环境：</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo-site@0.0.0 </span><br><span class="line">├── @waline/hexo-next@3.0.1</span><br><span class="line">├── disqusjs@3.0.3-canary.1</span><br><span class="line">├── hexo-bilibili-bangumi@1.8.9</span><br><span class="line">├── hexo-deployer-ali-oss@1.0.0</span><br><span class="line">├── hexo-deployer-git@4.0.0</span><br><span class="line">├── hexo-generator-archive@2.0.0</span><br><span class="line">├── hexo-generator-baidu-sitemap@0.1.9</span><br><span class="line">├── hexo-generator-category@2.0.0</span><br><span class="line">├── hexo-generator-feed@3.0.0</span><br><span class="line">├── hexo-generator-index@3.0.0</span><br><span class="line">├── hexo-generator-searchdb@1.4.1</span><br><span class="line">├── hexo-generator-sitemap@3.0.1</span><br><span class="line">├── hexo-generator-tag@2.0.0</span><br><span class="line">├── hexo-next-darkmode@0.1.11</span><br><span class="line">├── hexo-next-valine@1.0.0</span><br><span class="line">├── hexo-renderer-ejs@2.0.0</span><br><span class="line">├── hexo-renderer-marked@6.2.0</span><br><span class="line">├── hexo-renderer-stylus@2.1.0</span><br><span class="line">├── hexo-server@3.0.0</span><br><span class="line">├── hexo-symbols-count-time@0.7.1</span><br><span class="line">├── hexo-tag-cloud@2.1.2</span><br><span class="line">├── hexo-theme-landscape@1.0.0</span><br><span class="line">├── hexo-theme-next@8.19.1</span><br><span class="line">├── hexo@6.3.0</span><br><span class="line">└── sakana@1.0.8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>NPM安装与引入</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i sakana -d</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>NexT 主题 _config.next.yml配置文件-自定义文件路径：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Define custom file paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Create your custom files <span class="keyword">in</span> site directory `<span class="built_in">source</span>/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">head</span>: <span class="built_in">source</span>/_data/head.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">header: <span class="built_in">source</span>/_data/header.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">sidebar: <span class="built_in">source</span>/_data/sidebar.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postMeta: <span class="built_in">source</span>/_data/post-meta.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyStart: <span class="built_in">source</span>/_data/post-body-start.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyEnd: <span class="built_in">source</span>/_data/post-body-end.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">footer: <span class="built_in">source</span>/_data/footer.njk</span></span><br><span class="line">  bodyEnd: source/_data/body-end.njk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">variable: <span class="built_in">source</span>/_data/variables.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">mixin: <span class="built_in">source</span>/_data/mixins.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">style: <span class="built_in">source</span>/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在&#x2F;source&#x2F;_data 路径下创建 body-end.njk 文件，修改注入内容：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">html .sakana-box&#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  </span><br><span class="line">  transform-origin: 100% 100%; /* 从右下开始变换 */</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;sakana-box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/sakana@1.0.8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 取消静音</span><br><span class="line">Sakana.setMute(true);</span><br><span class="line"></span><br><span class="line">// 启动</span><br><span class="line">Sakana.init(&#123;</span><br><span class="line">  el:         &#x27;.sakana-box&#x27;,     // 启动元素 node 或 选择器</span><br><span class="line">  scale:      .5,                // 缩放倍数</span><br><span class="line">  canSwitchCharacter: true,      // 允许换角色</span><br><span class="line">  scale:      0.425,             // 缩放倍数</span><br><span class="line">  character:  &#x27;takina&#x27;,          // 启动角色 &#x27;chisato&#x27;,&#x27;takina&#x27; </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重建站点测试效果</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s -g </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Plugin</tag>
       </tags>
   </entry>
   <entry>
@@ -443,45 +482,6 @@
       </tags>
   </entry>
   <entry>
-    <title>为网页添加『Sakana！』石蒜模拟器</title>
-    <url>/Sakana/</url>
-    <content><![CDATA[<h1 id="石蒜模拟器"><a href="#石蒜模拟器" class="headerlink" title="石蒜模拟器"></a>石蒜模拟器</h1><h2 id="项目地址：https-github-com-itorr-sakana"><a href="#项目地址：https-github-com-itorr-sakana" class="headerlink" title="- 项目地址：https://github.com/itorr/sakana/"></a>- 项目地址：<a href="https://github.com/itorr/sakana/">https://github.com/itorr/sakana/</a></h2><h2 id="Demo：-https-lab-magiconch-com-sakana"><a href="#Demo：-https-lab-magiconch-com-sakana" class="headerlink" title="- Demo： https://lab.magiconch.com/sakana/"></a>- Demo： <a href="https://lab.magiconch.com/sakana/">https://lab.magiconch.com/sakana/</a></h2><h2 id="效果："><a href="#效果：" class="headerlink" title="- 效果："></a>- 效果：</h2><p><img data-src="/Sakana/image-20240115213244643.png" alt="image-20240115213244643"></p>
-<p><img data-src="/Sakana/image-20240115213312229.png" alt="image-20240115213312229"></p>
-<h2 id="安装环境："><a href="#安装环境：" class="headerlink" title="- 安装环境："></a>- 安装环境：</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo-site@0.0.0 </span><br><span class="line">├── @waline/hexo-next@3.0.1</span><br><span class="line">├── disqusjs@3.0.3-canary.1</span><br><span class="line">├── hexo-bilibili-bangumi@1.8.9</span><br><span class="line">├── hexo-deployer-ali-oss@1.0.0</span><br><span class="line">├── hexo-deployer-git@4.0.0</span><br><span class="line">├── hexo-generator-archive@2.0.0</span><br><span class="line">├── hexo-generator-baidu-sitemap@0.1.9</span><br><span class="line">├── hexo-generator-category@2.0.0</span><br><span class="line">├── hexo-generator-feed@3.0.0</span><br><span class="line">├── hexo-generator-index@3.0.0</span><br><span class="line">├── hexo-generator-searchdb@1.4.1</span><br><span class="line">├── hexo-generator-sitemap@3.0.1</span><br><span class="line">├── hexo-generator-tag@2.0.0</span><br><span class="line">├── hexo-next-darkmode@0.1.11</span><br><span class="line">├── hexo-next-valine@1.0.0</span><br><span class="line">├── hexo-renderer-ejs@2.0.0</span><br><span class="line">├── hexo-renderer-marked@6.2.0</span><br><span class="line">├── hexo-renderer-stylus@2.1.0</span><br><span class="line">├── hexo-server@3.0.0</span><br><span class="line">├── hexo-symbols-count-time@0.7.1</span><br><span class="line">├── hexo-tag-cloud@2.1.2</span><br><span class="line">├── hexo-theme-landscape@1.0.0</span><br><span class="line">├── hexo-theme-next@8.19.1</span><br><span class="line">├── hexo@6.3.0</span><br><span class="line">└── sakana@1.0.8</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>NPM安装与引入</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i sakana -d</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>NexT 主题 _config.next.yml配置文件-自定义文件路径：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Define custom file paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Create your custom files <span class="keyword">in</span> site directory `<span class="built_in">source</span>/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">head</span>: <span class="built_in">source</span>/_data/head.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">header: <span class="built_in">source</span>/_data/header.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">sidebar: <span class="built_in">source</span>/_data/sidebar.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postMeta: <span class="built_in">source</span>/_data/post-meta.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyStart: <span class="built_in">source</span>/_data/post-body-start.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyEnd: <span class="built_in">source</span>/_data/post-body-end.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">footer: <span class="built_in">source</span>/_data/footer.njk</span></span><br><span class="line">  bodyEnd: source/_data/body-end.njk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">variable: <span class="built_in">source</span>/_data/variables.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">mixin: <span class="built_in">source</span>/_data/mixins.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">style: <span class="built_in">source</span>/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在&#x2F;source&#x2F;_data 路径下创建 body-end.njk 文件，修改注入内容：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">html .sakana-box&#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  </span><br><span class="line">  transform-origin: 100% 100%; /* 从右下开始变换 */</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;sakana-box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/sakana@1.0.8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 取消静音</span><br><span class="line">Sakana.setMute(true);</span><br><span class="line"></span><br><span class="line">// 启动</span><br><span class="line">Sakana.init(&#123;</span><br><span class="line">  el:         &#x27;.sakana-box&#x27;,     // 启动元素 node 或 选择器</span><br><span class="line">  scale:      .5,                // 缩放倍数</span><br><span class="line">  canSwitchCharacter: true,      // 允许换角色</span><br><span class="line">  scale:      0.425,             // 缩放倍数</span><br><span class="line">  character:  &#x27;takina&#x27;,          // 启动角色 &#x27;chisato&#x27;,&#x27;takina&#x27; </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重建站点测试效果</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s -g </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Plugin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>卸载macOS操作系统中的Nessus服务</title>
     <url>/Uninstall%20Nessus%20on%20macOS/</url>
     <content><![CDATA[<h1 id="卸载macOS操作系统中的Nessus服务"><a href="#卸载macOS操作系统中的Nessus服务" class="headerlink" title="卸载macOS操作系统中的Nessus服务"></a>卸载macOS操作系统中的Nessus服务</h1><h2 id="停止Nessus服务"><a href="#停止Nessus服务" class="headerlink" title="停止Nessus服务"></a>停止Nessus服务</h2><blockquote>
@@ -512,6 +512,120 @@
       <categories>
         <category>issue</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Docker初始化环境</title>
+    <url>/dockerinit/</url>
+    <content><![CDATA[<h1 id="Docker安装和使用"><a href="#Docker安装和使用" class="headerlink" title="Docker安装和使用"></a>Docker安装和使用</h1><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="- 系统要求"></a>- 系统要求</h2><p>在开始安装Docker之前，请确保操作系统满足以下基本要求：</p>
+<ul>
+<li>64位Linux操作系统（以 Alibaba Cloud Linux3 为例）</li>
+<li>至少2GB的RAM（推荐 4GB 或更多）</li>
+</ul>
+<p><img data-src="/dockerinit/systemversion.png" alt="systemversion"></p>
+<p>*Alibaba Cloud Linux 3兼容CentOS 8、RHEL 8生态，默认搭载阿里云CLI。</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="- 安装Docker"></a>- 安装Docker</h2><ul>
+<li>设置Docker官方源：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/dockerinit/source.png" alt="source"></p>
+<ul>
+<li>安装Docker Engine：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/dockerinit/docker.png" alt="docker"></p>
+<ul>
+<li>查看已安装Docker版本：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/dockerinit/ver.png" alt="ver"></p>
+<ul>
+<li>启动Docker服务：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/dockerinit/start.png" alt="start"></p>
+<ul>
+<li>注册Docker服务（开机启动）：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看所有容器：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>拉取镜像：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）安装Docker-Compose"><a href="#（可选）安装Docker-Compose" class="headerlink" title="- （可选）安装Docker Compose"></a>- （可选）安装Docker Compose</h2><p>上述步骤包含Docker Compose组件，如需单独安装，可执行以下命令。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo yum install docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/dockerinit/compose.png" alt="compose"></p>
+<p>*Docker文档引用并描述Compose V2的功能。自2023年7月起，Compose V1停止接收更新，不再在新的Docker Desktop版本中。Compose V2已经取代了它，现在集成到所有当前的Docker Desktop版本中。</p>
+<h2 id="（可选）使用阿里云提供的源安装Docker"><a href="#（可选）使用阿里云提供的源安装Docker" class="headerlink" title="- （可选）使用阿里云提供的源安装Docker"></a>- （可选）使用阿里云提供的源安装Docker</h2><ul>
+<li><p>运行以下命令，添加docker-ce的dnf源。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf config-manager --add-repo=https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行以下命令，安装Alibaba Cloud Linux 3专用的dnf源兼容插件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf -y install dnf-plugin-releasever-adapter --repo alinux3-plus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行以下命令，安装Docker。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf -y install docker-ce --nobest</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果执行命令时，出现类似如下的报错信息，需要执行<code>sudo dnf clean packages</code>清除软件包缓存后，重新安装docker-ce。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(8-9/12): docker-ce-24.0.7-1.el8.x86_64.rpm 38% [================- ] 8.2 MB/s | 38 MB 00:07 ETA</span><br><span class="line">The downloaded packages were saved in cache until the next successful transaction.</span><br><span class="line">You can remove cached packages by executing &#x27;dnf clean packages&#x27;.</span><br><span class="line">Error: Error downloading packages:</span><br><span class="line">containerd.io-1.6.26-3.1.el8.x86_64: Cannot download, all mirrors were already tried without success</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果执行命令时，出现类似下图的报错信息，您需要注释&#x2F;etc&#x2F;yum.repos.d下的CentOS源，注释后重新安装docker-ce。</p>
+<p><img data-src="/dockerinit/p477222.png" alt="p477222"></p>
+</li>
+</ul>
+</li>
+<li><p>管理Docker守护进程</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker     #运行Docker守护进程</span><br><span class="line">sudo systemctl stop docker      #停止Docker守护进程</span><br><span class="line">sudo systemctl restart docker   #重启Docker守护进程</span><br><span class="line">sudo systemctl enable docker    #设置Docker开机自启动</span><br><span class="line">sudo systemctl status docker    #查看Docker的运行状态</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改标签。如果镜像名称较长，您可以修改镜像标签以便记忆区分。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker tag registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5:latest aliweb:v1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看已有镜像。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制删除镜像。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker rmi -f registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将容器做成镜像。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker commit &lt;容器ID或容器名&gt; &lt;仓库名&gt;:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将镜像推送到镜像仓库，如DockerRegistry。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker push &lt;仓库名&gt;:&lt;标签&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="（更新）Debian-Ubuntu环境下安装Docker"><a href="#（更新）Debian-Ubuntu环境下安装Docker" class="headerlink" title="- （更新）Debian&#x2F;Ubuntu环境下安装Docker"></a>- （更新）Debian&#x2F;Ubuntu环境下安装Docker</h2><ul>
+<li>执行以下命令卸载旧版本&#x2F;冲突安装包，如podman、docker-compose（v1）。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置apt源</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Add Docker<span class="string">&#x27;s official GPG key:</span></span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install ca-certificates curl gnupg</span><br><span class="line"></span><br><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"></span><br><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line"></span><br><span class="line">sudo chmod a+r /etc/apt/keyrings/docker.gpg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">Add the repository to Apt sources:</span></span></span><br><span class="line">echo \</span><br><span class="line">  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \</span><br><span class="line"><span class="meta prompt_">  $</span><span class="language-bash"><span class="string">(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | \</span></span></span><br><span class="line"><span class="string"><span class="language-bash">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span></span></span><br><span class="line">  </span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装Docker</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>容器</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
   </entry>
   <entry>
     <title>Python图像识别自动化脚本</title>
@@ -721,120 +835,6 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker初始化环境</title>
-    <url>/dockerinit/</url>
-    <content><![CDATA[<h1 id="Docker安装和使用"><a href="#Docker安装和使用" class="headerlink" title="Docker安装和使用"></a>Docker安装和使用</h1><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="- 系统要求"></a>- 系统要求</h2><p>在开始安装Docker之前，请确保操作系统满足以下基本要求：</p>
-<ul>
-<li>64位Linux操作系统（以 Alibaba Cloud Linux3 为例）</li>
-<li>至少2GB的RAM（推荐 4GB 或更多）</li>
-</ul>
-<p><img data-src="/dockerinit/systemversion.png" alt="systemversion"></p>
-<p>*Alibaba Cloud Linux 3兼容CentOS 8、RHEL 8生态，默认搭载阿里云CLI。</p>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="- 安装Docker"></a>- 安装Docker</h2><ul>
-<li>设置Docker官方源：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/dockerinit/source.png" alt="source"></p>
-<ul>
-<li>安装Docker Engine：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/dockerinit/docker.png" alt="docker"></p>
-<ul>
-<li>查看已安装Docker版本：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/dockerinit/ver.png" alt="ver"></p>
-<ul>
-<li>启动Docker服务：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/dockerinit/start.png" alt="start"></p>
-<ul>
-<li>注册Docker服务（开机启动）：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看所有容器：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>拉取镜像：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）安装Docker-Compose"><a href="#（可选）安装Docker-Compose" class="headerlink" title="- （可选）安装Docker Compose"></a>- （可选）安装Docker Compose</h2><p>上述步骤包含Docker Compose组件，如需单独安装，可执行以下命令。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo yum install docker-compose-plugin</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/dockerinit/compose.png" alt="compose"></p>
-<p>*Docker文档引用并描述Compose V2的功能。自2023年7月起，Compose V1停止接收更新，不再在新的Docker Desktop版本中。Compose V2已经取代了它，现在集成到所有当前的Docker Desktop版本中。</p>
-<h2 id="（可选）使用阿里云提供的源安装Docker"><a href="#（可选）使用阿里云提供的源安装Docker" class="headerlink" title="- （可选）使用阿里云提供的源安装Docker"></a>- （可选）使用阿里云提供的源安装Docker</h2><ul>
-<li><p>运行以下命令，添加docker-ce的dnf源。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf config-manager --add-repo=https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行以下命令，安装Alibaba Cloud Linux 3专用的dnf源兼容插件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf -y install dnf-plugin-releasever-adapter --repo alinux3-plus</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行以下命令，安装Docker。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dnf -y install docker-ce --nobest</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>如果执行命令时，出现类似如下的报错信息，需要执行<code>sudo dnf clean packages</code>清除软件包缓存后，重新安装docker-ce。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(8-9/12): docker-ce-24.0.7-1.el8.x86_64.rpm 38% [================- ] 8.2 MB/s | 38 MB 00:07 ETA</span><br><span class="line">The downloaded packages were saved in cache until the next successful transaction.</span><br><span class="line">You can remove cached packages by executing &#x27;dnf clean packages&#x27;.</span><br><span class="line">Error: Error downloading packages:</span><br><span class="line">containerd.io-1.6.26-3.1.el8.x86_64: Cannot download, all mirrors were already tried without success</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果执行命令时，出现类似下图的报错信息，您需要注释&#x2F;etc&#x2F;yum.repos.d下的CentOS源，注释后重新安装docker-ce。</p>
-<p><img data-src="/dockerinit/p477222.png" alt="p477222"></p>
-</li>
-</ul>
-</li>
-<li><p>管理Docker守护进程</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker     #运行Docker守护进程</span><br><span class="line">sudo systemctl stop docker      #停止Docker守护进程</span><br><span class="line">sudo systemctl restart docker   #重启Docker守护进程</span><br><span class="line">sudo systemctl enable docker    #设置Docker开机自启动</span><br><span class="line">sudo systemctl status docker    #查看Docker的运行状态</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改标签。如果镜像名称较长，您可以修改镜像标签以便记忆区分。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker tag registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5:latest aliweb:v1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看已有镜像。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>强制删除镜像。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker rmi -f registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将容器做成镜像。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker commit &lt;容器ID或容器名&gt; &lt;仓库名&gt;:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将镜像推送到镜像仓库，如DockerRegistry。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo docker push &lt;仓库名&gt;:&lt;标签&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="（更新）Debian-Ubuntu环境下安装Docker"><a href="#（更新）Debian-Ubuntu环境下安装Docker" class="headerlink" title="- （更新）Debian&#x2F;Ubuntu环境下安装Docker"></a>- （更新）Debian&#x2F;Ubuntu环境下安装Docker</h2><ul>
-<li>执行以下命令卸载旧版本&#x2F;冲突安装包，如podman、docker-compose（v1）。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>设置apt源</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Add Docker<span class="string">&#x27;s official GPG key:</span></span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install ca-certificates curl gnupg</span><br><span class="line"></span><br><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"></span><br><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line"></span><br><span class="line">sudo chmod a+r /etc/apt/keyrings/docker.gpg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">Add the repository to Apt sources:</span></span></span><br><span class="line">echo \</span><br><span class="line">  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \</span><br><span class="line"><span class="meta prompt_">  $</span><span class="language-bash"><span class="string">(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | \</span></span></span><br><span class="line"><span class="string"><span class="language-bash">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span></span></span><br><span class="line">  </span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装Docker</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>容器</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
 </search>
