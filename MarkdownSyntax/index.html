@@ -28,9 +28,17 @@
 <meta property="og:description" content="SyntaxMarkdown是一个轻量级的标记语言，它允许用户使用易读易写的纯文本格式来编写文档，然后转换成结构化的HTML或其他格式的文档。SyntaxMarkdown最初由John Gruber创建，后来被广泛应用于各种编辑器、博客平台和内容管理系统。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-01T07:33:37.000Z">
-<meta property="article:modified_time" content="2023-12-21T09:22:33.000Z">
+<meta property="article:modified_time" content="2024-02-01T02:57:49.918Z">
 <meta property="article:author" content="_Melt_Tscci">
 <meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="兼容性">
+<meta property="article:tag" content="代码折叠">
+<meta property="article:tag" content="多语言支持">
+<meta property="article:tag" content="数学公式">
+<meta property="article:tag" content="流程图">
+<meta property="article:tag" content="甘特图">
+<meta property="article:tag" content="目录生成">
+<meta property="article:tag" content="任务列表">
 <meta name="twitter:card" content="summary">
 
 
@@ -158,18 +166,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">61</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -280,7 +288,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-21 17:22:33" itemprop="dateModified" datetime="2023-12-21T17:22:33+08:00">2023-12-21</time>
+      <time title="修改时间：2024-02-01 10:57:49" itemprop="dateModified" datetime="2024-02-01T10:57:49+08:00">2024-02-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -636,7 +644,7 @@
 <p>into something like this:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#x64;&#x64;&#114;&#x65;&#115;&#115;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;">&#97;&#x64;&#x64;&#114;&#x65;&#115;&#115;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a>”.</p>
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#x61;&#x64;&#x64;&#114;&#101;&#x73;&#x73;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;">&#x61;&#x64;&#x64;&#114;&#101;&#x73;&#x73;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;</a>”.</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
 <h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
@@ -673,6 +681,14 @@
 
           <div class="post-tags">
               <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+              <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" rel="tag"># 兼容性</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/" rel="tag"># 代码折叠</a>
+              <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81/" rel="tag"># 多语言支持</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" rel="tag"># 数学公式</a>
+              <a href="/tags/%E6%B5%81%E7%A8%8B%E5%9B%BE/" rel="tag"># 流程图</a>
+              <a href="/tags/%E7%94%98%E7%89%B9%E5%9B%BE/" rel="tag"># 甘特图</a>
+              <a href="/tags/%E7%9B%AE%E5%BD%95%E7%94%9F%E6%88%90/" rel="tag"># 目录生成</a>
+              <a href="/tags/%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8/" rel="tag"># 任务列表</a>
           </div>
 
         
@@ -718,7 +734,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
    
-    <span title="站点总字数">43k</span>
+    <span title="站点总字数">58k</span>
   </span>
   
   <span class="post-meta-item">
@@ -726,7 +742,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:18</span>
+    <span title="站点阅读时长">1:45</span>
   </span>
 
   <span class="post-meta-item" id="busuanzi_container_site_uv">
