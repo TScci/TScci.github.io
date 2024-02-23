@@ -301,7 +301,7 @@
 <p>into something like this:</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#100;&#x64;&#114;&#101;&#115;&#115;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#109;">&#97;&#100;&#x64;&#114;&#101;&#115;&#115;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a>”.</p>
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#100;&#x64;&#x72;&#101;&#115;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#97;&#100;&#x64;&#x72;&#101;&#115;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a>”.</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
 <h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
 <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
@@ -403,6 +403,139 @@
         <tag>Plugin</tag>
         <tag>NPM</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高性能API网关 Apache APISIX部署</title>
+    <url>/apache-apisix/</url>
+    <content><![CDATA[<h1 id="高性能API网关-Apache-APISIX部署"><a href="#高性能API网关-Apache-APISIX部署" class="headerlink" title="高性能API网关 Apache APISIX部署"></a>高性能API网关 Apache APISIX部署</h1><p>Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。<br>APISIX 的主要特点包括：</p>
+<ol>
+<li><strong>全动态能力</strong>：支持热加载，允许在不重启服务的情况下更新配置。</li>
+<li><strong>多平台支持</strong>：可以在多种环境中运行，包括裸机、Kubernetes，以及与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
+<li><strong>精细化路由</strong>：使用 NGINX 内置变量作为路由匹配条件，支持自定义匹配函数。</li>
+<li><strong>运维友好</strong>：可以与多种工具和平台集成，如 HashiCorp Vault、Zipkin、Apache SkyWalking、Consul、Nacos 和 Eureka。APISIX Dashboard 提供了一个直观友好的 UI，用于配置 APISIX。</li>
+<li><strong>多语言插件支持</strong>：支持多种编程语言开发插件，方便开发者根据需求进行自定义。<br>APISIX 的架构设计使其能够高效地处理大量流量，同时保持扩展性和灵活性。其内部使用 Nginx 和 LuaJIT 作为基础架构，这使得 APISIX 能够充分利用 Nginx 的高性能处理能力。<br>在安全性方面，APISIX 支持多种身份认证机制，包括但不限于 OAuth2、JWT、 basic authentication 等，确保 API 的安全性。<br>APISIX 社区活跃，不断有新的特性和插件被开发和贡献。社区周报是了解 APISIX 最新进展的一个好渠道。此外，APISIX 还提供了详细的文档，帮助用户了解如何安装、配置和使用 APISIX。<br>对于开发人员而言，APISIX 提供了一个易于使用的开发框架，可以方便地创建和定制插件来扩展网关的功能。APISIX 的插件机制非常灵活，插件可以处理路由、限流、熔断、响应处理等各种场景。<br>在运维方面，APISIX 提供了便捷的运维工具，例如可以通过简单的命令进行服务的启动、停止和重启。同时，APISIX 也支持通过 Dashboard 对网关进行配置管理，提高了运维的效率和便利性。<br>综上所述，Apache APISIX 是一个功能全面、灵活性高、易于集成和部署的 API 网关解决方案，适用于各种规模的企业和开发者，特别是在微服务架构和云原生环境中。</li>
+</ol>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><ul>
+<li>参考文章 <a href="/dockerinit/" title="Docker初始化环境">Docker初始化环境</a></li>
+</ul>
+<h2 id="安装APISIX"><a href="#安装APISIX" class="headerlink" title="安装APISIX"></a>安装APISIX</h2><ul>
+<li>下载 <a href='https://zfile.ceobe.cn/1/高性能API网关 Apache APISIX部署'> Git项目文件 apisix-docker.zip </a>至运行环境</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://zfile.ceobe.cn/s/e21haz -O apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<p>** 短链存在有效期，请自行获取并替换 **</p>
+<p><img data-src="/apache-apisix/image-20240115160144787.png" alt="image-20240115160144787"></p>
+<ul>
+<li>解压缩文件：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">unzip apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用Docker Compose自行编排容器：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd apisix-docker/example</span><br><span class="line">docker compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152109914.png" alt="image-20240115152109914"></p>
+<ul>
+<li>验证 APISIX 服务：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;http://127.0.0.1:9080&quot; --head | grep Server</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152320421.png" alt="image-20240115152320421"></p>
+<h2 id="系统界面"><a href="#系统界面" class="headerlink" title="系统界面"></a>系统界面</h2><ul>
+<li>图形界面 APISIX Dashboard：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9000/</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号：admin</p>
+<p>默认密码： admin</p>
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;dashboard_conf&#x2F;conf.yaml</p>
+<p><img data-src="/apache-apisix/image-20240115152841419.png" alt="image-20240115152841419"></p>
+<ul>
+<li>图形界面 Grafana：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:3000</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号： admin</p>
+<p>默认密码： admin（首次登录时要求修改）</p>
+<p><img data-src="/apache-apisix/image-20240115153140700.png" alt="image-20240115153140700"></p>
+<ul>
+<li>监控告警系统 Prometheus：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9090</span><br></pre></td></tr></table></figure>
+
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;prometheus_conf&#x2F;prometheus.yml</p>
+<p><img data-src="/apache-apisix/image-20240115153513965.png" alt="image-20240115153513965"></p>
+<ul>
+<li>APISIX 管理后台 &amp; 前端：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9180</span><br><span class="line">http://127.0.0.1:9080</span><br></pre></td></tr></table></figure>
+
+<p>创建测试路由：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -i &quot;http://127.0.0.1:9180/apisix/admin/routes&quot; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: &quot;getting-started-ip&quot;,</span><br><span class="line">  &quot;uri&quot;: &quot;/ip&quot;,</span><br><span class="line">  &quot;upstream&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">    &quot;nodes&quot;: &#123;</span><br><span class="line">      &quot;httpbin.org:80&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:9080/ip</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115154121792.png" alt="image-20240115154121792"></p>
+<p>调用 &#x2F;ip 接口测试源地址：</p>
+<p><img data-src="/apache-apisix/image-20240115154156600.png" alt="image-20240115154156600"></p>
+<h2 id="（可选）APISIX-联动雷池-Safeline"><a href="#（可选）APISIX-联动雷池-Safeline" class="headerlink" title="-（可选）APISIX 联动雷池 Safeline"></a>-（可选）APISIX 联动雷池 Safeline</h2><p>雷池是由长亭科技开发的 WAF 系统，提供对 HTTP 请求的安全请求，提供完整的 API 管理和防护能力。</p>
+<p>自 APISIX 3.5.0 之后的版本将内置长亭雷池 WAF 插件，在启用 chaitin-waf 插件后，流量将被转发给长亭 WAF 服务，用以检测和防止各种 Web 应用程序攻击，以保护应用程序和用户数据的安全。</p>
+<h2 id="安装雷池"><a href="#安装雷池" class="headerlink" title="安装雷池"></a>安装雷池</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bash -c &quot;$(curl -fsSLk https://waf-ce.chaitin.cn/release/latest/setup.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池检测引擎的工作模式"><a href="#修改雷池检测引擎的工作模式" class="headerlink" title="修改雷池检测引擎的工作模式"></a>修改雷池检测引擎的工作模式</h2><p>社区版雷池的检测引擎默认以 unix socket 的方式提供服务，我们需要把他修改为 tcp 方式，供 APISIX 调用。</p>
+<p>进入雷池检测引擎的配置目录：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/resources/detector/</span><br></pre></td></tr></table></figure>
+
+<p>用文本编辑器打开目录里的 detector.yml 文件，我们需要将 bind 方式从 unix socket 改为 tcp，添加如下配置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bind_addr: 0.0.0.0</span><br><span class="line">listen_port: 8000</span><br></pre></td></tr></table></figure>
+
+<p>detector配置的属性值将覆盖容器内默认配置文件的同名属性值。这样我们就把雷池引擎的服务监听到了 8000 端口，现在只需要把容器内的 8000 端口映射到宿主机即可。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/compose.yaml</span><br></pre></td></tr></table></figure>
+
+<p>为 detector 容器增加 ports 字段，暴露其 8000端口，参考如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line"></span><br><span class="line">detect:</span><br><span class="line">    ......</span><br><span class="line">    ports:</span><br><span class="line">    - 8000:8000</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>重启雷池生效：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker compose down</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池默认端口"><a href="#修改雷池默认端口" class="headerlink" title="修改雷池默认端口"></a>修改雷池默认端口</h2><p>雷池和 apisix 默认都监听 9443 端口，如果在同一台机器上安装，需要修改雷池的默认端口。</p>
+<p>在雷池的安装目录下，有一个名为 .env 的隐藏文件，其中的 MGT_PORT 字段，修改这里后使用上面的方法再重启雷池即可生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline</span><br><span class="line">vim .env</span><br></pre></td></tr></table></figure>
+
+<h2 id="在APISIX中绑定雷池"><a href="#在APISIX中绑定雷池" class="headerlink" title="在APISIX中绑定雷池"></a>在APISIX中绑定雷池</h2><p>调用 apisix 的 api，设置雷池检测引擎的地址，供 apisix 调用，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/plugin_metadata/chaitin-waf&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;nodes&quot;:[</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">       &quot;port&quot;: 8000</span><br><span class="line">     &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>调用 apisix 的 api，设置一条路由，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/routes/1&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">   &quot;uri&quot;: &quot;/*&quot;,</span><br><span class="line">   &quot;plugins&quot;: &#123;</span><br><span class="line">       &quot;chaitin-waf&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">   &quot;upstream&quot;: &#123;</span><br><span class="line">       &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">       &quot;nodes&quot;: &#123;</span><br><span class="line">           &quot;127.0.0.1:80&quot;: 1</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试防护效果"><a href="#测试防护效果" class="headerlink" title="测试防护效果"></a>测试防护效果</h2><p>在请求中加入注入攻击参数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &#x27;&lt;http://127.0.0.1:9080/&gt;&#x27; -d &#x27;a=1 and 1=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>得到结果：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 403,</span><br><span class="line">  &quot;success&quot;: false,</span><br><span class="line">  &quot;message&quot;: &quot;blocked by Chaitin SafeLine Web Application Firewall&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;18e0f220f7a94127acb21ad3c1b4ac47&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开雷池的控制台界面，可以看到雷池记录了完整的攻击信息。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>APISIX管理请求需密钥授权，在生产环境中使用时务必修改默认</p>
+<p>‘X-API-KEY: edd1c9f034335f136f87ad84b625c8f1’</p>
+<p>配置文件路径：</p>
+<p>apisix-docker&#x2F;example&#x2F;apisix_conf&#x2F;conf.yaml</p>
+]]></content>
+      <categories>
+        <category>网关</category>
+      </categories>
+      <tags>
+        <tag>API网关</tag>
+        <tag>Docker</tag>
+        <tag>API路由</tag>
+        <tag>负载均衡</tag>
+        <tag>服务熔断</tag>
+        <tag>健康检查</tag>
+        <tag>插件化架构</tag>
+        <tag>动态配置</tag>
+        <tag>OAuth</tag>
+        <tag>API性能分析</tag>
+        <tag>分布式追踪</tag>
+        <tag>服务发现</tag>
       </tags>
   </entry>
   <entry>
@@ -526,139 +659,6 @@
         <tag>Compose</tag>
         <tag>Container</tag>
         <tag>容器镜像推送</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高性能API网关 Apache APISIX部署</title>
-    <url>/apache-apisix/</url>
-    <content><![CDATA[<h1 id="高性能API网关-Apache-APISIX部署"><a href="#高性能API网关-Apache-APISIX部署" class="headerlink" title="高性能API网关 Apache APISIX部署"></a>高性能API网关 Apache APISIX部署</h1><p>Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。<br>APISIX 的主要特点包括：</p>
-<ol>
-<li><strong>全动态能力</strong>：支持热加载，允许在不重启服务的情况下更新配置。</li>
-<li><strong>多平台支持</strong>：可以在多种环境中运行，包括裸机、Kubernetes，以及与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
-<li><strong>精细化路由</strong>：使用 NGINX 内置变量作为路由匹配条件，支持自定义匹配函数。</li>
-<li><strong>运维友好</strong>：可以与多种工具和平台集成，如 HashiCorp Vault、Zipkin、Apache SkyWalking、Consul、Nacos 和 Eureka。APISIX Dashboard 提供了一个直观友好的 UI，用于配置 APISIX。</li>
-<li><strong>多语言插件支持</strong>：支持多种编程语言开发插件，方便开发者根据需求进行自定义。<br>APISIX 的架构设计使其能够高效地处理大量流量，同时保持扩展性和灵活性。其内部使用 Nginx 和 LuaJIT 作为基础架构，这使得 APISIX 能够充分利用 Nginx 的高性能处理能力。<br>在安全性方面，APISIX 支持多种身份认证机制，包括但不限于 OAuth2、JWT、 basic authentication 等，确保 API 的安全性。<br>APISIX 社区活跃，不断有新的特性和插件被开发和贡献。社区周报是了解 APISIX 最新进展的一个好渠道。此外，APISIX 还提供了详细的文档，帮助用户了解如何安装、配置和使用 APISIX。<br>对于开发人员而言，APISIX 提供了一个易于使用的开发框架，可以方便地创建和定制插件来扩展网关的功能。APISIX 的插件机制非常灵活，插件可以处理路由、限流、熔断、响应处理等各种场景。<br>在运维方面，APISIX 提供了便捷的运维工具，例如可以通过简单的命令进行服务的启动、停止和重启。同时，APISIX 也支持通过 Dashboard 对网关进行配置管理，提高了运维的效率和便利性。<br>综上所述，Apache APISIX 是一个功能全面、灵活性高、易于集成和部署的 API 网关解决方案，适用于各种规模的企业和开发者，特别是在微服务架构和云原生环境中。</li>
-</ol>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><ul>
-<li>参考文章 <a href="/dockerinit/" title="Docker初始化环境">Docker初始化环境</a></li>
-</ul>
-<h2 id="安装APISIX"><a href="#安装APISIX" class="headerlink" title="安装APISIX"></a>安装APISIX</h2><ul>
-<li>下载 <a href='https://zfile.ceobe.cn/1/高性能API网关 Apache APISIX部署'> Git项目文件 apisix-docker.zip </a>至运行环境</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://zfile.ceobe.cn/s/e21haz -O apisix-docker.zip</span><br></pre></td></tr></table></figure>
-
-<p>** 短链存在有效期，请自行获取并替换 **</p>
-<p><img data-src="/apache-apisix/image-20240115160144787.png" alt="image-20240115160144787"></p>
-<ul>
-<li>解压缩文件：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">unzip apisix-docker.zip</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用Docker Compose自行编排容器：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd apisix-docker/example</span><br><span class="line">docker compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115152109914.png" alt="image-20240115152109914"></p>
-<ul>
-<li>验证 APISIX 服务：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;http://127.0.0.1:9080&quot; --head | grep Server</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115152320421.png" alt="image-20240115152320421"></p>
-<h2 id="系统界面"><a href="#系统界面" class="headerlink" title="系统界面"></a>系统界面</h2><ul>
-<li>图形界面 APISIX Dashboard：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9000/</span><br></pre></td></tr></table></figure>
-
-<p>默认帐号：admin</p>
-<p>默认密码： admin</p>
-<p>配置文件路径： apisix-docker&#x2F;example&#x2F;dashboard_conf&#x2F;conf.yaml</p>
-<p><img data-src="/apache-apisix/image-20240115152841419.png" alt="image-20240115152841419"></p>
-<ul>
-<li>图形界面 Grafana：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:3000</span><br></pre></td></tr></table></figure>
-
-<p>默认帐号： admin</p>
-<p>默认密码： admin（首次登录时要求修改）</p>
-<p><img data-src="/apache-apisix/image-20240115153140700.png" alt="image-20240115153140700"></p>
-<ul>
-<li>监控告警系统 Prometheus：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9090</span><br></pre></td></tr></table></figure>
-
-<p>配置文件路径： apisix-docker&#x2F;example&#x2F;prometheus_conf&#x2F;prometheus.yml</p>
-<p><img data-src="/apache-apisix/image-20240115153513965.png" alt="image-20240115153513965"></p>
-<ul>
-<li>APISIX 管理后台 &amp; 前端：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9180</span><br><span class="line">http://127.0.0.1:9080</span><br></pre></td></tr></table></figure>
-
-<p>创建测试路由：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -i &quot;http://127.0.0.1:9180/apisix/admin/routes&quot; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: &quot;getting-started-ip&quot;,</span><br><span class="line">  &quot;uri&quot;: &quot;/ip&quot;,</span><br><span class="line">  &quot;upstream&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">    &quot;nodes&quot;: &#123;</span><br><span class="line">      &quot;httpbin.org:80&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:9080/ip</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115154121792.png" alt="image-20240115154121792"></p>
-<p>调用 &#x2F;ip 接口测试源地址：</p>
-<p><img data-src="/apache-apisix/image-20240115154156600.png" alt="image-20240115154156600"></p>
-<h2 id="（可选）APISIX-联动雷池-Safeline"><a href="#（可选）APISIX-联动雷池-Safeline" class="headerlink" title="-（可选）APISIX 联动雷池 Safeline"></a>-（可选）APISIX 联动雷池 Safeline</h2><p>雷池是由长亭科技开发的 WAF 系统，提供对 HTTP 请求的安全请求，提供完整的 API 管理和防护能力。</p>
-<p>自 APISIX 3.5.0 之后的版本将内置长亭雷池 WAF 插件，在启用 chaitin-waf 插件后，流量将被转发给长亭 WAF 服务，用以检测和防止各种 Web 应用程序攻击，以保护应用程序和用户数据的安全。</p>
-<h2 id="安装雷池"><a href="#安装雷池" class="headerlink" title="安装雷池"></a>安装雷池</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bash -c &quot;$(curl -fsSLk https://waf-ce.chaitin.cn/release/latest/setup.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改雷池检测引擎的工作模式"><a href="#修改雷池检测引擎的工作模式" class="headerlink" title="修改雷池检测引擎的工作模式"></a>修改雷池检测引擎的工作模式</h2><p>社区版雷池的检测引擎默认以 unix socket 的方式提供服务，我们需要把他修改为 tcp 方式，供 APISIX 调用。</p>
-<p>进入雷池检测引擎的配置目录：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/resources/detector/</span><br></pre></td></tr></table></figure>
-
-<p>用文本编辑器打开目录里的 detector.yml 文件，我们需要将 bind 方式从 unix socket 改为 tcp，添加如下配置：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bind_addr: 0.0.0.0</span><br><span class="line">listen_port: 8000</span><br></pre></td></tr></table></figure>
-
-<p>detector配置的属性值将覆盖容器内默认配置文件的同名属性值。这样我们就把雷池引擎的服务监听到了 8000 端口，现在只需要把容器内的 8000 端口映射到宿主机即可。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/compose.yaml</span><br></pre></td></tr></table></figure>
-
-<p>为 detector 容器增加 ports 字段，暴露其 8000端口，参考如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line"></span><br><span class="line">detect:</span><br><span class="line">    ......</span><br><span class="line">    ports:</span><br><span class="line">    - 8000:8000</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-
-<p>重启雷池生效：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker compose down</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改雷池默认端口"><a href="#修改雷池默认端口" class="headerlink" title="修改雷池默认端口"></a>修改雷池默认端口</h2><p>雷池和 apisix 默认都监听 9443 端口，如果在同一台机器上安装，需要修改雷池的默认端口。</p>
-<p>在雷池的安装目录下，有一个名为 .env 的隐藏文件，其中的 MGT_PORT 字段，修改这里后使用上面的方法再重启雷池即可生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline</span><br><span class="line">vim .env</span><br></pre></td></tr></table></figure>
-
-<h2 id="在APISIX中绑定雷池"><a href="#在APISIX中绑定雷池" class="headerlink" title="在APISIX中绑定雷池"></a>在APISIX中绑定雷池</h2><p>调用 apisix 的 api，设置雷池检测引擎的地址，供 apisix 调用，参考以下请求：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/plugin_metadata/chaitin-waf&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;nodes&quot;:[</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">       &quot;port&quot;: 8000</span><br><span class="line">     &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>调用 apisix 的 api，设置一条路由，参考以下请求：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/routes/1&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">   &quot;uri&quot;: &quot;/*&quot;,</span><br><span class="line">   &quot;plugins&quot;: &#123;</span><br><span class="line">       &quot;chaitin-waf&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">   &quot;upstream&quot;: &#123;</span><br><span class="line">       &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">       &quot;nodes&quot;: &#123;</span><br><span class="line">           &quot;127.0.0.1:80&quot;: 1</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试防护效果"><a href="#测试防护效果" class="headerlink" title="测试防护效果"></a>测试防护效果</h2><p>在请求中加入注入攻击参数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &#x27;&lt;http://127.0.0.1:9080/&gt;&#x27; -d &#x27;a=1 and 1=1&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>得到结果：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 403,</span><br><span class="line">  &quot;success&quot;: false,</span><br><span class="line">  &quot;message&quot;: &quot;blocked by Chaitin SafeLine Web Application Firewall&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;18e0f220f7a94127acb21ad3c1b4ac47&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打开雷池的控制台界面，可以看到雷池记录了完整的攻击信息。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>APISIX管理请求需密钥授权，在生产环境中使用时务必修改默认</p>
-<p>‘X-API-KEY: edd1c9f034335f136f87ad84b625c8f1’</p>
-<p>配置文件路径：</p>
-<p>apisix-docker&#x2F;example&#x2F;apisix_conf&#x2F;conf.yaml</p>
-]]></content>
-      <categories>
-        <category>网关</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>API网关</tag>
-        <tag>API路由</tag>
-        <tag>负载均衡</tag>
-        <tag>服务熔断</tag>
-        <tag>健康检查</tag>
-        <tag>插件化架构</tag>
-        <tag>动态配置</tag>
-        <tag>OAuth</tag>
-        <tag>API性能分析</tag>
-        <tag>分布式追踪</tag>
-        <tag>服务发现</tag>
       </tags>
   </entry>
   <entry>
@@ -858,6 +858,71 @@
         <tag>合规检查</tag>
         <tag>容器安全</tag>
         <tag>版本控制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python图像识别自动化脚本</title>
+    <url>/pythoncvscript/</url>
+    <content><![CDATA[<blockquote>
+<ol>
+<li>安装python3.4以上版本，并配置环境变量<br><a href="https://www.runoob.com/python3/python3-install.html">&gt;python安装教程&lt;</a></li>
+<li>安装依赖包<br><code>pip install pyperclip  pip install xlrd  pip install pyautogui==0.9.50  pip install opencv-python  pip install pillow </code></li>
+<li>把每一步要操作的图标、区域截图保存至本文件夹  png格式（注意如果同屏有多个相同图标，回默认找到最左上的一个，因此怎么截图，截多大的区域，是个学问，如输入框只截中间空白部分肯定是不行的，宗旨就是“唯一”）</li>
+<li>在cmd.xls 的sheet1 中，配置每一步的指令，如指令类型1234  对应的内容填截图文件名，指令5对应的内容是等待时长（单位秒） 指令6对应的内容是滚轮滚动的距离，正数表示向上滚，负数表示向下滚</li>
+<li>保存文件</li>
+<li>双击waterRPA.py打开程序，按1表示excel中的指令执行一次，按2表示无限重复执行直到程序关闭</li>
+</ol>
+</blockquote>
+<ul>
+<li><!--nore--></li>
+<li>如果报错不能运行用vscode运行看看报错内容</li>
+<li>开始程序后请将程序框最小化，不然程序框挡住的区域是无法识别和操作的</li>
+<li>如果程序开始后因为你选择了无限重复而鼠标被占用停不下来，alt+F4吧~<br><a href="https://blog.csdn.net/qingfengxd1/article/details/108270159">&gt;二次开发和优化参考pyautogui库用法&lt;</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> pyperclip</span><br><span class="line"></span><br><span class="line">[[定义鼠标事件]]</span><br><span class="line">[[pyautogui库其他用法]] [https://blog.csdn.net/qingfengxd1/article/details/<span class="number">108270159</span>](https://blog.csdn.net/qingfengxd1/article/details/<span class="number">108270159</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mouseClick</span>(<span class="params">clickTimes,lOrR,img,reTry</span>):</span><br><span class="line">    <span class="keyword">if</span> reTry == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">             pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;未找到匹配图片,0.1秒后重试&quot;</span>)</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">elif</span> reTry == -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:                pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">elif</span> reTry &gt; <span class="number">1</span>:</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; reTry + <span class="number">1</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:               pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;重复&quot;</span>)</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 数据检查</span></span><br><span class="line"><span class="comment"># cmdType.value  1.0 左键单击    2.0 左键双击  3.0 右键单击  4.0 输入  5.0 等待  6.0 滚轮</span></span><br><span class="line"><span class="comment"># ctype     空：0</span></span><br><span class="line"><span class="comment">#           字符串：1</span></span><br><span class="line"><span class="comment">#           数字：2</span></span><br><span class="line"><span class="comment">#           日期：3</span></span><br><span class="line"><span class="comment">#           布尔：4</span></span><br><span class="line"><span class="comment">#           error：5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dataCheck</span>(<span class="params">sheet1</span>):</span><br><span class="line">    checkCmd = <span class="literal">True</span></span><br><span class="line">    [[行数检查]]</span><br><span class="line">    <span class="keyword">if</span> sheet1.nrows&lt;<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;没数据啊哥&quot;</span>)</span><br><span class="line">        checkCmd = <span class="literal">False</span></span><br><span class="line">    [[每行数据检查]]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; sheet1.nrows:</span><br><span class="line">        <span class="comment"># 第1列 操作类型检查</span></span><br><span class="line">        cmdType = sheet1.row(i)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> cmdType.ctype != <span class="number">2</span> <span class="keyword">or</span> (cmdType.value != <span class="number">1.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">2.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">3.0</span></span><br><span class="line">        <span class="keyword">and</span> cmdType.value != <span class="number">4.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">5.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">6.0</span>):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第1列数据有毛病&quot;</span>)</span><br><span class="line">            checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 第2列 内容检查</span></span><br><span class="line">        cmdValue = sheet1.row(i)[<span class="number">1</span>]</span><br><span class="line">        <span class="comment"># 读图点击类型指令，内容必须为字符串类型</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value ==<span class="number">1.0</span> <span class="keyword">or</span> cmdType.value == <span class="number">2.0</span> <span class="keyword">or</span> cmdType.value == <span class="number">3.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 输入类型，内容不能为空</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">4.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 等待类型，内容必须为数字</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">5.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 滚轮事件，内容必须为数字</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">6.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> checkCmd</span><br><span class="line">[[任务]]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mainWork</span>(<span class="params">img</span>):</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; sheet1.nrows:</span><br><span class="line">        [[取本行指令的操作类型]]</span><br><span class="line">        cmdType = sheet1.row(i)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">1.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">1</span>,<span class="string">&quot;left&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;单击左键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">2</span>代表双击左键]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">2.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            [[取重试次数]]</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">2</span>,<span class="string">&quot;left&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;双击左键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">3</span>代表右键]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">3.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            [[取重试次数]]</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">1</span>,<span class="string">&quot;right&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;右键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">4</span>代表输入]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">4.0</span>:</span><br><span class="line">            inputValue = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            pyperclip.copy(inputValue)</span><br><span class="line">            pyautogui.hotkey(<span class="string">&#x27;ctrl&#x27;</span>,<span class="string">&#x27;v&#x27;</span>)</span><br><span class="line">            time.sleep(<span class="number">0.5</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;输入:&quot;</span>,inputValue)                                        </span><br><span class="line">        [[<span class="number">5</span>代表等待]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">5.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            waitTime = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            time.sleep(waitTime)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;等待&quot;</span>,waitTime,<span class="string">&quot;秒&quot;</span>)</span><br><span class="line">        [[<span class="number">6</span>代表滚轮]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">6.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            scroll = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            pyautogui.scroll(<span class="built_in">int</span>(scroll))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;滚轮滑动&quot;</span>,<span class="built_in">int</span>(scroll),<span class="string">&quot;距离&quot;</span>)                      </span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    file = <span class="string">&#x27;cmd.xls&#x27;</span></span><br><span class="line">    [[打开文件]]</span><br><span class="line">    wb = xlrd.open_workbook(filename=file)</span><br><span class="line">    [[通过索引获取表格sheet页]]</span><br><span class="line">    sheet1 = wb.sheet_by_index(<span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;欢迎使用不高兴就喝水牌RPA~&#x27;</span>)</span><br><span class="line">    [[数据检查]]</span><br><span class="line">    checkCmd = dataCheck(sheet1)</span><br><span class="line">    <span class="keyword">if</span> checkCmd:</span><br><span class="line">        key=<span class="built_in">input</span>(<span class="string">&#x27;选择功能: 1.做一次 2.循环到死 \n&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            [[循环拿出每一行指令]]</span><br><span class="line">            mainWork(sheet1)</span><br><span class="line">        <span class="keyword">elif</span> key==<span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                mainWork(sheet1)</span><br><span class="line">                time.sleep(<span class="number">0.1</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;等待0.1秒&quot;</span>)    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输入有误或者已经退出!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://halo-bak.oss-cn-hangzhou.aliyuncs.com/yfsutlfv.jpg" alt="yfsutlfv.jpg"></p>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>RPA</tag>
+        <tag>waterRPA</tag>
+        <tag>自动化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytorch天坑</title>
+    <url>/pytorchcover/</url>
+    <content><![CDATA[<h1 id="【错误】-Torch-not-compiled-with-CUDA-enabled解决方法"><a href="#【错误】-Torch-not-compiled-with-CUDA-enabled解决方法" class="headerlink" title="【错误】# Torch not compiled with CUDA enabled解决方法"></a>【错误】# Torch not compiled with CUDA enabled解决方法</h1><span id="more"></span>
+
+<blockquote>
+<p>1-测试是否有CUDA</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>（torch.__version__）</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2-结果打印False，查看显卡驱动程序版本【右键- NVIDIA控制面板-系统信息-显示】</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">nvcc <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.nvidia.com/cuda-toolkit-archive">&gt;下载CUDA&lt;</a></p>
+<blockquote>
+<p>3-测试Pytorch可用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available)</span><br></pre></td></tr></table></figure>
+
+<p>*<em>注：若返回结果类似【2.0.1+cpu】，则安装PyTorch版本是CPU版，需要卸载重新安装</em></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">pip uninstall torch torchvision</span><br></pre></td></tr></table></figure>
+
+<p>  <a href="https://pytorch.org/get-started/locally/#supported-windows-distributions">&gt;PyTorch&lt;</a></p>
+]]></content>
+      <categories>
+        <category>issue</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>PyTorch</tag>
+        <tag>CUDA</tag>
       </tags>
   </entry>
   <entry>
@@ -1357,68 +1422,77 @@ hard nofile 65535
       </tags>
   </entry>
   <entry>
-    <title>Python图像识别自动化脚本</title>
-    <url>/pythoncvscript/</url>
-    <content><![CDATA[<blockquote>
-<ol>
-<li>安装python3.4以上版本，并配置环境变量<br><a href="https://www.runoob.com/python3/python3-install.html">&gt;python安装教程&lt;</a></li>
-<li>安装依赖包<br><code>pip install pyperclip  pip install xlrd  pip install pyautogui==0.9.50  pip install opencv-python  pip install pillow </code></li>
-<li>把每一步要操作的图标、区域截图保存至本文件夹  png格式（注意如果同屏有多个相同图标，回默认找到最左上的一个，因此怎么截图，截多大的区域，是个学问，如输入框只截中间空白部分肯定是不行的，宗旨就是“唯一”）</li>
-<li>在cmd.xls 的sheet1 中，配置每一步的指令，如指令类型1234  对应的内容填截图文件名，指令5对应的内容是等待时长（单位秒） 指令6对应的内容是滚轮滚动的距离，正数表示向上滚，负数表示向下滚</li>
-<li>保存文件</li>
-<li>双击waterRPA.py打开程序，按1表示excel中的指令执行一次，按2表示无限重复执行直到程序关闭</li>
+    <title>使用Dozzle审计容器日志</title>
+    <url>/dozzle/</url>
+    <content><![CDATA[<h1 id="使用Dozzle审计容器日志"><a href="#使用Dozzle审计容器日志" class="headerlink" title="使用Dozzle审计容器日志"></a>使用Dozzle审计容器日志</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Dozzle是一个开源的日志查看器，主要用于监视和查看Docker容器的实时日志。它提供了一个基于Web的用户界面，允许用户实时查看Docker容器的日志，而不会存储任何日志文件。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>Dozzle的主要应用场景是在Docker环境中，帮助开发者或系统管理员快速查看和监控Docker容器的日志输出。这对于调试和排除Docker环境中运行的应用程序故障非常重要。</p>
+<h2 id="关键特性和优势"><a href="#关键特性和优势" class="headerlink" title="关键特性和优势"></a>关键特性和优势</h2><p>Dozzle具有一些关键特性，如支持查看一个dockerd下面所有container的日志，支持查看多个dockerd下面container的日志，以及支持用户鉴权。这些特性使得Dozzle成为一个高效且用户友好的日志查看器。</p>
+<p>根据最新的信息，Dozzle是由Docker OSS赞助的开源项目，并且正在积极维护中。它提供了实时日志流、过滤和搜索功能，用户可以快速轻松地访问Docker容器生成的日志。此外，Dozzle还支持带有智能颜色编码的JSON日志。</p>
+<h2 id="Dozzle支持多种用户鉴权方式，具体如下："><a href="#Dozzle支持多种用户鉴权方式，具体如下：" class="headerlink" title="Dozzle支持多种用户鉴权方式，具体如下："></a>Dozzle支持多种用户鉴权方式，具体如下：</h2><ol>
+<li><strong>Basic Authentication</strong>：这是一种最常见的用户鉴权方式，它要求用户提供用户名和密码以进行身份验证。。</li>
+<li><strong>Token Authentication</strong>：在这种鉴权方式中，用户不需要提供用户名和密码，而是提供一个特定的令牌来进行身份验证。</li>
+<li><strong>OpenID Connect</strong>：这是一种基于开放标准的鉴权协议，它允许用户使用他们的社交媒体或其他第三方服务帐户进行身份验证。</li>
+<li><strong>OAuth 2.0</strong>：这是一种广泛使用的授权框架，它允许第三方应用在用户的授权下访问他们的资源。</li>
 </ol>
-</blockquote>
+<p>以上就是Dozzle支持的一些主要的用户鉴权方式，不同的方式可以根据实际需求选择使用。</p>
+<h2 id="实体-关系模型"><a href="#实体-关系模型" class="headerlink" title="实体-关系模型"></a>实体-关系模型</h2><p>Dozzle支持对远程主机的容器日志收集，以实现集中审计，ER图如下：</p>
+<p><img data-src="/dozzle/dozzle%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B.png" alt="dozzle关系模型"></p>
+<h2 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h2><h3 id="业务端"><a href="#业务端" class="headerlink" title="- 业务端"></a>- 业务端</h3><h4 id="1、开启Docker-Remote-API"><a href="#1、开启Docker-Remote-API" class="headerlink" title="1、开启Docker Remote API"></a>1、开启Docker Remote API</h4><p>编辑&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">the default is not to use systemd <span class="keyword">for</span> cgroups because the delegate issues still</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">exists and systemd currently does not support the cgroup feature <span class="built_in">set</span> required</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="keyword">for</span> containers run by docker</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2376 # 添加2376端口</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>重载配置文件并重启Docker服务：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、生成证书"><a href="#2、生成证书" class="headerlink" title="2、生成证书"></a>2、生成证书</h4><p>生成CA（根证书）私钥和自签名证书：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl req -x509 -nodes -newkey rsa:4096 -keyout <span class="keyword">ca</span>.key -<span class="keyword">out</span> <span class="keyword">ca</span>.pem -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>生成证书私钥：</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">openssl genrsa -<span class="keyword">out</span> <span class="keyword">key</span>.pem 4096</span><br></pre></td></tr></table></figure>
+
+<p>创建证书签名请求（CSR）文件：</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">openssl req -<span class="built_in">new</span> -<span class="built_in">key</span> <span class="built_in">key</span>.pem -out cert.csr -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用CA的私钥和自签名证书部署CSR文件，生成证书：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> cert.csr -<span class="keyword">CA</span> <span class="keyword">ca</span>.pem -CAkey <span class="keyword">ca</span>.key -CAcreateserial -<span class="keyword">out</span> cert.pem -days 3650</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><!--nore--></li>
-<li>如果报错不能运行用vscode运行看看报错内容</li>
-<li>开始程序后请将程序框最小化，不然程序框挡住的区域是无法识别和操作的</li>
-<li>如果程序开始后因为你选择了无限重复而鼠标被占用停不下来，alt+F4吧~<br><a href="https://blog.csdn.net/qingfengxd1/article/details/108270159">&gt;二次开发和优化参考pyautogui库用法&lt;</a></li>
+<li>ca.key和ca.pem：根证书和自签名证书</li>
+<li>key.pem：生成的证书私钥</li>
+<li>cert.pem：生成的证书</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> pyperclip</span><br><span class="line"></span><br><span class="line">[[定义鼠标事件]]</span><br><span class="line">[[pyautogui库其他用法]] [https://blog.csdn.net/qingfengxd1/article/details/<span class="number">108270159</span>](https://blog.csdn.net/qingfengxd1/article/details/<span class="number">108270159</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mouseClick</span>(<span class="params">clickTimes,lOrR,img,reTry</span>):</span><br><span class="line">    <span class="keyword">if</span> reTry == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">             pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;未找到匹配图片,0.1秒后重试&quot;</span>)</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">elif</span> reTry == -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:                pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">elif</span> reTry &gt; <span class="number">1</span>:</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; reTry + <span class="number">1</span>:</span><br><span class="line">            location=pyautogui.locateCenterOnScreen(img,confidence=<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:               pyautogui.click(location.x,location.y,clicks=clickTimes,interval=<span class="number">0.2</span>,duration=<span class="number">0.2</span>,button=lOrR)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;重复&quot;</span>)</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 数据检查</span></span><br><span class="line"><span class="comment"># cmdType.value  1.0 左键单击    2.0 左键双击  3.0 右键单击  4.0 输入  5.0 等待  6.0 滚轮</span></span><br><span class="line"><span class="comment"># ctype     空：0</span></span><br><span class="line"><span class="comment">#           字符串：1</span></span><br><span class="line"><span class="comment">#           数字：2</span></span><br><span class="line"><span class="comment">#           日期：3</span></span><br><span class="line"><span class="comment">#           布尔：4</span></span><br><span class="line"><span class="comment">#           error：5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dataCheck</span>(<span class="params">sheet1</span>):</span><br><span class="line">    checkCmd = <span class="literal">True</span></span><br><span class="line">    [[行数检查]]</span><br><span class="line">    <span class="keyword">if</span> sheet1.nrows&lt;<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;没数据啊哥&quot;</span>)</span><br><span class="line">        checkCmd = <span class="literal">False</span></span><br><span class="line">    [[每行数据检查]]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; sheet1.nrows:</span><br><span class="line">        <span class="comment"># 第1列 操作类型检查</span></span><br><span class="line">        cmdType = sheet1.row(i)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> cmdType.ctype != <span class="number">2</span> <span class="keyword">or</span> (cmdType.value != <span class="number">1.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">2.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">3.0</span></span><br><span class="line">        <span class="keyword">and</span> cmdType.value != <span class="number">4.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">5.0</span> <span class="keyword">and</span> cmdType.value != <span class="number">6.0</span>):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第1列数据有毛病&quot;</span>)</span><br><span class="line">            checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 第2列 内容检查</span></span><br><span class="line">        cmdValue = sheet1.row(i)[<span class="number">1</span>]</span><br><span class="line">        <span class="comment"># 读图点击类型指令，内容必须为字符串类型</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value ==<span class="number">1.0</span> <span class="keyword">or</span> cmdType.value == <span class="number">2.0</span> <span class="keyword">or</span> cmdType.value == <span class="number">3.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 输入类型，内容不能为空</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">4.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 等待类型，内容必须为数字</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">5.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 滚轮事件，内容必须为数字</span></span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">6.0</span>:</span><br><span class="line">            <span class="keyword">if</span> cmdValue.ctype != <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>,i+<span class="number">1</span>,<span class="string">&quot;行,第2列数据有毛病&quot;</span>)</span><br><span class="line">                checkCmd = <span class="literal">False</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> checkCmd</span><br><span class="line">[[任务]]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mainWork</span>(<span class="params">img</span>):</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; sheet1.nrows:</span><br><span class="line">        [[取本行指令的操作类型]]</span><br><span class="line">        cmdType = sheet1.row(i)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> cmdType.value == <span class="number">1.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">1</span>,<span class="string">&quot;left&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;单击左键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">2</span>代表双击左键]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">2.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            [[取重试次数]]</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">2</span>,<span class="string">&quot;left&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;双击左键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">3</span>代表右键]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">3.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            img = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            [[取重试次数]]</span><br><span class="line">            reTry = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sheet1.row(i)[<span class="number">2</span>].ctype == <span class="number">2</span> <span class="keyword">and</span> sheet1.row(i)[<span class="number">2</span>].value != <span class="number">0</span>:</span><br><span class="line">                reTry = sheet1.row(i)[<span class="number">2</span>].value</span><br><span class="line">            mouseClick(<span class="number">1</span>,<span class="string">&quot;right&quot;</span>,img,reTry)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;右键&quot;</span>,img)</span><br><span class="line">        [[<span class="number">4</span>代表输入]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">4.0</span>:</span><br><span class="line">            inputValue = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            pyperclip.copy(inputValue)</span><br><span class="line">            pyautogui.hotkey(<span class="string">&#x27;ctrl&#x27;</span>,<span class="string">&#x27;v&#x27;</span>)</span><br><span class="line">            time.sleep(<span class="number">0.5</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;输入:&quot;</span>,inputValue)                                        </span><br><span class="line">        [[<span class="number">5</span>代表等待]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">5.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            waitTime = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            time.sleep(waitTime)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;等待&quot;</span>,waitTime,<span class="string">&quot;秒&quot;</span>)</span><br><span class="line">        [[<span class="number">6</span>代表滚轮]]</span><br><span class="line">        <span class="keyword">elif</span> cmdType.value == <span class="number">6.0</span>:</span><br><span class="line">            [[取图片名称]]</span><br><span class="line">            scroll = sheet1.row(i)[<span class="number">1</span>].value</span><br><span class="line">            pyautogui.scroll(<span class="built_in">int</span>(scroll))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;滚轮滑动&quot;</span>,<span class="built_in">int</span>(scroll),<span class="string">&quot;距离&quot;</span>)                      </span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    file = <span class="string">&#x27;cmd.xls&#x27;</span></span><br><span class="line">    [[打开文件]]</span><br><span class="line">    wb = xlrd.open_workbook(filename=file)</span><br><span class="line">    [[通过索引获取表格sheet页]]</span><br><span class="line">    sheet1 = wb.sheet_by_index(<span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;欢迎使用不高兴就喝水牌RPA~&#x27;</span>)</span><br><span class="line">    [[数据检查]]</span><br><span class="line">    checkCmd = dataCheck(sheet1)</span><br><span class="line">    <span class="keyword">if</span> checkCmd:</span><br><span class="line">        key=<span class="built_in">input</span>(<span class="string">&#x27;选择功能: 1.做一次 2.循环到死 \n&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            [[循环拿出每一行指令]]</span><br><span class="line">            mainWork(sheet1)</span><br><span class="line">        <span class="keyword">elif</span> key==<span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                mainWork(sheet1)</span><br><span class="line">                time.sleep(<span class="number">0.1</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;等待0.1秒&quot;</span>)    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输入有误或者已经退出!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="监控端"><a href="#监控端" class="headerlink" title="- 监控端"></a>- 监控端</h3><h4 id="1、存放远程主机证书"><a href="#1、存放远程主机证书" class="headerlink" title="1、存放远程主机证书"></a>1、存放远程主机证书</h4><p>将远程主机（业务端）生成的证书保存为<code> /certs/&#123;host&#125;/&#123;ca,cert,key&#125;.pem</code></p>
+<p>多个远程主机使用逗号进行间隔，如：</p>
+<p><code> DOZZLE_REMOTE_HOST: tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node2.host</code></p>
+<h4 id="2、用户管理"><a href="#2、用户管理" class="headerlink" title="2、用户管理"></a>2、用户管理</h4><p>Dozzle  用户配置文件保存路径： <code>/data/users.yml</code>.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">users:</span></span><br><span class="line">  <span class="comment"># &quot;admin&quot; here is username</span></span><br><span class="line">  <span class="attr">admin:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&quot;Admin&quot;</span></span><br><span class="line">    <span class="comment"># Just sha-256 which can be computed with &quot;echo -n password | shasum -a 256&quot;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">me@email.net</span></span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://halo-bak.oss-cn-hangzhou.aliyuncs.com/yfsutlfv.jpg" alt="yfsutlfv.jpg"></p>
-]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>RPA</tag>
-        <tag>waterRPA</tag>
-        <tag>自动化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pytorch天坑</title>
-    <url>/pytorchcover/</url>
-    <content><![CDATA[<h1 id="【错误】-Torch-not-compiled-with-CUDA-enabled解决方法"><a href="#【错误】-Torch-not-compiled-with-CUDA-enabled解决方法" class="headerlink" title="【错误】# Torch not compiled with CUDA enabled解决方法"></a>【错误】# Torch not compiled with CUDA enabled解决方法</h1><span id="more"></span>
+<ul>
+<li>使用<code>echo -n &#39;secret-password&#39; | shasum -a 256` or `echo -n &#39;secret-password&#39; | sha256sum</code> 生成密码字符串的sha256哈希值。</li>
+</ul>
+<h4 id="3、启动Dozzle服务"><a href="#3、启动Dozzle服务" class="headerlink" title="3、启动Dozzle服务"></a>3、启动Dozzle服务</h4><ul>
+<li>生成<code> compose.yml</code>文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">dozzle:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">amir20/dozzle</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./certs:/certs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">DOZZLE_AUTH_PROVIDER:</span> <span class="string">simple</span></span><br><span class="line">      <span class="attr">DOZZLE_HOSTNAME:</span> <span class="string">monitor.host</span></span><br><span class="line">      <span class="attr">DOZZLE_REMOTE_HOST:</span> <span class="string">tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node.host</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;/dozzle&quot;</span>, <span class="string">&quot;healthcheck&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">3s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">30s</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>1-测试是否有CUDA</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>（torch.__version__）</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>2-结果打印False，查看显卡驱动程序版本【右键- NVIDIA控制面板-系统信息-显示】</p>
-</blockquote>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">nvcc <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.nvidia.com/cuda-toolkit-archive">&gt;下载CUDA&lt;</a></p>
-<blockquote>
-<p>3-测试Pytorch可用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available)</span><br></pre></td></tr></table></figure>
-
-<p>*<em>注：若返回结果类似【2.0.1+cpu】，则安装PyTorch版本是CPU版，需要卸载重新安装</em></p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">pip uninstall torch torchvision</span><br></pre></td></tr></table></figure>
-
-<p>  <a href="https://pytorch.org/get-started/locally/#supported-windows-distributions">&gt;PyTorch&lt;</a></p>
+<ul>
+<li>启动容器服务 <code>docker compose up -d</code></li>
+</ul>
+<p><img data-src="/dozzle/image-20240223164323001.png" alt="image-20240223164323001"></p>
+<p><img data-src="/dozzle/image-20240223164305686.png" alt="image-20240223164305686"></p>
+<p><img data-src="/dozzle/image-20240223164245112.png" alt="image-20240223164245112"></p>
 ]]></content>
       <categories>
-        <category>issue</category>
+        <category>安全审计</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>PyTorch</tag>
-        <tag>CUDA</tag>
+        <tag>Docker</tag>
+        <tag>日志查看</tag>
+        <tag>安全性</tag>
+        <tag>日志管理</tag>
+        <tag>文本高亮</tag>
+        <tag>实时监控</tag>
+        <tag>访问控制</tag>
+        <tag>非持久存储</tag>
       </tags>
   </entry>
 </search>
