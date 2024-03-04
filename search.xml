@@ -1,47 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>为网页添加『Sakana！』石蒜模拟器</title>
-    <url>/Sakana/</url>
-    <content><![CDATA[<h1 id="石蒜模拟器"><a href="#石蒜模拟器" class="headerlink" title="石蒜模拟器"></a>石蒜模拟器</h1><h2 id="项目地址：https-github-com-itorr-sakana"><a href="#项目地址：https-github-com-itorr-sakana" class="headerlink" title="- 项目地址：https://github.com/itorr/sakana/"></a>- 项目地址：<a href="https://github.com/itorr/sakana/">https://github.com/itorr/sakana/</a></h2><h2 id="Demo：-https-lab-magiconch-com-sakana"><a href="#Demo：-https-lab-magiconch-com-sakana" class="headerlink" title="- Demo： https://lab.magiconch.com/sakana/"></a>- Demo： <a href="https://lab.magiconch.com/sakana/">https://lab.magiconch.com/sakana/</a></h2><h2 id="效果："><a href="#效果：" class="headerlink" title="- 效果："></a>- 效果：</h2><p><img data-src="/Sakana/image-20240115213244643.png" alt="image-20240115213244643"></p>
-<p><img data-src="/Sakana/image-20240115213312229.png" alt="image-20240115213312229"></p>
-<h2 id="安装环境："><a href="#安装环境：" class="headerlink" title="- 安装环境："></a>- 安装环境：</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo-site@0.0.0 </span><br><span class="line">├── @waline/hexo-next@3.0.1</span><br><span class="line">├── disqusjs@3.0.3-canary.1</span><br><span class="line">├── hexo-bilibili-bangumi@1.8.9</span><br><span class="line">├── hexo-deployer-ali-oss@1.0.0</span><br><span class="line">├── hexo-deployer-git@4.0.0</span><br><span class="line">├── hexo-generator-archive@2.0.0</span><br><span class="line">├── hexo-generator-baidu-sitemap@0.1.9</span><br><span class="line">├── hexo-generator-category@2.0.0</span><br><span class="line">├── hexo-generator-feed@3.0.0</span><br><span class="line">├── hexo-generator-index@3.0.0</span><br><span class="line">├── hexo-generator-searchdb@1.4.1</span><br><span class="line">├── hexo-generator-sitemap@3.0.1</span><br><span class="line">├── hexo-generator-tag@2.0.0</span><br><span class="line">├── hexo-next-darkmode@0.1.11</span><br><span class="line">├── hexo-next-valine@1.0.0</span><br><span class="line">├── hexo-renderer-ejs@2.0.0</span><br><span class="line">├── hexo-renderer-marked@6.2.0</span><br><span class="line">├── hexo-renderer-stylus@2.1.0</span><br><span class="line">├── hexo-server@3.0.0</span><br><span class="line">├── hexo-symbols-count-time@0.7.1</span><br><span class="line">├── hexo-tag-cloud@2.1.2</span><br><span class="line">├── hexo-theme-landscape@1.0.0</span><br><span class="line">├── hexo-theme-next@8.19.1</span><br><span class="line">├── hexo@6.3.0</span><br><span class="line">└── sakana@1.0.8</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>NPM安装与引入</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i sakana -d</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>NexT 主题 _config.next.yml配置文件-自定义文件路径：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Define custom file paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Create your custom files <span class="keyword">in</span> site directory `<span class="built_in">source</span>/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">head</span>: <span class="built_in">source</span>/_data/head.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">header: <span class="built_in">source</span>/_data/header.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">sidebar: <span class="built_in">source</span>/_data/sidebar.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postMeta: <span class="built_in">source</span>/_data/post-meta.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyStart: <span class="built_in">source</span>/_data/post-body-start.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyEnd: <span class="built_in">source</span>/_data/post-body-end.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">footer: <span class="built_in">source</span>/_data/footer.njk</span></span><br><span class="line">  bodyEnd: source/_data/body-end.njk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">variable: <span class="built_in">source</span>/_data/variables.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">mixin: <span class="built_in">source</span>/_data/mixins.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">style: <span class="built_in">source</span>/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在&#x2F;source&#x2F;_data 路径下创建 body-end.njk 文件，修改注入内容：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">html .sakana-box&#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  </span><br><span class="line">  transform-origin: 100% 100%; /* 从右下开始变换 */</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;sakana-box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/sakana@1.0.8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 取消静音</span><br><span class="line">Sakana.setMute(true);</span><br><span class="line"></span><br><span class="line">// 启动</span><br><span class="line">Sakana.init(&#123;</span><br><span class="line">  el:         &#x27;.sakana-box&#x27;,     // 启动元素 node 或 选择器</span><br><span class="line">  scale:      .5,                // 缩放倍数</span><br><span class="line">  canSwitchCharacter: true,      // 允许换角色</span><br><span class="line">  scale:      0.425,             // 缩放倍数</span><br><span class="line">  character:  &#x27;takina&#x27;,          // 启动角色 &#x27;chisato&#x27;,&#x27;takina&#x27; </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重建站点测试效果</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s -g </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Plugin</tag>
-        <tag>NPM</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Syntax的Markdown语法</title>
     <url>/MarkdownSyntax/</url>
     <content><![CDATA[<h2 id="OVERVIEW"><a href="#OVERVIEW" class="headerlink" title="OVERVIEW"></a>OVERVIEW</h2><h3 id="PHILOSOPHY"><a href="#PHILOSOPHY" class="headerlink" title="PHILOSOPHY"></a>PHILOSOPHY</h3><p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.</p>
@@ -342,7 +301,7 @@
 <p>into something like this:</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>which will render in a browser as a clickable link to “<a href="mailto:&#x61;&#100;&#100;&#114;&#x65;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#100;&#100;&#114;&#x65;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a>”.</p>
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#x61;&#100;&#100;&#x72;&#x65;&#x73;&#x73;&#64;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;">&#x61;&#100;&#100;&#x72;&#x65;&#x73;&#x73;&#64;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;</a>”.</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
 <h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
 <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
@@ -366,6 +325,47 @@
         <tag>甘特图</tag>
         <tag>目录生成</tag>
         <tag>任务列表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为网页添加『Sakana！』石蒜模拟器</title>
+    <url>/Sakana/</url>
+    <content><![CDATA[<h1 id="石蒜模拟器"><a href="#石蒜模拟器" class="headerlink" title="石蒜模拟器"></a>石蒜模拟器</h1><h2 id="项目地址：https-github-com-itorr-sakana"><a href="#项目地址：https-github-com-itorr-sakana" class="headerlink" title="- 项目地址：https://github.com/itorr/sakana/"></a>- 项目地址：<a href="https://github.com/itorr/sakana/">https://github.com/itorr/sakana/</a></h2><h2 id="Demo：-https-lab-magiconch-com-sakana"><a href="#Demo：-https-lab-magiconch-com-sakana" class="headerlink" title="- Demo： https://lab.magiconch.com/sakana/"></a>- Demo： <a href="https://lab.magiconch.com/sakana/">https://lab.magiconch.com/sakana/</a></h2><h2 id="效果："><a href="#效果：" class="headerlink" title="- 效果："></a>- 效果：</h2><p><img data-src="/Sakana/image-20240115213244643.png" alt="image-20240115213244643"></p>
+<p><img data-src="/Sakana/image-20240115213312229.png" alt="image-20240115213312229"></p>
+<h2 id="安装环境："><a href="#安装环境：" class="headerlink" title="- 安装环境："></a>- 安装环境：</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo-site@0.0.0 </span><br><span class="line">├── @waline/hexo-next@3.0.1</span><br><span class="line">├── disqusjs@3.0.3-canary.1</span><br><span class="line">├── hexo-bilibili-bangumi@1.8.9</span><br><span class="line">├── hexo-deployer-ali-oss@1.0.0</span><br><span class="line">├── hexo-deployer-git@4.0.0</span><br><span class="line">├── hexo-generator-archive@2.0.0</span><br><span class="line">├── hexo-generator-baidu-sitemap@0.1.9</span><br><span class="line">├── hexo-generator-category@2.0.0</span><br><span class="line">├── hexo-generator-feed@3.0.0</span><br><span class="line">├── hexo-generator-index@3.0.0</span><br><span class="line">├── hexo-generator-searchdb@1.4.1</span><br><span class="line">├── hexo-generator-sitemap@3.0.1</span><br><span class="line">├── hexo-generator-tag@2.0.0</span><br><span class="line">├── hexo-next-darkmode@0.1.11</span><br><span class="line">├── hexo-next-valine@1.0.0</span><br><span class="line">├── hexo-renderer-ejs@2.0.0</span><br><span class="line">├── hexo-renderer-marked@6.2.0</span><br><span class="line">├── hexo-renderer-stylus@2.1.0</span><br><span class="line">├── hexo-server@3.0.0</span><br><span class="line">├── hexo-symbols-count-time@0.7.1</span><br><span class="line">├── hexo-tag-cloud@2.1.2</span><br><span class="line">├── hexo-theme-landscape@1.0.0</span><br><span class="line">├── hexo-theme-next@8.19.1</span><br><span class="line">├── hexo@6.3.0</span><br><span class="line">└── sakana@1.0.8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>NPM安装与引入</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i sakana -d</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>NexT 主题 _config.next.yml配置文件-自定义文件路径：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Define custom file paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Create your custom files <span class="keyword">in</span> site directory `<span class="built_in">source</span>/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">head</span>: <span class="built_in">source</span>/_data/head.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">header: <span class="built_in">source</span>/_data/header.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">sidebar: <span class="built_in">source</span>/_data/sidebar.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postMeta: <span class="built_in">source</span>/_data/post-meta.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyStart: <span class="built_in">source</span>/_data/post-body-start.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">postBodyEnd: <span class="built_in">source</span>/_data/post-body-end.njk</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">footer: <span class="built_in">source</span>/_data/footer.njk</span></span><br><span class="line">  bodyEnd: source/_data/body-end.njk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">variable: <span class="built_in">source</span>/_data/variables.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">mixin: <span class="built_in">source</span>/_data/mixins.styl</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">style: <span class="built_in">source</span>/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在&#x2F;source&#x2F;_data 路径下创建 body-end.njk 文件，修改注入内容：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">html .sakana-box&#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  </span><br><span class="line">  transform-origin: 100% 100%; /* 从右下开始变换 */</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;sakana-box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/sakana@1.0.8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 取消静音</span><br><span class="line">Sakana.setMute(true);</span><br><span class="line"></span><br><span class="line">// 启动</span><br><span class="line">Sakana.init(&#123;</span><br><span class="line">  el:         &#x27;.sakana-box&#x27;,     // 启动元素 node 或 选择器</span><br><span class="line">  scale:      .5,                // 缩放倍数</span><br><span class="line">  canSwitchCharacter: true,      // 允许换角色</span><br><span class="line">  scale:      0.425,             // 缩放倍数</span><br><span class="line">  character:  &#x27;takina&#x27;,          // 启动角色 &#x27;chisato&#x27;,&#x27;takina&#x27; </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重建站点测试效果</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s -g </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Plugin</tag>
+        <tag>NPM</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -526,213 +526,6 @@
         <tag>Compose</tag>
         <tag>Container</tag>
         <tag>容器镜像推送</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高性能API网关 Apache APISIX部署</title>
-    <url>/apache-apisix/</url>
-    <content><![CDATA[<h1 id="高性能API网关-Apache-APISIX部署"><a href="#高性能API网关-Apache-APISIX部署" class="headerlink" title="高性能API网关 Apache APISIX部署"></a>高性能API网关 Apache APISIX部署</h1><p>Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。<br>APISIX 的主要特点包括：</p>
-<ol>
-<li><strong>全动态能力</strong>：支持热加载，允许在不重启服务的情况下更新配置。</li>
-<li><strong>多平台支持</strong>：可以在多种环境中运行，包括裸机、Kubernetes，以及与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
-<li><strong>精细化路由</strong>：使用 NGINX 内置变量作为路由匹配条件，支持自定义匹配函数。</li>
-<li><strong>运维友好</strong>：可以与多种工具和平台集成，如 HashiCorp Vault、Zipkin、Apache SkyWalking、Consul、Nacos 和 Eureka。APISIX Dashboard 提供了一个直观友好的 UI，用于配置 APISIX。</li>
-<li><strong>多语言插件支持</strong>：支持多种编程语言开发插件，方便开发者根据需求进行自定义。<br>APISIX 的架构设计使其能够高效地处理大量流量，同时保持扩展性和灵活性。其内部使用 Nginx 和 LuaJIT 作为基础架构，这使得 APISIX 能够充分利用 Nginx 的高性能处理能力。<br>在安全性方面，APISIX 支持多种身份认证机制，包括但不限于 OAuth2、JWT、 basic authentication 等，确保 API 的安全性。<br>APISIX 社区活跃，不断有新的特性和插件被开发和贡献。社区周报是了解 APISIX 最新进展的一个好渠道。此外，APISIX 还提供了详细的文档，帮助用户了解如何安装、配置和使用 APISIX。<br>对于开发人员而言，APISIX 提供了一个易于使用的开发框架，可以方便地创建和定制插件来扩展网关的功能。APISIX 的插件机制非常灵活，插件可以处理路由、限流、熔断、响应处理等各种场景。<br>在运维方面，APISIX 提供了便捷的运维工具，例如可以通过简单的命令进行服务的启动、停止和重启。同时，APISIX 也支持通过 Dashboard 对网关进行配置管理，提高了运维的效率和便利性。<br>综上所述，Apache APISIX 是一个功能全面、灵活性高、易于集成和部署的 API 网关解决方案，适用于各种规模的企业和开发者，特别是在微服务架构和云原生环境中。</li>
-</ol>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><ul>
-<li>参考文章 <a href="/dockerinit/" title="Docker初始化环境">Docker初始化环境</a></li>
-</ul>
-<h2 id="安装APISIX"><a href="#安装APISIX" class="headerlink" title="安装APISIX"></a>安装APISIX</h2><ul>
-<li>下载 <a href='https://zfile.ceobe.cn/1/高性能API网关 Apache APISIX部署'> Git项目文件 apisix-docker.zip </a>至运行环境</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://zfile.ceobe.cn/s/e21haz -O apisix-docker.zip</span><br></pre></td></tr></table></figure>
-
-<p>** 短链存在有效期，请自行获取并替换 **</p>
-<p><img data-src="/apache-apisix/image-20240115160144787.png" alt="image-20240115160144787"></p>
-<ul>
-<li>解压缩文件：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">unzip apisix-docker.zip</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用Docker Compose自行编排容器：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd apisix-docker/example</span><br><span class="line">docker compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115152109914.png" alt="image-20240115152109914"></p>
-<ul>
-<li>验证 APISIX 服务：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;http://127.0.0.1:9080&quot; --head | grep Server</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115152320421.png" alt="image-20240115152320421"></p>
-<h2 id="系统界面"><a href="#系统界面" class="headerlink" title="系统界面"></a>系统界面</h2><ul>
-<li>图形界面 APISIX Dashboard：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9000/</span><br></pre></td></tr></table></figure>
-
-<p>默认帐号：admin</p>
-<p>默认密码： admin</p>
-<p>配置文件路径： apisix-docker&#x2F;example&#x2F;dashboard_conf&#x2F;conf.yaml</p>
-<p><img data-src="/apache-apisix/image-20240115152841419.png" alt="image-20240115152841419"></p>
-<ul>
-<li>图形界面 Grafana：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:3000</span><br></pre></td></tr></table></figure>
-
-<p>默认帐号： admin</p>
-<p>默认密码： admin（首次登录时要求修改）</p>
-<p><img data-src="/apache-apisix/image-20240115153140700.png" alt="image-20240115153140700"></p>
-<ul>
-<li>监控告警系统 Prometheus：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9090</span><br></pre></td></tr></table></figure>
-
-<p>配置文件路径： apisix-docker&#x2F;example&#x2F;prometheus_conf&#x2F;prometheus.yml</p>
-<p><img data-src="/apache-apisix/image-20240115153513965.png" alt="image-20240115153513965"></p>
-<ul>
-<li>APISIX 管理后台 &amp; 前端：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9180</span><br><span class="line">http://127.0.0.1:9080</span><br></pre></td></tr></table></figure>
-
-<p>创建测试路由：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -i &quot;http://127.0.0.1:9180/apisix/admin/routes&quot; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: &quot;getting-started-ip&quot;,</span><br><span class="line">  &quot;uri&quot;: &quot;/ip&quot;,</span><br><span class="line">  &quot;upstream&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">    &quot;nodes&quot;: &#123;</span><br><span class="line">      &quot;httpbin.org:80&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:9080/ip</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/apache-apisix/image-20240115154121792.png" alt="image-20240115154121792"></p>
-<p>调用 &#x2F;ip 接口测试源地址：</p>
-<p><img data-src="/apache-apisix/image-20240115154156600.png" alt="image-20240115154156600"></p>
-<h2 id="（可选）APISIX-联动雷池-Safeline"><a href="#（可选）APISIX-联动雷池-Safeline" class="headerlink" title="-（可选）APISIX 联动雷池 Safeline"></a>-（可选）APISIX 联动雷池 Safeline</h2><p>雷池是由长亭科技开发的 WAF 系统，提供对 HTTP 请求的安全请求，提供完整的 API 管理和防护能力。</p>
-<p>自 APISIX 3.5.0 之后的版本将内置长亭雷池 WAF 插件，在启用 chaitin-waf 插件后，流量将被转发给长亭 WAF 服务，用以检测和防止各种 Web 应用程序攻击，以保护应用程序和用户数据的安全。</p>
-<h2 id="安装雷池"><a href="#安装雷池" class="headerlink" title="安装雷池"></a>安装雷池</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bash -c &quot;$(curl -fsSLk https://waf-ce.chaitin.cn/release/latest/setup.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改雷池检测引擎的工作模式"><a href="#修改雷池检测引擎的工作模式" class="headerlink" title="修改雷池检测引擎的工作模式"></a>修改雷池检测引擎的工作模式</h2><p>社区版雷池的检测引擎默认以 unix socket 的方式提供服务，我们需要把他修改为 tcp 方式，供 APISIX 调用。</p>
-<p>进入雷池检测引擎的配置目录：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/resources/detector/</span><br></pre></td></tr></table></figure>
-
-<p>用文本编辑器打开目录里的 detector.yml 文件，我们需要将 bind 方式从 unix socket 改为 tcp，添加如下配置：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bind_addr: 0.0.0.0</span><br><span class="line">listen_port: 8000</span><br></pre></td></tr></table></figure>
-
-<p>detector配置的属性值将覆盖容器内默认配置文件的同名属性值。这样我们就把雷池引擎的服务监听到了 8000 端口，现在只需要把容器内的 8000 端口映射到宿主机即可。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/compose.yaml</span><br></pre></td></tr></table></figure>
-
-<p>为 detector 容器增加 ports 字段，暴露其 8000端口，参考如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line"></span><br><span class="line">detect:</span><br><span class="line">    ......</span><br><span class="line">    ports:</span><br><span class="line">    - 8000:8000</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-
-<p>重启雷池生效：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker compose down</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改雷池默认端口"><a href="#修改雷池默认端口" class="headerlink" title="修改雷池默认端口"></a>修改雷池默认端口</h2><p>雷池和 apisix 默认都监听 9443 端口，如果在同一台机器上安装，需要修改雷池的默认端口。</p>
-<p>在雷池的安装目录下，有一个名为 .env 的隐藏文件，其中的 MGT_PORT 字段，修改这里后使用上面的方法再重启雷池即可生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline</span><br><span class="line">vim .env</span><br></pre></td></tr></table></figure>
-
-<h2 id="在APISIX中绑定雷池"><a href="#在APISIX中绑定雷池" class="headerlink" title="在APISIX中绑定雷池"></a>在APISIX中绑定雷池</h2><p>调用 apisix 的 api，设置雷池检测引擎的地址，供 apisix 调用，参考以下请求：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/plugin_metadata/chaitin-waf&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;nodes&quot;:[</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">       &quot;port&quot;: 8000</span><br><span class="line">     &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>调用 apisix 的 api，设置一条路由，参考以下请求：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/routes/1&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">   &quot;uri&quot;: &quot;/*&quot;,</span><br><span class="line">   &quot;plugins&quot;: &#123;</span><br><span class="line">       &quot;chaitin-waf&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">   &quot;upstream&quot;: &#123;</span><br><span class="line">       &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">       &quot;nodes&quot;: &#123;</span><br><span class="line">           &quot;127.0.0.1:80&quot;: 1</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试防护效果"><a href="#测试防护效果" class="headerlink" title="测试防护效果"></a>测试防护效果</h2><p>在请求中加入注入攻击参数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &#x27;&lt;http://127.0.0.1:9080/&gt;&#x27; -d &#x27;a=1 and 1=1&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>得到结果：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 403,</span><br><span class="line">  &quot;success&quot;: false,</span><br><span class="line">  &quot;message&quot;: &quot;blocked by Chaitin SafeLine Web Application Firewall&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;18e0f220f7a94127acb21ad3c1b4ac47&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打开雷池的控制台界面，可以看到雷池记录了完整的攻击信息。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>APISIX管理请求需密钥授权，在生产环境中使用时务必修改默认</p>
-<p>‘X-API-KEY: edd1c9f034335f136f87ad84b625c8f1’</p>
-<p>配置文件路径：</p>
-<p>apisix-docker&#x2F;example&#x2F;apisix_conf&#x2F;conf.yaml</p>
-]]></content>
-      <categories>
-        <category>网关</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>API网关</tag>
-        <tag>API路由</tag>
-        <tag>负载均衡</tag>
-        <tag>服务熔断</tag>
-        <tag>健康检查</tag>
-        <tag>插件化架构</tag>
-        <tag>动态配置</tag>
-        <tag>OAuth</tag>
-        <tag>API性能分析</tag>
-        <tag>分布式追踪</tag>
-        <tag>服务发现</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Dozzle审计容器日志</title>
-    <url>/dozzle/</url>
-    <content><![CDATA[<h1 id="使用Dozzle审计容器日志"><a href="#使用Dozzle审计容器日志" class="headerlink" title="使用Dozzle审计容器日志"></a>使用Dozzle审计容器日志</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Dozzle是一个开源的日志查看器，主要用于监视和查看Docker容器的实时日志。它提供了一个基于Web的用户界面，允许用户实时查看Docker容器的日志，而不会存储任何日志文件。</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>Dozzle的主要应用场景是在Docker环境中，帮助开发者或系统管理员快速查看和监控Docker容器的日志输出。这对于调试和排除Docker环境中运行的应用程序故障非常重要。</p>
-<h2 id="关键特性和优势"><a href="#关键特性和优势" class="headerlink" title="关键特性和优势"></a>关键特性和优势</h2><p>Dozzle具有一些关键特性，如支持查看一个dockerd下面所有container的日志，支持查看多个dockerd下面container的日志，以及支持用户鉴权。这些特性使得Dozzle成为一个高效且用户友好的日志查看器。</p>
-<p>根据最新的信息，Dozzle是由Docker OSS赞助的开源项目，并且正在积极维护中。它提供了实时日志流、过滤和搜索功能，用户可以快速轻松地访问Docker容器生成的日志。此外，Dozzle还支持带有智能颜色编码的JSON日志。</p>
-<h2 id="Dozzle支持多种用户鉴权方式，具体如下："><a href="#Dozzle支持多种用户鉴权方式，具体如下：" class="headerlink" title="Dozzle支持多种用户鉴权方式，具体如下："></a>Dozzle支持多种用户鉴权方式，具体如下：</h2><ol>
-<li><strong>Basic Authentication</strong>：这是一种最常见的用户鉴权方式，它要求用户提供用户名和密码以进行身份验证。</li>
-<li><strong>Token Authentication</strong>：在这种鉴权方式中，用户不需要提供用户名和密码，而是提供一个特定的令牌来进行身份验证。</li>
-<li><strong>OpenID Connect</strong>：这是一种基于开放标准的鉴权协议，它允许用户使用他们的社交媒体或其他第三方服务帐户进行身份验证。</li>
-<li><strong>OAuth 2.0</strong>：这是一种广泛使用的授权框架，它允许第三方应用在用户的授权下访问他们的资源。</li>
-</ol>
-<p>以上就是Dozzle支持的一些主要的用户鉴权方式，不同的方式可以根据实际需求选择使用。</p>
-<h2 id="实体-关系模型"><a href="#实体-关系模型" class="headerlink" title="实体-关系模型"></a>实体-关系模型</h2><p>Dozzle支持对远程主机的容器日志收集，以实现集中审计，ER图如下：</p>
-<p><img data-src="/dozzle/dozzle%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B.png" alt="dozzle关系模型"></p>
-<h2 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h2><h3 id="业务端"><a href="#业务端" class="headerlink" title="- 业务端"></a>- 业务端</h3><h4 id="1、开启Docker-Remote-API"><a href="#1、开启Docker-Remote-API" class="headerlink" title="1、开启Docker Remote API"></a>1、开启Docker Remote API</h4><p>编辑&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">the default is not to use systemd <span class="keyword">for</span> cgroups because the delegate issues still</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">exists and systemd currently does not support the cgroup feature <span class="built_in">set</span> required</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="keyword">for</span> containers run by docker</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2376 # 添加2376端口</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>重载配置文件并重启Docker服务：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、生成证书"><a href="#2、生成证书" class="headerlink" title="2、生成证书"></a>2、生成证书</h4><p>生成CA（根证书）私钥和自签名证书：</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl req -x509 -nodes -newkey rsa:4096 -keyout <span class="keyword">ca</span>.key -<span class="keyword">out</span> <span class="keyword">ca</span>.pem -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>生成证书私钥：</p>
-<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">openssl genrsa -<span class="keyword">out</span> <span class="keyword">key</span>.pem 4096</span><br></pre></td></tr></table></figure>
-
-<p>创建证书签名请求（CSR）文件：</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">openssl req -<span class="built_in">new</span> -<span class="built_in">key</span> <span class="built_in">key</span>.pem -out cert.csr -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>使用CA的私钥和自签名证书部署CSR文件，生成证书：</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> cert.csr -<span class="keyword">CA</span> <span class="keyword">ca</span>.pem -CAkey <span class="keyword">ca</span>.key -CAcreateserial -<span class="keyword">out</span> cert.pem -days 3650</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ca.key和ca.pem：根证书和自签名证书</li>
-<li>key.pem：生成的证书私钥</li>
-<li>cert.pem：生成的证书</li>
-</ul>
-<h3 id="监控端"><a href="#监控端" class="headerlink" title="- 监控端"></a>- 监控端</h3><h4 id="1、存放远程主机证书"><a href="#1、存放远程主机证书" class="headerlink" title="1、存放远程主机证书"></a>1、存放远程主机证书</h4><p>将远程主机（业务端）生成的证书保存为<code> /certs/&#123;host&#125;/&#123;ca,cert,key&#125;.pem</code></p>
-<p>多个远程主机使用逗号进行间隔，如：</p>
-<p><code> DOZZLE_REMOTE_HOST: tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node2.host</code></p>
-<h4 id="2、用户管理"><a href="#2、用户管理" class="headerlink" title="2、用户管理"></a>2、用户管理</h4><p>Dozzle  用户配置文件保存路径： <code>/data/users.yml</code>.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">users:</span></span><br><span class="line">  <span class="comment"># &quot;admin&quot; here is username</span></span><br><span class="line">  <span class="attr">admin:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&quot;Admin&quot;</span></span><br><span class="line">    <span class="comment"># Just sha-256 which can be computed with &quot;echo -n password | shasum -a 256&quot;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">me@email.net</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用<code>echo -n &#39;secret-password&#39; | shasum -a 256` or `echo -n &#39;secret-password&#39; | sha256sum</code> 生成密码字符串的sha256哈希值。</li>
-</ul>
-<h4 id="3、启动Dozzle服务"><a href="#3、启动Dozzle服务" class="headerlink" title="3、启动Dozzle服务"></a>3、启动Dozzle服务</h4><ul>
-<li>生成<code> compose.yml</code>文件</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">dozzle:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">amir20/dozzle</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./certs:/certs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">DOZZLE_AUTH_PROVIDER:</span> <span class="string">simple</span></span><br><span class="line">      <span class="attr">DOZZLE_HOSTNAME:</span> <span class="string">monitor.host</span></span><br><span class="line">      <span class="attr">DOZZLE_REMOTE_HOST:</span> <span class="string">tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node.host</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;/dozzle&quot;</span>, <span class="string">&quot;healthcheck&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">3s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">30s</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动容器服务 <code>docker compose up -d</code></li>
-</ul>
-<p><img data-src="/dozzle/image-20240223164323001.png" alt="image-20240223164323001"></p>
-<p><img data-src="/dozzle/image-20240223164305686.png" alt="image-20240223164305686"></p>
-<p><img data-src="/dozzle/image-20240223164245112.png" alt="image-20240223164245112"></p>
-]]></content>
-      <categories>
-        <category>安全审计</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>日志查看</tag>
-        <tag>安全性</tag>
-        <tag>日志管理</tag>
-        <tag>文本高亮</tag>
-        <tag>实时监控</tag>
-        <tag>访问控制</tag>
-        <tag>非持久存储</tag>
       </tags>
   </entry>
   <entry>
@@ -932,6 +725,250 @@
         <tag>合规检查</tag>
         <tag>容器安全</tag>
         <tag>版本控制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Dozzle审计容器日志</title>
+    <url>/dozzle/</url>
+    <content><![CDATA[<h1 id="使用Dozzle审计容器日志"><a href="#使用Dozzle审计容器日志" class="headerlink" title="使用Dozzle审计容器日志"></a>使用Dozzle审计容器日志</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Dozzle是一个开源的日志查看器，主要用于监视和查看Docker容器的实时日志。它提供了一个基于Web的用户界面，允许用户实时查看Docker容器的日志，而不会存储任何日志文件。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>Dozzle的主要应用场景是在Docker环境中，帮助开发者或系统管理员快速查看和监控Docker容器的日志输出。这对于调试和排除Docker环境中运行的应用程序故障非常重要。</p>
+<h2 id="关键特性和优势"><a href="#关键特性和优势" class="headerlink" title="关键特性和优势"></a>关键特性和优势</h2><p>Dozzle具有一些关键特性，如支持查看一个dockerd下面所有container的日志，支持查看多个dockerd下面container的日志，以及支持用户鉴权。这些特性使得Dozzle成为一个高效且用户友好的日志查看器。</p>
+<p>根据最新的信息，Dozzle是由Docker OSS赞助的开源项目，并且正在积极维护中。它提供了实时日志流、过滤和搜索功能，用户可以快速轻松地访问Docker容器生成的日志。此外，Dozzle还支持带有智能颜色编码的JSON日志。</p>
+<h2 id="Dozzle支持多种用户鉴权方式，具体如下："><a href="#Dozzle支持多种用户鉴权方式，具体如下：" class="headerlink" title="Dozzle支持多种用户鉴权方式，具体如下："></a>Dozzle支持多种用户鉴权方式，具体如下：</h2><ol>
+<li><strong>Basic Authentication</strong>：这是一种最常见的用户鉴权方式，它要求用户提供用户名和密码以进行身份验证。</li>
+<li><strong>Token Authentication</strong>：在这种鉴权方式中，用户不需要提供用户名和密码，而是提供一个特定的令牌来进行身份验证。</li>
+<li><strong>OpenID Connect</strong>：这是一种基于开放标准的鉴权协议，它允许用户使用他们的社交媒体或其他第三方服务帐户进行身份验证。</li>
+<li><strong>OAuth 2.0</strong>：这是一种广泛使用的授权框架，它允许第三方应用在用户的授权下访问他们的资源。</li>
+</ol>
+<p>以上就是Dozzle支持的一些主要的用户鉴权方式，不同的方式可以根据实际需求选择使用。</p>
+<h2 id="实体-关系模型"><a href="#实体-关系模型" class="headerlink" title="实体-关系模型"></a>实体-关系模型</h2><p>Dozzle支持对远程主机的容器日志收集，以实现集中审计，ER图如下：</p>
+<p><img data-src="/dozzle/dozzle%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B.png" alt="dozzle关系模型"></p>
+<h2 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h2><h3 id="业务端"><a href="#业务端" class="headerlink" title="- 业务端"></a>- 业务端</h3><h4 id="1、开启Docker-Remote-API"><a href="#1、开启Docker-Remote-API" class="headerlink" title="1、开启Docker Remote API"></a>1、开启Docker Remote API</h4><p>编辑&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">the default is not to use systemd <span class="keyword">for</span> cgroups because the delegate issues still</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">exists and systemd currently does not support the cgroup feature <span class="built_in">set</span> required</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="keyword">for</span> containers run by docker</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2376 # 添加2376端口</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>重载配置文件并重启Docker服务：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、生成证书"><a href="#2、生成证书" class="headerlink" title="2、生成证书"></a>2、生成证书</h4><p>生成CA（根证书）私钥和自签名证书：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl req -x509 -nodes -newkey rsa:4096 -keyout <span class="keyword">ca</span>.key -<span class="keyword">out</span> <span class="keyword">ca</span>.pem -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>生成证书私钥：</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">openssl genrsa -<span class="keyword">out</span> <span class="keyword">key</span>.pem 4096</span><br></pre></td></tr></table></figure>
+
+<p>创建证书签名请求（CSR）文件：</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">openssl req -<span class="built_in">new</span> -<span class="built_in">key</span> <span class="built_in">key</span>.pem -out cert.csr -subj <span class="string">&quot;/CN=dozzle.site&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用CA的私钥和自签名证书部署CSR文件，生成证书：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> cert.csr -<span class="keyword">CA</span> <span class="keyword">ca</span>.pem -CAkey <span class="keyword">ca</span>.key -CAcreateserial -<span class="keyword">out</span> cert.pem -days 3650</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ca.key和ca.pem：根证书和自签名证书</li>
+<li>key.pem：生成的证书私钥</li>
+<li>cert.pem：生成的证书</li>
+</ul>
+<h3 id="监控端"><a href="#监控端" class="headerlink" title="- 监控端"></a>- 监控端</h3><h4 id="1、存放远程主机证书"><a href="#1、存放远程主机证书" class="headerlink" title="1、存放远程主机证书"></a>1、存放远程主机证书</h4><p>将远程主机（业务端）生成的证书保存为<code> /certs/&#123;host&#125;/&#123;ca,cert,key&#125;.pem</code></p>
+<p>多个远程主机使用逗号进行间隔，如：</p>
+<p><code> DOZZLE_REMOTE_HOST: tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node2.host</code></p>
+<h4 id="2、用户管理"><a href="#2、用户管理" class="headerlink" title="2、用户管理"></a>2、用户管理</h4><p>Dozzle  用户配置文件保存路径： <code>/data/users.yml</code>.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">users:</span></span><br><span class="line">  <span class="comment"># &quot;admin&quot; here is username</span></span><br><span class="line">  <span class="attr">admin:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&quot;Admin&quot;</span></span><br><span class="line">    <span class="comment"># Just sha-256 which can be computed with &quot;echo -n password | shasum -a 256&quot;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">me@email.net</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>echo -n &#39;secret-password&#39; | shasum -a 256` or `echo -n &#39;secret-password&#39; | sha256sum</code> 生成密码字符串的sha256哈希值。</li>
+</ul>
+<h4 id="3、启动Dozzle服务"><a href="#3、启动Dozzle服务" class="headerlink" title="3、启动Dozzle服务"></a>3、启动Dozzle服务</h4><ul>
+<li>生成<code> compose.yml</code>文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">dozzle:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">amir20/dozzle</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./certs:/certs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">DOZZLE_AUTH_PROVIDER:</span> <span class="string">simple</span></span><br><span class="line">      <span class="attr">DOZZLE_HOSTNAME:</span> <span class="string">monitor.host</span></span><br><span class="line">      <span class="attr">DOZZLE_REMOTE_HOST:</span> <span class="string">tcp://172.0.0.72:2376|node1.host,tcp://172.0.0.73:2376|node.host</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;/dozzle&quot;</span>, <span class="string">&quot;healthcheck&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">3s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">30s</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动容器服务 <code>docker compose up -d</code></li>
+</ul>
+<p><img data-src="/dozzle/image-20240223164323001.png" alt="image-20240223164323001"></p>
+<p><img data-src="/dozzle/image-20240223164305686.png" alt="image-20240223164305686"></p>
+<p><img data-src="/dozzle/image-20240223164245112.png" alt="image-20240223164245112"></p>
+]]></content>
+      <categories>
+        <category>安全审计</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>日志查看</tag>
+        <tag>安全性</tag>
+        <tag>日志管理</tag>
+        <tag>文本高亮</tag>
+        <tag>实时监控</tag>
+        <tag>访问控制</tag>
+        <tag>非持久存储</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intellij IDEA扩展Nunjucks文件类型</title>
+    <url>/nunjucks/</url>
+    <content><![CDATA[<h1 id="Intellij-IDEA扩展Nunjucks文件类型"><a href="#Intellij-IDEA扩展Nunjucks文件类型" class="headerlink" title="Intellij IDEA扩展Nunjucks文件类型"></a>Intellij IDEA扩展Nunjucks文件类型</h1><p>IntelliJ IDEA是一款非常强大的集成开发环境，广泛应用于Java、Python、Web等多种编程语言的开发。然而，默认情况下，IntelliJ IDEA并不支持Nunjucks（简称NJK）文件的语法高亮。Nunjucks是一种模板语言，常用于Web开发中的前端模板渲染。为了在IntelliJ IDEA中实现NJK文件的高亮显示，我们需要安装Twig插件并进行相应的配置。<br>本文将为您介绍如何在IntelliJ IDEA中安装Twig插件及配置方法，以实现对NJK文件语法高亮的支持。</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="一、安装Twig插件"><a href="#一、安装Twig插件" class="headerlink" title="一、安装Twig插件"></a>一、安装Twig插件</h3><ol>
+<li>打开IntelliJ IDEA，进入“File” &gt; “Settings” &gt; “Plugins”菜单，或在主界面的右下角点击插件图标进入插件市场。</li>
+<li>在插件搜索框中输入“Twig”并进行搜索。</li>
+<li>在搜索结果中找到“Twig”插件，点击“Install”按钮进行安装。</li>
+<li>安装完成后，重启IntelliJ IDEA以使插件生效。</li>
+</ol>
+<h3 id="二、配置Twig插件"><a href="#二、配置Twig插件" class="headerlink" title="二、配置Twig插件"></a>二、配置Twig插件</h3><ol>
+<li>打开一个NJK文件，你会发现在编辑器中并没有语法高亮显示。</li>
+<li>进入“File” &gt; “Settings” &gt; “Editor” &gt; “File Types”菜单。</li>
+<li>在文件类型列表中找到“Nunjucks”，并点击右侧的“Default Settings”按钮。</li>
+<li>在弹出的窗口中，选择“Twig”作为NJK文件的语法高亮引擎。</li>
+<li>点击“OK”按钮，完成配置。</li>
+</ol>
+<p>经过以上步骤，NJK文件在IntelliJ IDEA中的语法高亮应该已经正常显示了。你可以通过插件市场更新或卸载Twig插件，以满足你的需求。希望本文对你在IntelliJ IDEA中使用NJK文件有所帮助！</p>
+<p><img data-src="/nunjucks/image-20240304163646598-9543356.png" alt="image-20240304163646598"></p>
+<p><img data-src="/nunjucks/image-20240304163156930-9543237.png" alt="image-20240304163156930"></p>
+<h2 id="Nunjuck高亮效果"><a href="#Nunjuck高亮效果" class="headerlink" title="Nunjuck高亮效果"></a>Nunjuck高亮效果</h2><p><img data-src="/nunjucks/image-20240304162939533-9543264.png" alt="image-20240304162939533"></p>
+<p><img data-src="/nunjucks/image-20240304163224649-9543270.png" alt="image-20240304163224649"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li>[<a href="https://stackoverflow.com/questions/33558627/integrating-nunjucks-with-intellij-idea-webstorm"><strong>Integrating Nunjucks with IntelliJ IDEA &#x2F; Webstorm</strong></a>]</li>
+</ul>
+]]></content>
+      <categories>
+        <category>issue</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>兼容性</tag>
+        <tag>代码折叠</tag>
+        <tag>多语言支持</tag>
+        <tag>数学公式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高性能API网关 Apache APISIX部署</title>
+    <url>/apache-apisix/</url>
+    <content><![CDATA[<h1 id="高性能API网关-Apache-APISIX部署"><a href="#高性能API网关-Apache-APISIX部署" class="headerlink" title="高性能API网关 Apache APISIX部署"></a>高性能API网关 Apache APISIX部署</h1><p>Apache APISIX 是一个开源的、动态的、实时的高性能云原生 API 网关，由 Apache 软件基金会支持。它设计用于处理服务之间的东西向流量（即微服务间的通信）以及传统的南北向流量（客户端到服务端请求）。APISIX 提供了诸如负载均衡、动态上游、金丝雀发布、服务熔断、身份认证和可观测性等丰富的流量管理功能。此外，APISIX 还支持作为 K8s Ingress Controller 使用，能够处理进入 Kubernetes 集群的流量。<br>APISIX 的主要特点包括：</p>
+<ol>
+<li><strong>全动态能力</strong>：支持热加载，允许在不重启服务的情况下更新配置。</li>
+<li><strong>多平台支持</strong>：可以在多种环境中运行，包括裸机、Kubernetes，以及与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
+<li><strong>精细化路由</strong>：使用 NGINX 内置变量作为路由匹配条件，支持自定义匹配函数。</li>
+<li><strong>运维友好</strong>：可以与多种工具和平台集成，如 HashiCorp Vault、Zipkin、Apache SkyWalking、Consul、Nacos 和 Eureka。APISIX Dashboard 提供了一个直观友好的 UI，用于配置 APISIX。</li>
+<li><strong>多语言插件支持</strong>：支持多种编程语言开发插件，方便开发者根据需求进行自定义。<br>APISIX 的架构设计使其能够高效地处理大量流量，同时保持扩展性和灵活性。其内部使用 Nginx 和 LuaJIT 作为基础架构，这使得 APISIX 能够充分利用 Nginx 的高性能处理能力。<br>在安全性方面，APISIX 支持多种身份认证机制，包括但不限于 OAuth2、JWT、 basic authentication 等，确保 API 的安全性。<br>APISIX 社区活跃，不断有新的特性和插件被开发和贡献。社区周报是了解 APISIX 最新进展的一个好渠道。此外，APISIX 还提供了详细的文档，帮助用户了解如何安装、配置和使用 APISIX。<br>对于开发人员而言，APISIX 提供了一个易于使用的开发框架，可以方便地创建和定制插件来扩展网关的功能。APISIX 的插件机制非常灵活，插件可以处理路由、限流、熔断、响应处理等各种场景。<br>在运维方面，APISIX 提供了便捷的运维工具，例如可以通过简单的命令进行服务的启动、停止和重启。同时，APISIX 也支持通过 Dashboard 对网关进行配置管理，提高了运维的效率和便利性。<br>综上所述，Apache APISIX 是一个功能全面、灵活性高、易于集成和部署的 API 网关解决方案，适用于各种规模的企业和开发者，特别是在微服务架构和云原生环境中。</li>
+</ol>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><ul>
+<li>参考文章 <a href="/dockerinit/" title="Docker初始化环境">Docker初始化环境</a></li>
+</ul>
+<h2 id="安装APISIX"><a href="#安装APISIX" class="headerlink" title="安装APISIX"></a>安装APISIX</h2><ul>
+<li>下载 <a href='https://zfile.ceobe.cn/1/高性能API网关 Apache APISIX部署'> Git项目文件 apisix-docker.zip </a>至运行环境</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://zfile.ceobe.cn/s/e21haz -O apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<p>** 短链存在有效期，请自行获取并替换 **</p>
+<p><img data-src="/apache-apisix/image-20240115160144787.png" alt="image-20240115160144787"></p>
+<ul>
+<li>解压缩文件：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">unzip apisix-docker.zip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用Docker Compose自行编排容器：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd apisix-docker/example</span><br><span class="line">docker compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152109914.png" alt="image-20240115152109914"></p>
+<ul>
+<li>验证 APISIX 服务：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;http://127.0.0.1:9080&quot; --head | grep Server</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115152320421.png" alt="image-20240115152320421"></p>
+<h2 id="系统界面"><a href="#系统界面" class="headerlink" title="系统界面"></a>系统界面</h2><ul>
+<li>图形界面 APISIX Dashboard：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9000/</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号：admin</p>
+<p>默认密码： admin</p>
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;dashboard_conf&#x2F;conf.yaml</p>
+<p><img data-src="/apache-apisix/image-20240115152841419.png" alt="image-20240115152841419"></p>
+<ul>
+<li>图形界面 Grafana：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:3000</span><br></pre></td></tr></table></figure>
+
+<p>默认帐号： admin</p>
+<p>默认密码： admin（首次登录时要求修改）</p>
+<p><img data-src="/apache-apisix/image-20240115153140700.png" alt="image-20240115153140700"></p>
+<ul>
+<li>监控告警系统 Prometheus：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9090</span><br></pre></td></tr></table></figure>
+
+<p>配置文件路径： apisix-docker&#x2F;example&#x2F;prometheus_conf&#x2F;prometheus.yml</p>
+<p><img data-src="/apache-apisix/image-20240115153513965.png" alt="image-20240115153513965"></p>
+<ul>
+<li>APISIX 管理后台 &amp; 前端：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:9180</span><br><span class="line">http://127.0.0.1:9080</span><br></pre></td></tr></table></figure>
+
+<p>创建测试路由：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -i &quot;http://127.0.0.1:9180/apisix/admin/routes&quot; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: &quot;getting-started-ip&quot;,</span><br><span class="line">  &quot;uri&quot;: &quot;/ip&quot;,</span><br><span class="line">  &quot;upstream&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">    &quot;nodes&quot;: &#123;</span><br><span class="line">      &quot;httpbin.org:80&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:9080/ip</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/apache-apisix/image-20240115154121792.png" alt="image-20240115154121792"></p>
+<p>调用 &#x2F;ip 接口测试源地址：</p>
+<p><img data-src="/apache-apisix/image-20240115154156600.png" alt="image-20240115154156600"></p>
+<h2 id="（可选）APISIX-联动雷池-Safeline"><a href="#（可选）APISIX-联动雷池-Safeline" class="headerlink" title="-（可选）APISIX 联动雷池 Safeline"></a>-（可选）APISIX 联动雷池 Safeline</h2><p>雷池是由长亭科技开发的 WAF 系统，提供对 HTTP 请求的安全请求，提供完整的 API 管理和防护能力。</p>
+<p>自 APISIX 3.5.0 之后的版本将内置长亭雷池 WAF 插件，在启用 chaitin-waf 插件后，流量将被转发给长亭 WAF 服务，用以检测和防止各种 Web 应用程序攻击，以保护应用程序和用户数据的安全。</p>
+<h2 id="安装雷池"><a href="#安装雷池" class="headerlink" title="安装雷池"></a>安装雷池</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bash -c &quot;$(curl -fsSLk https://waf-ce.chaitin.cn/release/latest/setup.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池检测引擎的工作模式"><a href="#修改雷池检测引擎的工作模式" class="headerlink" title="修改雷池检测引擎的工作模式"></a>修改雷池检测引擎的工作模式</h2><p>社区版雷池的检测引擎默认以 unix socket 的方式提供服务，我们需要把他修改为 tcp 方式，供 APISIX 调用。</p>
+<p>进入雷池检测引擎的配置目录：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/resources/detector/</span><br></pre></td></tr></table></figure>
+
+<p>用文本编辑器打开目录里的 detector.yml 文件，我们需要将 bind 方式从 unix socket 改为 tcp，添加如下配置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bind_addr: 0.0.0.0</span><br><span class="line">listen_port: 8000</span><br></pre></td></tr></table></figure>
+
+<p>detector配置的属性值将覆盖容器内默认配置文件的同名属性值。这样我们就把雷池引擎的服务监听到了 8000 端口，现在只需要把容器内的 8000 端口映射到宿主机即可。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline/compose.yaml</span><br></pre></td></tr></table></figure>
+
+<p>为 detector 容器增加 ports 字段，暴露其 8000端口，参考如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line"></span><br><span class="line">detect:</span><br><span class="line">    ......</span><br><span class="line">    ports:</span><br><span class="line">    - 8000:8000</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>重启雷池生效：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker compose down</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改雷池默认端口"><a href="#修改雷池默认端口" class="headerlink" title="修改雷池默认端口"></a>修改雷池默认端口</h2><p>雷池和 apisix 默认都监听 9443 端口，如果在同一台机器上安装，需要修改雷池的默认端口。</p>
+<p>在雷池的安装目录下，有一个名为 .env 的隐藏文件，其中的 MGT_PORT 字段，修改这里后使用上面的方法再重启雷池即可生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /data/safeline</span><br><span class="line">vim .env</span><br></pre></td></tr></table></figure>
+
+<h2 id="在APISIX中绑定雷池"><a href="#在APISIX中绑定雷池" class="headerlink" title="在APISIX中绑定雷池"></a>在APISIX中绑定雷池</h2><p>调用 apisix 的 api，设置雷池检测引擎的地址，供 apisix 调用，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/plugin_metadata/chaitin-waf&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;nodes&quot;:[</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">       &quot;port&quot;: 8000</span><br><span class="line">     &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>调用 apisix 的 api，设置一条路由，参考以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &lt;http://127.0.0.1:9180/apisix/admin/routes/1&gt; -H &#x27;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#x27; -X PUT -d &#x27;</span><br><span class="line">&#123;</span><br><span class="line">   &quot;uri&quot;: &quot;/*&quot;,</span><br><span class="line">   &quot;plugins&quot;: &#123;</span><br><span class="line">       &quot;chaitin-waf&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">   &quot;upstream&quot;: &#123;</span><br><span class="line">       &quot;type&quot;: &quot;roundrobin&quot;,</span><br><span class="line">       &quot;nodes&quot;: &#123;</span><br><span class="line">           &quot;127.0.0.1:80&quot;: 1</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试防护效果"><a href="#测试防护效果" class="headerlink" title="测试防护效果"></a>测试防护效果</h2><p>在请求中加入注入攻击参数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &#x27;&lt;http://127.0.0.1:9080/&gt;&#x27; -d &#x27;a=1 and 1=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>得到结果：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 403,</span><br><span class="line">  &quot;success&quot;: false,</span><br><span class="line">  &quot;message&quot;: &quot;blocked by Chaitin SafeLine Web Application Firewall&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;18e0f220f7a94127acb21ad3c1b4ac47&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开雷池的控制台界面，可以看到雷池记录了完整的攻击信息。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>APISIX管理请求需密钥授权，在生产环境中使用时务必修改默认</p>
+<p>‘X-API-KEY: edd1c9f034335f136f87ad84b625c8f1’</p>
+<p>配置文件路径：</p>
+<p>apisix-docker&#x2F;example&#x2F;apisix_conf&#x2F;conf.yaml</p>
+]]></content>
+      <categories>
+        <category>网关</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>API网关</tag>
+        <tag>API路由</tag>
+        <tag>负载均衡</tag>
+        <tag>服务熔断</tag>
+        <tag>健康检查</tag>
+        <tag>插件化架构</tag>
+        <tag>动态配置</tag>
+        <tag>OAuth</tag>
+        <tag>API性能分析</tag>
+        <tag>分布式追踪</tag>
+        <tag>服务发现</tag>
       </tags>
   </entry>
   <entry>
@@ -1493,43 +1530,6 @@ hard nofile 65535
         <tag>甘特图</tag>
         <tag>目录生成</tag>
         <tag>任务列表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intellij IDEA扩展Nunjucks文件类型</title>
-    <url>/nunjucks/</url>
-    <content><![CDATA[<h1 id="Intellij-IDEA扩展Nunjucks文件类型"><a href="#Intellij-IDEA扩展Nunjucks文件类型" class="headerlink" title="Intellij IDEA扩展Nunjucks文件类型"></a>Intellij IDEA扩展Nunjucks文件类型</h1><p>IntelliJ IDEA是一款非常强大的集成开发环境，广泛应用于Java、Python、Web等多种编程语言的开发。然而，默认情况下，IntelliJ IDEA并不支持Nunjucks（简称NJK）文件的语法高亮。Nunjucks是一种模板语言，常用于Web开发中的前端模板渲染。为了在IntelliJ IDEA中实现NJK文件的高亮显示，我们需要安装Twig插件并进行相应的配置。<br>本文将为您介绍如何在IntelliJ IDEA中安装Twig插件及配置方法，以实现对NJK文件语法高亮的支持。</p>
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="一、安装Twig插件"><a href="#一、安装Twig插件" class="headerlink" title="一、安装Twig插件"></a>一、安装Twig插件</h3><ol>
-<li>打开IntelliJ IDEA，进入“File” &gt; “Settings” &gt; “Plugins”菜单，或在主界面的右下角点击插件图标进入插件市场。</li>
-<li>在插件搜索框中输入“Twig”并进行搜索。</li>
-<li>在搜索结果中找到“Twig”插件，点击“Install”按钮进行安装。</li>
-<li>安装完成后，重启IntelliJ IDEA以使插件生效。</li>
-</ol>
-<h3 id="二、配置Twig插件"><a href="#二、配置Twig插件" class="headerlink" title="二、配置Twig插件"></a>二、配置Twig插件</h3><ol>
-<li>打开一个NJK文件，你会发现在编辑器中并没有语法高亮显示。</li>
-<li>进入“File” &gt; “Settings” &gt; “Editor” &gt; “File Types”菜单。</li>
-<li>在文件类型列表中找到“Nunjucks”，并点击右侧的“Default Settings”按钮。</li>
-<li>在弹出的窗口中，选择“Twig”作为NJK文件的语法高亮引擎。</li>
-<li>点击“OK”按钮，完成配置。</li>
-</ol>
-<p>经过以上步骤，NJK文件在IntelliJ IDEA中的语法高亮应该已经正常显示了。你可以通过插件市场更新或卸载Twig插件，以满足你的需求。希望本文对你在IntelliJ IDEA中使用NJK文件有所帮助！</p>
-<p><img data-src="/nunjucks/image-20240304163646598-9543356.png" alt="image-20240304163646598"></p>
-<p><img data-src="/nunjucks/image-20240304163156930-9543237.png" alt="image-20240304163156930"></p>
-<h2 id="Nunjuck高亮效果"><a href="#Nunjuck高亮效果" class="headerlink" title="Nunjuck高亮效果"></a>Nunjuck高亮效果</h2><p><img data-src="/nunjucks/image-20240304162939533-9543264.png" alt="image-20240304162939533"></p>
-<p><img data-src="/nunjucks/image-20240304163224649-9543270.png" alt="image-20240304163224649"></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li>[<a href="https://stackoverflow.com/questions/33558627/integrating-nunjucks-with-intellij-idea-webstorm"><strong>Integrating Nunjucks with IntelliJ IDEA &#x2F; Webstorm</strong></a>]</li>
-</ul>
-]]></content>
-      <categories>
-        <category>issue</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-        <tag>兼容性</tag>
-        <tag>代码折叠</tag>
-        <tag>多语言支持</tag>
-        <tag>数学公式</tag>
       </tags>
   </entry>
 </search>
