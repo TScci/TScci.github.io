@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.ceobe.cn","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"static","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Sysbench是一个多线程的性能测试工具，主要用于测试Linux系统下的CPU、内存、IO性能，它可以通过模拟多用户并发访问来对系统的负载性能进行评估。Sysbench通常被系统管理员和开发人员用来评估系统在高负载情况下的表现，或者比较不同硬件和软件配置对性能的影响。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能压测工具Sysbench">
+<meta property="og:url" content="https://blog.ceobe.cn/sysbench/">
+<meta property="og:site_name" content="Ceobe&#39;s Fungimist">
+<meta property="og:description" content="Sysbench是一个多线程的性能测试工具，主要用于测试Linux系统下的CPU、内存、IO性能，它可以通过模拟多用户并发访问来对系统的负载性能进行评估。Sysbench通常被系统管理员和开发人员用来评估系统在高负载情况下的表现，或者比较不同硬件和软件配置对性能的影响。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091751.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091804.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091820.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091832.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091921.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091935.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091947.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091956.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316092010.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316092023.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316092035.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316092047.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/image-20240228144707632.png">
+<meta property="og:image" content="https://blog.ceobe.cn/sysbench/image-20240228144943862.png">
+<meta property="article:published_time" content="2024-02-28T02:00:02.000Z">
+<meta property="article:modified_time" content="2024-03-05T02:27:49.984Z">
+<meta property="article:author" content="Melt_Tscci">
+<meta property="article:tag" content="性能测试工具">
+<meta property="article:tag" content="多线程模拟">
+<meta property="article:tag" content="CPU性能测试">
+<meta property="article:tag" content="内存型测试">
+<meta property="article:tag" content="IO性能测试">
+<meta property="article:tag" content="数据库性能测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.ceobe.cn/sysbench/Pasted%20image%2020230316091751.png">
+
+
+<link rel="canonical" href="https://blog.ceobe.cn/sysbench/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.ceobe.cn/sysbench/","path":"sysbench/","title":"性能压测工具Sysbench"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>性能压测工具Sysbench | Ceobe's Fungimist</title>
+  
+
+
+
+
+
+
+
+  <script defer data-domain="blog.ceobe.cn" src="https://plausible.ceobe.cn/js/script.js"></script>
+<link rel="dns-prefetch" href="https://waline.ceobe.cn/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Ceobe's Fungimist" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ceobe's Fungimist</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">轻尘散尽,绪言终古,于无声处听惊雷.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="https://ceobe.notion.site/ceobe/764e6257f2064f499fb5993112136a43?v=8b7437d14ec64e3cb3678fa89003b5b6" rel="section" target="_blank"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-开往"><a href="https://www.travellings.cn/go.html" rel="section" target="_blank"><i class="fa fa-subway fa-fw"></i>开往</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7Sysbench"><span class="nav-number">1.</span> <span class="nav-text">性能压测工具Sysbench</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">工具介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%8C%87%E6%A0%87%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.</span> <span class="nav-text">测试指标介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85sysbench"><span class="nav-number">1.3.</span> <span class="nav-text">安装sysbench</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E8%A3%85%EF%BC%88%E5%BB%BA%E8%AE%AE%EF%BC%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">二进制安装（建议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.</span> <span class="nav-text">源码安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">环境依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.</span> <span class="nav-text">开始测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81CPU%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.1.</span> <span class="nav-text">1、CPU性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">（1）单线程性能测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">（2）多线程性能测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BA%92%E6%96%A5%E9%94%81%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">2、互斥锁测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.3.</span> <span class="nav-text">3、线程测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81IO%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.4.</span> <span class="nav-text">4、IO性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%9A%8F%E6%9C%BA%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%EF%BC%9A"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">(1)随机文件读写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E8%BF%9E%E7%BB%AD%E8%AF%BB%E5%86%99"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">(2)文件连续读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.5.</span> <span class="nav-text">5、数据库测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">1.5.</span> <span class="nav-text">参考文档</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Melt_Tscci"
+      src="/avatar.gif">
+  <p class="site-author-name" itemprop="name">Melt_Tscci</p>
+  <div class="site-description" itemprop="description"> 霜序廿九 | No.R155 </div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tscci" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tscci" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@ceobe.cn" title="E-Mail → mailto:i@ceobe.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hub.docker.com/u/tscci" title="Docker → https:&#x2F;&#x2F;hub.docker.com&#x2F;u&#x2F;tscci" rel="noopener me" target="_blank"><i class="fa-brands fa-docker fa-fw"></i>Docker</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div class="cc-license animated" title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=blog.ceobe.cn','TrustAsia 安全签章','height=800,width=470,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center">
+  <img src="https://sealres.trustasia.com/seal/img/1x/seal.svg?domain=blog.ceobe.cn" alt="TrustAsia 安全签章" style="width: 130px;height: auto;cursor: pointer">
+</div>
+<!--[开往]浅色PNG样式-->
+<div class="cc-license animated" style="text-align: center;" >
+<a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
+    <img src="https://www.travellings.cn/assets/w.png" alt="开往-友链接力" width="120" height="32" style="border-radius:5px">
+</a>
+</div>
+<!--[十年之约]透明深色GIF样式-->
+<div class="cc-license animated" style="text-align: center;" >
+<a href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="https://img.foreverblog.cn/wormhole_4_tp.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"></a>
+</div>
+        </div>
+      </div>
+    </div>
+
+    
+   
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-chain fa-fw"></i>
+          链接
+        </div>
+        
+          <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+            <a target="_blank" rel="noopener" href="https://monitor.ceobe.cn/status/main" style="color:rgb(221,100,44);display:inline-block;width:130px;"><i class="fa-solid fa-list"></i> 站点监控</a></span>
+            <a target="_blank" rel="noopener" href="https://plausible.ceobe.cn/blog.ceobe.cn" style="color:rgb(221,100,44); display: inline-block;width:130px"><i class="fa-solid fa-ranking-star"></i> 访问流量</a>
+            <a target="_blank" rel="noopener" href="https://grafana.ceobe.cn/public-dashboards/ff69dff016024859a54c2b7494768cf6?orgId=1&refresh=5s" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa fa-bar-chart"></i> 性能观测</a>
+            <a target="_blank" rel="noopener" href="https://zfile.ceobe.cn/1" style="color:rgb(221,100,44); display: inline-block;width:130px;"><i class="fa-regular fa-folder-open"></i> 网盘文件</a>
+            </div>
+
+      </div>
+    </div>
+
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title">
+          <i class="fa-solid fa-wrench fa-fw"></i> 技术支持
+        </div>    
+        <div class="links-of-author-item" style="display:inline;vertical-align:middle;">
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/oss?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-database"></i> 对象存储</a>
+              <a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cdn?source=5176.11533457&userCode=s7sc8v2r" style="display: inline-block;width:130px"><i class="fa-solid fa-earth-americas"></i> CDN加速</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.ceobe.cn/sysbench/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="name" content="Melt_Tscci">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ceobe's Fungimist">
+      <meta itemprop="description" content=" 霜序廿九 | No.R155 ">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="性能压测工具Sysbench | Ceobe's Fungimist">
+      <meta itemprop="description" content="Sysbench是一个多线程的性能测试工具，主要用于测试Linux系统下的CPU、内存、IO性能，它可以通过模拟多用户并发访问来对系统的负载性能进行评估。Sysbench通常被系统管理员和开发人员用来评估系统在高负载情况下的表现，或者比较不同硬件和软件配置对性能的影响。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          性能压测工具Sysbench
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-28 10:00:02" itemprop="dateCreated datePublished" datetime="2024-02-28T10:00:02+08:00">2024-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-05 10:27:49" itemprop="dateModified" datetime="2024-03-05T10:27:49+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">性能测试</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/sysbench/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/sysbench/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Sysbench是一个多线程的性能测试工具，主要用于测试Linux系统下的CPU、内存、IO性能，它可以通过模拟多用户并发访问来对系统的负载性能进行评估。Sysbench通常被系统管理员和开发人员用来评估系统在高负载情况下的表现，或者比较不同硬件和软件配置对性能的影响。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="性能压测工具Sysbench"><a href="#性能压测工具Sysbench" class="headerlink" title="性能压测工具Sysbench"></a>性能压测工具Sysbench</h1><h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p>Sysbench是一个多线程的性能测试工具，主要用于测试Linux系统下的CPU、内存、IO性能，它可以通过模拟多用户并发访问来对系统的负载性能进行评估。Sysbench通常被系统管理员和开发人员用来评估系统在高负载情况下的表现，或者比较不同硬件和软件配置对性能的影响。<br>Sysbench的主要功能包括：</p>
+<ol>
+<li><strong>CPU性能测试</strong>：通过执行一系列计算密集型的任务来测试CPU的性能。</li>
+<li><strong>内存性能测试</strong>：通过分配和访问大量内存来测试系统的内存带宽和处理大量数据的能力。</li>
+<li><strong>IO性能测试</strong>：通过读写文件来测试磁盘IO性能，可以测试不同的文件系统。</li>
+<li><strong>网络性能测试</strong>：虽然Sysbench原生并不支持网络性能测试，但可以通过其他工具如iperf与sysbench结合来测试网络性能。</li>
+<li><strong>数据库性能测试</strong>：Sysbench提供了一个OLTP测试模块，可以用来测试数据库系统的性能，它模拟了创建表、插入数据、更新数据、查询数据以及删除数据等操作。<br>Sysbench的测试结果通常以每秒能够执行的操作次数（如每秒的插入、更新、查询等）来衡量系统的性能。这些测试结果对于确定系统瓶颈和优化系统配置非常有帮助。<br>使用Sysbench进行测试时，可以灵活地设置各种参数，如线程数、数据量、测试时长等，以适应不同的测试需求。此外，Sysbench的脚本化程度较高，可以通过脚本来自动化测试流程，便于重复执行和比较测试结果。</li>
+</ol>
+<h2 id="测试指标介绍"><a href="#测试指标介绍" class="headerlink" title="测试指标介绍"></a>测试指标介绍</h2><p>1、cpu测试：找范围内最大素数，所用时间越短越好。</p>
+<p>2、互斥锁测试：并发线程同时申请互斥锁循环一定次数花费的时间，所用时间越少越好。</p>
+<p>3、线程调度：线程并发执行，循环响应信号量花费的时间越少越好。</p>
+<p>4、IO性能测试：IOPS越大越好。</p>
+<ul>
+<li>IOPS (Input&#x2F;Output Operations Per Second)，即每秒进行读写（I&#x2F;O）操作的次数</li>
+</ul>
+<h2 id="安装sysbench"><a href="#安装sysbench" class="headerlink" title="安装sysbench"></a>安装sysbench</h2><h3 id="二进制安装（建议）"><a href="#二进制安装（建议）" class="headerlink" title="二进制安装（建议）"></a>二进制安装（建议）</h3><ul>
+<li>Debian&#x2F;Ubuntu</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash</span><br><span class="line">sudo apt -y install sysbench</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>RHEL&#x2F;CentOS</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash</span><br><span class="line">sudo yum -y install sysbench</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Fedora</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash	</span><br><span class="line">sudo dnf -y install sysbench</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Arch Linux</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Suy sysbench</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>macOS</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Add --with-postgresql <span class="keyword">if</span> you need PostgreSQL support</span></span><br><span class="line">brew install sysbench</span><br></pre></td></tr></table></figure>
+
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><p>官方建议使用二进制安装方式，以下是在没有可用的二进制包情况下的使用说明。</p>
+<h4 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h4><ul>
+<li>Debian&#x2F;Ubuntu</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt -y install make automake libtool pkg-config libaio-dev</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For MySQL support</span></span><br><span class="line">apt -y install libmysqlclient-dev libssl-dev</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For PostgreSQL support</span></span><br><span class="line">apt -y install libpq-dev</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>RHEL&#x2F;CentOS</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make automake libtool pkgconfig libaio-devel</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For MySQL support, replace with mysql-devel on RHEL/CentOS 5</span></span><br><span class="line">yum -y install mariadb-devel openssl-devel</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For PostgreSQL support</span></span><br><span class="line">yum -y install postgresql-devel</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Fedora</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install make automake libtool pkgconfig libaio-devel</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For MySQL support</span></span><br><span class="line">dnf -y install mariadb-devel openssl-devel</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For PostgreSQL support</span></span><br><span class="line">dnf -y install postgresql-devel</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>macOS</li>
+</ul>
+<p>默认已安装Xcode（或Xcode Command Line Tools）和Homebrew的情况下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">brew install automake libtool openssl pkg-config</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For MySQL support</span></span><br><span class="line">brew install mysql</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For PostgreSQL support</span></span><br><span class="line">brew install postgresql</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">openssl is not linked by Homebrew, this is to avoid <span class="string">&quot;ld: library not found for -lssl&quot;</span></span></span><br><span class="line">export LDFLAGS=-L/usr/local/opt/openssl/lib </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>源码仓库：<a target="_blank" rel="noopener" href="https://github.com/akopytov/sysbench.git">https://github.com/akopytov/sysbench.git</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Add --with-pgsql to build with PostgreSQL support</span></span><br><span class="line">./configure</span><br><span class="line">make -j</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="1、CPU性能测试"><a href="#1、CPU性能测试" class="headerlink" title="1、CPU性能测试"></a>1、CPU性能测试</h3><p>通过计算0到10000中最大的素数所用的时间来测试。</p>
+<ul>
+<li>什么是进程？</li>
+</ul>
+<p>进程就是程序的一次执行，是一个动态的过程。</p>
+<ul>
+<li>什么是线程？</li>
+</ul>
+<p>线程是轻量级的进程，一个进程内可以有一个或者是多个线程，线程是CPU调度的基本单位。</p>
+<ul>
+<li>什么是多线程？</li>
+</ul>
+<p>多线程是指程序中包含多个执行流，即在一个程序中可以同时运行多个不同的线程来执行不同的任务，也就是说允许单个程序创建多个并行执行的线程来完成各自的任务。</p>
+<ul>
+<li>多线程的好处：</li>
+</ul>
+<p>可以提高CPU的利用率。在多线程程序中，一个线程必须等待的时候，CPU可以运行其它的线程而不是等待，并不是说所有情况下用多线程都是好事，因为多线程的情况下，CPU还要花时间去维护，CPU处理各线程的请求时在线程间的切换也要花时间，所以一般情况下是可以不用多线程的，用了有时反而会得不偿失，大多情况下，要用到多线程的主要是需要处理大量的IO操作时或处理的情况需要花大量的时间等等。</p>
+<p>接下来将分别测试CPU在单线程和多线程的测试：</p>
+<h4 id="（1）单线程性能测试"><a href="#（1）单线程性能测试" class="headerlink" title="（1）单线程性能测试"></a>（1）单线程性能测试</h4><p><code>sysbench –num-threads=1 –test=cpu –cpu-max-prime=10000 run</code></p>
+<p>参数详解：</p>
+<ul>
+<li>cpu-max-prime&#x3D;N 用来选项指定最大的素数，具体参数可以根据CPU的性能来设置，默认为10000</li>
+</ul>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091751.png" alt="Pasted image 20230316091751"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091804.png" alt="Pasted image 20230316091804"></p>
+<h4 id="（2）多线程性能测试"><a href="#（2）多线程性能测试" class="headerlink" title="（2）多线程性能测试"></a>（2）多线程性能测试</h4><p><code>sysbench –num-threads=4 –test=cpu –cpu-max-prime=10000 run</code></p>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091820.png" alt="Pasted image 20230316091820"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091832.png" alt="Pasted image 20230316091832"></p>
+<h3 id="2、互斥锁测试"><a href="#2、互斥锁测试" class="headerlink" title="2、互斥锁测试"></a>2、互斥锁测试</h3><p>并发线程同时申请互斥锁循环一定次数花费的时间，所用时间越少越好</p>
+<p><code> sysbench –test=mutex –mutex-num=4096 –mutex-locks=50000 –mutex-loops=10000 run</code></p>
+<p>参数详解：</p>
+<ul>
+<li><p>mutex-num&#x3D;N 数组互斥的总大小。默认是4096</p>
+</li>
+<li><p>mutex-locks&#x3D;N 每个线程互斥锁的数量。默认是50000</p>
+</li>
+<li><p>mutex-loops&#x3D;N 内部互斥锁的空循环数量。默认是10000</p>
+</li>
+</ul>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091921.png" alt="Pasted image 20230316091921"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091935.png" alt="Pasted image 20230316091935"></p>
+<h3 id="3、线程测试"><a href="#3、线程测试" class="headerlink" title="3、线程测试"></a>3、线程测试</h3><p>线程并发执行，循环响应信号量花费的时间越少越好</p>
+<p><code> sysbench –test=threads –num-threads=1000 –thread-yields=1000 –thread-locks=8 run</code></p>
+<p>（发送1000次&#x2F;个测试线程请求，每次&#x2F;个线程请求产生&#x2F;生成1000个数量，每个线程的锁数量为8 ）</p>
+<p>参数详解：</p>
+<ul>
+<li><p>thread-yields&#x3D;N 指定每个请求的压力，默认为1000</p>
+</li>
+<li><p>thread-locks&#x3D;N 指定每个线程的锁数量，默认为8</p>
+</li>
+</ul>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091947.png" alt="Pasted image 20230316091947"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316091956.png" alt="Pasted image 20230316091956"></p>
+<h3 id="4、IO性能测试"><a href="#4、IO性能测试" class="headerlink" title="4、IO性能测试"></a>4、IO性能测试</h3><p>IOPS越大越好</p>
+<p>接下来将会分成随机文件读写测试和文件连续读写测试</p>
+<p>参数详解：</p>
+<ul>
+<li><p>file-num&#x3D;N 代表生成测试文件的数量，默认为128。</p>
+</li>
+<li><p>file-block-size&#x3D;N 测试时所使用文件块的大小，如果想磁盘针对innodb存储引擎进行测试，可以将其设置 为16384，即innodb存储引擎页的大小。默认为16384。</p>
+</li>
+<li><p>file-total-size&#x3D;SIZE 创建测试文件的总大小，默认为2G大小。</p>
+</li>
+<li><p>file-test-mode&#x3D;STRING 文件测试模式，包含：seqwr(顺序写), v seqrewr(顺序读写), seqrd(顺序读), rndrd(随机读), rndwr(随机写), rndrw(随机读写)。</p>
+</li>
+</ul>
+<ul>
+<li><p>file-io-mode&#x3D;STRING 文件操作的模式，sync（同步）,async（异步）,fastmmap（快速mmap）,slowmmap（慢速mmap），默认为sync同步模式。</p>
+</li>
+<li><p>file-async-backlog&#x3D;N 对应每个线程队列的异步操作数，默认128。</p>
+</li>
+<li><p>file-extra-flags&#x3D;STRING 打开文件时的选项，这是与API相关的参数。</p>
+</li>
+<li><p>file-fsync-freq&#x3D;N 执行fsync()函数的频率。fsync主要是同步磁盘文件，因为可能有系统和磁盘缓冲的关系。 0代表不使用fsync函数。默认值为100。</p>
+</li>
+<li><p>file-fsync-all&#x3D;[on|off] 每执行完一次写操作，就执行一次fsync。默认为off。</p>
+</li>
+<li><p>file-fsync-end&#x3D;[on|off] 在测试结束时执行fsync函数。默认为on。</p>
+</li>
+<li><p>file-fsync-mode&#x3D;STRING 文件同步函数的选择，同样是和API相关的参数，由于多个操作系统对于fdatasync支持不同，因此不建议使用fdatasync。默认为fsync。</p>
+</li>
+<li><p>file-merged-requests&#x3D;N 大多情况下，合并可能的IO的请求数，默为0。</p>
+</li>
+<li><p>file-rw-ratio&#x3D;N 测试时的读写比例，默认时为1.5，即可3：2。</p>
+</li>
+</ul>
+<h4 id="1-随机文件读写："><a href="#1-随机文件读写：" class="headerlink" title="(1)随机文件读写："></a>(1)随机文件读写：</h4><p>每秒读取速度, 每秒请求数量</p>
+<p><code> sysbench –test=fileio –file-num=2 –file-total-size=64M –file-test-mode=rndwr run</code></p>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316092010.png" alt="Pasted image 20230316092010"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316092023.png" alt="Pasted image 20230316092023"></p>
+<h4 id="2-文件连续读写"><a href="#2-文件连续读写" class="headerlink" title="(2)文件连续读写"></a>(2)文件连续读写</h4><p><code>sysbench –test=fileio –file-num=2 –file-total-size=64M –file-test-mode=seqrewr run</code></p>
+<p>官方系统测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316092035.png" alt="Pasted image 20230316092035"></p>
+<p>64位Debian测试结果</p>
+<p><img data-src="/sysbench/Pasted%20image%2020230316092047.png" alt="Pasted image 20230316092047"></p>
+<h3 id="5、数据库测试"><a href="#5、数据库测试" class="headerlink" title="5、数据库测试"></a>5、数据库测试</h3><p>Sysbench通过SQL脚本来创建测试用的数据库和表。默认情况下，它使用MySQL数据库进行测试，也可以修改配置来支持其他数据库系统。创建一个数据库和表的示例SQL脚本如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE sysbench_test;</span><br><span class="line"></span><br><span class="line">USE sysbench_test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> oltp_test (</span><br><span class="line">  id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT,</span><br><span class="line">  some_text TEXT,</span><br><span class="line">  some_integer <span class="type">INT</span>,</span><br><span class="line">  some_float <span class="type">FLOAT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysbench --threads=16 --time=60 --report-interval=1 /opt/homebrew/Cellar/sysbench/1.0.20_6/share/sysbench/oltp_common.lua --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password=Z*1 --mysql-db=test --tables=4 --table-size=100000 prepare</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4张表，每张表个10万行，16线程 准备</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/sysbench/image-20240228144707632.png" alt="image-20240228144707632"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysbench --threads=16 --time=60 --report-interval=1 /opt/homebrew/Cellar/sysbench/1.0.20_6/share/sysbench/oltp_point_select.lua  --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password=Z*1 --mysql-db=test --tables=4 --table-size=100000 run</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/sysbench/image-20240228144943862.png" alt="image-20240228144943862"></p>
+<p>此处结果内容主要包含： </p>
+<ul>
+<li>时间计数&#x2F;秒</li>
+<li>线程数(thds)</li>
+<li>每秒事务(tps)</li>
+<li>每秒查询数(qps)</li>
+<li>读&#x2F;写&#x2F;其他操作数(r&#x2F;w&#x2F;o)</li>
+<li>95%操作的耗时[lat(ms, 95%)]</li>
+<li>每秒的错误数(err&#x2F;s)</li>
+<li>每秒的重连数(reconn&#x2F;s)</li>
+</ul>
+<p>SQL统计信息(SQL statistics)：</p>
+<ul>
+<li>SQL的读&#x2F;写&#x2F;其他&#x2F;总计次数(queries performed)</li>
+<li>总事务数及每秒事务数(transactions)</li>
+<li>总查询数及每秒查询数(queries)</li>
+<li>忽略错误数据(ignored errors)</li>
+<li>重新连接数据(reconnects)</li>
+</ul>
+<p>通用统计信息(General statistics)：</p>
+<ul>
+<li>总时间(total time)</li>
+<li>总操作数(total number of events)</li>
+</ul>
+<p>耗时信息(单位毫秒)：</p>
+<ul>
+<li>最小（min）</li>
+<li>平均（avg）</li>
+<li>最大（max）</li>
+<li>95%耗时（95th percentile)</li>
+<li>总耗时(sum)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sysbench --threads=16 --time=60 --report-interval=1 oltp_read_write  --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password=Z*1 \</span><br><span class="line">--mysql-db=test --tables=4 --table-size=100000 cleanup</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">清理</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener" href="https://github.com/akopytov/sysbench">项目地址</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Melt_Tscci
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.ceobe.cn/sysbench/" title="性能压测工具Sysbench">https://blog.ceobe.cn/sysbench/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" rel="tag"># 性能测试工具</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E6%8B%9F/" rel="tag"># 多线程模拟</a>
+              <a href="/tags/CPU%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag"># CPU性能测试</a>
+              <a href="/tags/%E5%86%85%E5%AD%98%E5%9E%8B%E6%B5%8B%E8%AF%95/" rel="tag"># 内存型测试</a>
+              <a href="/tags/IO%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag"># IO性能测试</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag"># 数据库性能测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dozzle/" rel="prev" title="使用Dozzle审计容器日志">
+                  <i class="fa fa-angle-left"></i> 使用Dozzle审计容器日志
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/nunjucks/" rel="next" title="Intellij IDEA扩展Nunjucks文件类型">
+                  Intellij IDEA扩展Nunjucks文件类型 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备20026372号-4 </a>
+      <img src="/gongan.png" alt=""><a href="https://beian.mps.gov.cn/#/query/webSearch?code=33019202002361" rel="noopener" target="_blank">浙公网安备33019202002361号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2022 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">_Melt_Tscci</span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+   
+    <span title="站点总字数">68k</span>
+  </span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:03</span>
+  </span>
+
+  <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+
+</div><!--UptimeKuma-->
+<div>
+<a style="display:inline-block" title="页面响应时间"><img src="https://monitor.ceobe.cn/api/badge/8/response?style=flat-square" style="cursor: text">
+</a>
+<a style="display:inline-block" title="评论平台状态"><img src="https://monitor.ceobe.cn/api/badge/3/uptime/24?labelPrefix=Waline&labelSuffix=h&style=flat-square" style="cursor: text">
+</a>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://blog.ceobe.cn/sysbench/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://waline.ceobe.cn/","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"visitor":false,"dark":false,"login":"enable","wordLimit":0,"pageSize":10,"highlight":true,"meta":["nick","mail"],"requiredMeta":[],"placeholder":"随便说点什么喵～o(=•ェ•=)m \\n没有登录也是完全没问题的哦～","copyright":false,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/bilibili"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/sysbench/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<meta name="viewport" content="width=device-width">
+<style>
+
+html .sakana-box{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  
+  transform-origin: 100% 100%; /* 从右下开始变换 */
+}
+</style>
+
+<div class="sakana-box"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sakana@1.0.8"></script>
+<script>
+// 取消静音
+Sakana.setMute(true);
+
+// 启动
+Sakana.init({
+  el:         '.sakana-box',     // 启动元素 node 或 选择器
+  scale:      .5,                // 缩放倍数
+  canSwitchCharacter: true,      // 允许换角色
+  scale:      0.425,             // 缩放倍数
+  character:  'chisato',          // 启动角色 'chisato','takina' 
+});
+</script>
+ 
+</body>
+</html>
