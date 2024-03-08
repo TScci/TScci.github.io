@@ -1,5 +1,7 @@
-https://blog.ceobe.cn/sysbench/
+https://blog.ceobe.cn/promtail-permission/
 https://blog.ceobe.cn/nunjucks/
+https://blog.ceobe.cn/tags/
+https://blog.ceobe.cn/sysbench/
 https://blog.ceobe.cn/dozzle/
 https://blog.ceobe.cn/hfish-safeline/
 https://blog.ceobe.cn/harbor-trivy/
@@ -18,7 +20,6 @@ https://blog.ceobe.cn/links/
 https://blog.ceobe.cn/404/
 https://blog.ceobe.cn/schedule/
 https://blog.ceobe.cn/categories/
-https://blog.ceobe.cn/tags/
 https://blog.ceobe.cn/
 https://blog.ceobe.cn/tags/Markdown/
 https://blog.ceobe.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/
@@ -82,6 +83,9 @@ https://blog.ceobe.cn/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/
 https://blog.ceobe.cn/tags/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/
 https://blog.ceobe.cn/tags/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6/
 https://blog.ceobe.cn/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/
+https://blog.ceobe.cn/tags/Promtail/
+https://blog.ceobe.cn/tags/Loki/
+https://blog.ceobe.cn/tags/Grafana/
 https://blog.ceobe.cn/tags/Python/
 https://blog.ceobe.cn/tags/RPA/
 https://blog.ceobe.cn/tags/waterRPA/

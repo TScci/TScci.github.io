@@ -301,7 +301,7 @@
 <p>into something like this:</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;<span class="symbol">&amp;#x6D;</span><span class="symbol">&amp;#x61;</span>i<span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x6F;</span>:<span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x64;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#64;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#120;</span><span class="symbol">&amp;#x61;</span></span><br><span class="line"><span class="symbol">&amp;#109;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x6C;</span>e<span class="symbol">&amp;#x2E;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#111;</span><span class="symbol">&amp;#109;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>which will render in a browser as a clickable link to “<a href="mailto:&#x61;&#100;&#100;&#114;&#101;&#115;&#115;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#x61;&#100;&#100;&#114;&#101;&#115;&#115;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;</a>”.</p>
+<p>which will render in a browser as a clickable link to “<a href="mailto:&#97;&#100;&#100;&#114;&#x65;&#x73;&#x73;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#97;&#100;&#100;&#114;&#x65;&#x73;&#x73;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a>”.</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely won’t fool all of them. It’s better than nothing, but an address published in this way will probably eventually start receiving spam.)</p>
 <h3 id="BACKSLASH-ESCAPES"><a href="#BACKSLASH-ESCAPES" class="headerlink" title="BACKSLASH ESCAPES"></a>BACKSLASH ESCAPES</h3><p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:</p>
 <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">\*literal asterisks\*</span><br></pre></td></tr></table></figure>
@@ -1294,7 +1294,7 @@ hard nofile 65535
 <p><img data-src="/nunjucks/image-20240304163156930-9543237.png" alt="image-20240304163156930"></p>
 <h2 id="Nunjuck高亮效果"><a href="#Nunjuck高亮效果" class="headerlink" title="Nunjuck高亮效果"></a>Nunjuck高亮效果</h2><p><img data-src="/nunjucks/image-20240304162939533-9543264.png" alt="image-20240304162939533"></p>
 <p><img data-src="/nunjucks/image-20240304163224649-9543270.png" alt="image-20240304163224649"></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
 <li>[<a href="https://stackoverflow.com/questions/33558627/integrating-nunjucks-with-intellij-idea-webstorm"><strong>Integrating Nunjucks with IntelliJ IDEA &#x2F; Webstorm</strong></a>]</li>
 </ul>
 ]]></content>
@@ -1307,6 +1307,59 @@ hard nofile 65535
         <tag>代码折叠</tag>
         <tag>多语言支持</tag>
         <tag>数学公式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Promtail Permission Denied 问题处理</title>
+    <url>/promtail-permission/</url>
+    <content><![CDATA[<h1 id="Promtail-Permission-Denied-问题处理"><a href="#Promtail-Permission-Denied-问题处理" class="headerlink" title="Promtail Permission Denied 问题处理"></a>Promtail Permission Denied 问题处理</h1><p>Promtail是Linux系统中一款常用的日志收集工具，它依赖于Loki进行日志索引和查询。实际使用过程中，可能会遇到Promtail无法访问Var&#x2F;log路径下的日志文件的情况。本文将为您详细解析这个问题，并提供相应的解决方案。</p>
+<h2 id="复现场景"><a href="#复现场景" class="headerlink" title="复现场景"></a>复现场景</h2><ul>
+<li>业务端编排文件（docker compose v2）</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">promtail:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">grafana/promtail:2.9.4</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/mnt/config</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/log:/var/log</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">-config.file=/mnt/config/promtail-config.yaml</span>                                                       </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>业务端配置文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">http_listen_port:</span> <span class="number">9080</span></span><br><span class="line">  <span class="attr">grpc_listen_port:</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">positions:</span></span><br><span class="line">  <span class="attr">filename:</span> <span class="string">/tmp/positions.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">clients:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">url:</span> <span class="string">http://&#123;monitor_ip&#125;:3100/loki/api/v1/push</span></span><br><span class="line"></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">system</span></span><br><span class="line">  <span class="attr">static_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">targets:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">localhost</span></span><br><span class="line">    <span class="attr">labels:</span></span><br><span class="line">      <span class="attr">job:</span> <span class="string">master_syslog</span></span><br><span class="line">      <span class="attr">__path__:</span> <span class="string">/var/log/syslog</span></span><br></pre></td></tr></table></figure>
+
+<p>通过监控端Grafana控制台查询到以下报错信息：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Mar</span>  <span class="number">8</span> <span class="number">13</span>:<span class="number">24</span>:<span class="number">39</span> * promtail[*]: level=error ts=<span class="number">2024</span>-<span class="number">03</span>-<span class="number">08</span>T05:<span class="number">24</span>:<span class="number">39</span>.<span class="number">394865029</span>Z caller=filetarget.go:<span class="number">371</span> msg=<span class="string">&quot;failed to start tailer&quot;</span> error=<span class="string">&quot;open /var/log/apport.log: permission denied&quot;</span> filename=/var/log/apport.log</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img data-src="/promtail-permission/IMG_3495-dama.JPG" alt="IMG_3495-dama"></p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo adduser --system promtail</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动promtail容器往往会在系统中自动创建promtail用户，可选择跳过。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /var</span><br><span class="line">sudo setfacl -R -m u:promtail:rX log</span><br><span class="line">sudo chown promtail /tmp/positions.yaml</span><br><span class="line">sudo usermod -a -G systemd-journal promtail</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>遇到setfacl command not found报错，需要手动安装acl工具，如执行<code> apt install acl</code>。</p>
+</li>
+<li><p><code>sudo setfacl -R -m u:promtail:rX log</code> 这个命令设置&#x2F;var&#x2F;log目录的访问控制列表（ACL）。setfacl命令用于设置或改变文件或目录的ACL。这里，-R选项表示递归地应用ACL，-m选项用于添加或修改ACL，u:promtail:rX表示允许用户promtail读取（r）目录下的所有文件和子目录。</p>
+</li>
+<li><p><code>sudo chown promtail /tmp/positions.yaml</code> 这个命令改变&#x2F;tmp&#x2F;positions.yaml文件的所有者到promtail。</p>
+</li>
+<li><p><code>sudo usermod -a -G systemd-journal promtail </code>这个命令将用户promtail添加到组systemd-journal中。-a选项表示添加到组而不会改变用户的主组。systemd-journal组通常与journald服务相关联，确保promtail用户能够正确地与系统日志（journal）交互。</p>
+</li>
+</ul>
+<h2 id="修复结果"><a href="#修复结果" class="headerlink" title="修复结果"></a>修复结果</h2><p><img data-src="/promtail-permission/image-20240308140158432.png" alt="image-20240308140158432"></p>
+<p><img data-src="/promtail-permission/image-20240308140243462.png" alt="image-20240308140243462"></p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p>[<a href="https://community.grafana.com/t/promtail-open-var-log-boot-log-permission-denied/49202">Promtail: “open &#x2F;var&#x2F;log&#x2F;boot.log: permission denied”</a>]</p>
+]]></content>
+      <categories>
+        <category>issue</category>
+      </categories>
+      <tags>
+        <tag>安全合规</tag>
+        <tag>访问控制</tag>
+        <tag>Promtail</tag>
+        <tag>Loki</tag>
+        <tag>Grafana</tag>
       </tags>
   </entry>
   <entry>
