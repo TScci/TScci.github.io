@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://blog.ceobe.cn/promtail-permission/image-20240308140158432.png">
 <meta property="og:image" content="https://blog.ceobe.cn/promtail-permission/image-20240308140243462.png">
 <meta property="article:published_time" content="2024-03-08T05:34:36.000Z">
-<meta property="article:modified_time" content="2024-03-08T06:03:49.710Z">
+<meta property="article:modified_time" content="2024-03-08T06:19:17.208Z">
 <meta property="article:author" content="Melt_Tscci">
 <meta property="article:tag" content="安全合规">
 <meta property="article:tag" content="访问控制">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Promtail-Permission-Denied-%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Promtail Permission Denied 问题处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">复现场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.</span> <span class="nav-text">修复结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="nav-number">1.4.</span> <span class="nav-text">参考资源</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E2%80%98Promtail-Permission-Denied%E2%80%99%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">‘Promtail Permission Denied’问题处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">复现场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.</span> <span class="nav-text">修复结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="nav-number">1.4.</span> <span class="nav-text">参考资源</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -291,7 +291,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-03-08 13:34:36 / 修改时间：14:03:49" itemprop="dateCreated datePublished" datetime="2024-03-08T13:34:36+08:00">2024-03-08</time>
+      <time title="创建时间：2024-03-08 13:34:36 / 修改时间：14:19:17" itemprop="dateCreated datePublished" datetime="2024-03-08T13:34:36+08:00">2024-03-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -349,7 +349,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Promtail-Permission-Denied-问题处理"><a href="#Promtail-Permission-Denied-问题处理" class="headerlink" title="Promtail Permission Denied 问题处理"></a>Promtail Permission Denied 问题处理</h1><p>Promtail是Linux系统中一款常用的日志收集工具，它依赖于Loki进行日志索引和查询。实际使用过程中，可能会遇到Promtail无法访问Var&#x2F;log路径下的日志文件的情况。本文将为您详细解析这个问题，并提供相应的解决方案。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="‘Promtail-Permission-Denied’问题处理"><a href="#‘Promtail-Permission-Denied’问题处理" class="headerlink" title="‘Promtail Permission Denied’问题处理"></a>‘Promtail Permission Denied’问题处理</h1><p>Promtail是Linux系统中一款常用的日志收集工具，它依赖于Loki进行日志索引和查询。实际使用过程中，可能会遇到Promtail无法访问Var&#x2F;log路径下的日志文件的情况。本文将为您详细解析这个问题，并提供相应的解决方案。</p>
 <h2 id="复现场景"><a href="#复现场景" class="headerlink" title="复现场景"></a>复现场景</h2><ul>
 <li>业务端编排文件（docker compose v2）</li>
 </ul>
@@ -361,10 +361,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">http_listen_port:</span> <span class="number">9080</span></span><br><span class="line">  <span class="attr">grpc_listen_port:</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">positions:</span></span><br><span class="line">  <span class="attr">filename:</span> <span class="string">/tmp/positions.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">clients:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">url:</span> <span class="string">http://&#123;monitor_ip&#125;:3100/loki/api/v1/push</span></span><br><span class="line"></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">system</span></span><br><span class="line">  <span class="attr">static_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">targets:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">localhost</span></span><br><span class="line">    <span class="attr">labels:</span></span><br><span class="line">      <span class="attr">job:</span> <span class="string">master_syslog</span></span><br><span class="line">      <span class="attr">__path__:</span> <span class="string">/var/log/syslog</span></span><br></pre></td></tr></table></figure>
 
 <p>通过监控端Grafana控制台查询到以下报错信息：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Mar</span>  <span class="number">8</span> <span class="number">13</span>:<span class="number">24</span>:<span class="number">39</span> * promtail[*]: level=error ts=<span class="number">2024</span>-<span class="number">03</span>-<span class="number">08</span>T05:<span class="number">24</span>:<span class="number">39</span>.<span class="number">394865029</span>Z caller=filetarget.go:<span class="number">371</span> msg=<span class="string">&quot;failed to start tailer&quot;</span> error=<span class="string">&quot;open /var/log/apport.log: permission denied&quot;</span> filename=/var/log/apport.log</span><br></pre></td></tr></table></figure>
-
-
-
+<p><code>Mar  8 13:24:39 * promtail[*]: level=error ts=2024-03-08T05:24:39.394865029Z caller=filetarget.go:371 msg=&quot;failed to start tailer&quot; error=&quot;open /var/log/apport.log: permission denied&quot; filename=/var/log/apport.log</code></p>
 <p><img data-src="/promtail-permission/IMG_3495-dama.JPG" alt="IMG_3495-dama"></p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>执行以下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --system promtail</span><br></pre></td></tr></table></figure>
